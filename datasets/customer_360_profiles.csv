@@ -1,501 +1,501 @@
 customer_id,name,age,city,feedback_notes,sentiment_label
-C360-100000,User 5119,33,Toronto,Very frustrating experience with the recent claim rejection.,Negative
-C360-100001,User 1415,30,Sydney,Great experience so far. Highly recommend the health bundle.,Positive
-C360-100002,User 3440,63,London,Very frustrating experience with the recent claim rejection.,Negative
-C360-100003,User 633,26,Toronto,Just renewing my standard policy for another year.,Neutral
-C360-100004,User 2139,45,London,Very frustrating experience with the recent claim rejection.,Negative
-C360-100005,User 8833,50,London,"I have some questions about the coverage limits, please call me.",Neutral
-C360-100006,User 9905,57,London,Terrible customer service. Waiting too long for claims.,Negative
-C360-100007,User 7602,50,New York,I am unhappy with the hidden fees in my life insurance policy.,Negative
-C360-100008,User 5968,52,Berlin,Very frustrating experience with the recent claim rejection.,Negative
-C360-100009,User 3314,60,Toronto,Terrible customer service. Waiting too long for claims.,Negative
-C360-100010,User 3045,29,Berlin,The premium is affordable and the support team is excellent.,Positive
-C360-100011,User 198,27,Berlin,I am unhappy with the hidden fees in my life insurance policy.,Negative
-C360-100012,User 3100,51,Sydney,Quick responses. Thinking about upgrading my motor insurance.,Positive
-C360-100013,User 4145,43,Sydney,Just renewing my standard policy for another year.,Neutral
-C360-100014,User 6221,40,New York,Thinking of cancelling. Found a cheaper motor insurance elsewhere.,Negative
-C360-100015,User 7992,59,Berlin,Thinking of cancelling. Found a cheaper motor insurance elsewhere.,Negative
-C360-100016,User 1221,55,Toronto,Very frustrating experience with the recent claim rejection.,Negative
-C360-100017,User 3719,39,London,Just renewing my standard policy for another year.,Neutral
-C360-100018,User 6804,25,Toronto,Great experience so far. Highly recommend the health bundle.,Positive
-C360-100019,User 6783,42,New York,Terrible customer service. Waiting too long for claims.,Negative
-C360-100020,User 436,54,Berlin,Very satisfied with the accidental coverage terms.,Positive
-C360-100021,User 5447,63,Sydney,Great experience so far. Highly recommend the health bundle.,Positive
-C360-100022,User 6700,62,Sydney,Quick responses. Thinking about upgrading my motor insurance.,Positive
-C360-100023,User 329,62,New York,Just renewing my standard policy for another year.,Neutral
-C360-100024,User 7912,58,London,I am unhappy with the hidden fees in my life insurance policy.,Negative
-C360-100025,User 6123,65,Berlin,Great experience so far. Highly recommend the health bundle.,Positive
-C360-100026,User 6568,37,Toronto,Thinking of cancelling. Found a cheaper motor insurance elsewhere.,Negative
-C360-100027,User 7489,26,Berlin,I am very happy with the coverage and the easy claim process.,Positive
-C360-100028,User 5306,64,Toronto,Terrible customer service. Waiting too long for claims.,Negative
-C360-100029,User 27,43,Berlin,I am very happy with the coverage and the easy claim process.,Positive
-C360-100030,User 8110,38,Berlin,Thinking of cancelling. Found a cheaper motor insurance elsewhere.,Negative
-C360-100031,User 6551,52,Sydney,Very satisfied with the accidental coverage terms.,Positive
-C360-100032,User 37,44,Berlin,Need to update my address on the accidental policy.,Neutral
-C360-100033,User 5230,41,Sydney,Quick responses. Thinking about upgrading my motor insurance.,Positive
-C360-100034,User 9825,30,Berlin,Great experience so far. Highly recommend the health bundle.,Positive
-C360-100035,User 5738,45,Berlin,"Standard service, nothing special to note.",Neutral
-C360-100036,User 7278,25,New York,Need to update my address on the accidental policy.,Neutral
-C360-100037,User 1795,45,New York,Great experience so far. Highly recommend the health bundle.,Positive
-C360-100038,User 9414,49,Toronto,"No issues, everything is fine.",Neutral
-C360-100039,User 8571,40,New York,The premiums are too expensive and keep increasing every year.,Negative
-C360-100040,User 2108,27,Sydney,The premiums are too expensive and keep increasing every year.,Negative
-C360-100041,User 7162,53,Toronto,Just renewing my standard policy for another year.,Neutral
-C360-100042,User 7134,37,Berlin,I am unhappy with the hidden fees in my life insurance policy.,Negative
-C360-100043,User 58,58,Berlin,Quick responses. Thinking about upgrading my motor insurance.,Positive
-C360-100044,User 3608,48,Berlin,The premiums are too expensive and keep increasing every year.,Negative
-C360-100045,User 9433,44,Sydney,"I have some questions about the coverage limits, please call me.",Neutral
-C360-100046,User 1078,28,Berlin,Quick responses. Thinking about upgrading my motor insurance.,Positive
-C360-100047,User 5681,44,Sydney,Great experience so far. Highly recommend the health bundle.,Positive
-C360-100048,User 2331,44,London,Need to update my address on the accidental policy.,Neutral
-C360-100049,User 9290,32,Berlin,I am unhappy with the hidden fees in my life insurance policy.,Negative
-C360-100050,User 8652,43,Berlin,Just renewing my standard policy for another year.,Neutral
-C360-100051,User 3659,25,London,Need to update my address on the accidental policy.,Neutral
-C360-100052,User 2315,41,Berlin,I am unhappy with the hidden fees in my life insurance policy.,Negative
-C360-100053,User 6548,39,London,Great experience so far. Highly recommend the health bundle.,Positive
-C360-100054,User 4878,55,New York,Very frustrating experience with the recent claim rejection.,Negative
-C360-100055,User 9333,39,Sydney,The premiums are too expensive and keep increasing every year.,Negative
-C360-100056,User 6536,62,Berlin,Great experience so far. Highly recommend the health bundle.,Positive
-C360-100057,User 7982,40,London,Need to update my address on the accidental policy.,Neutral
-C360-100058,User 6886,32,New York,Great experience so far. Highly recommend the health bundle.,Positive
-C360-100059,User 9995,28,London,The premium is affordable and the support team is excellent.,Positive
-C360-100060,User 4830,47,London,"Standard service, nothing special to note.",Neutral
-C360-100061,User 6139,26,London,The premiums are too expensive and keep increasing every year.,Negative
-C360-100062,User 2704,49,Toronto,Quick responses. Thinking about upgrading my motor insurance.,Positive
-C360-100063,User 33,37,London,The premiums are too expensive and keep increasing every year.,Negative
-C360-100064,User 2136,27,Berlin,"I have some questions about the coverage limits, please call me.",Neutral
-C360-100065,User 3398,44,New York,Terrible customer service. Waiting too long for claims.,Negative
-C360-100066,User 882,29,Toronto,The premiums are too expensive and keep increasing every year.,Negative
-C360-100067,User 2645,50,London,The premiums are too expensive and keep increasing every year.,Negative
-C360-100068,User 914,54,London,Great experience so far. Highly recommend the health bundle.,Positive
-C360-100069,User 7406,62,Toronto,Very frustrating experience with the recent claim rejection.,Negative
-C360-100070,User 4264,31,Toronto,I am unhappy with the hidden fees in my life insurance policy.,Negative
-C360-100071,User 7698,37,Sydney,"I have some questions about the coverage limits, please call me.",Neutral
-C360-100072,User 4150,51,Sydney,Need to update my address on the accidental policy.,Neutral
-C360-100073,User 8333,33,Toronto,Thinking of cancelling. Found a cheaper motor insurance elsewhere.,Negative
-C360-100074,User 2646,46,Toronto,"No issues, everything is fine.",Neutral
-C360-100075,User 4739,60,London,The premium is affordable and the support team is excellent.,Positive
-C360-100076,User 4094,57,Sydney,I am very happy with the coverage and the easy claim process.,Positive
-C360-100077,User 1226,34,New York,Just renewing my standard policy for another year.,Neutral
-C360-100078,User 3166,35,Toronto,Terrible customer service. Waiting too long for claims.,Negative
-C360-100079,User 7768,51,Sydney,Very satisfied with the accidental coverage terms.,Positive
-C360-100080,User 5385,62,New York,"I have some questions about the coverage limits, please call me.",Neutral
-C360-100081,User 4885,49,London,Quick responses. Thinking about upgrading my motor insurance.,Positive
-C360-100082,User 8412,55,Toronto,"No issues, everything is fine.",Neutral
-C360-100083,User 4482,55,New York,I am very happy with the coverage and the easy claim process.,Positive
-C360-100084,User 153,38,New York,"Standard service, nothing special to note.",Neutral
-C360-100085,User 3651,44,Toronto,The premiums are too expensive and keep increasing every year.,Negative
-C360-100086,User 1989,41,Toronto,Thinking of cancelling. Found a cheaper motor insurance elsewhere.,Negative
-C360-100087,User 4152,64,Sydney,Thinking of cancelling. Found a cheaper motor insurance elsewhere.,Negative
-C360-100088,User 4753,44,New York,The premiums are too expensive and keep increasing every year.,Negative
-C360-100089,User 8033,56,Toronto,The premiums are too expensive and keep increasing every year.,Negative
-C360-100090,User 7193,37,Sydney,Just renewing my standard policy for another year.,Neutral
-C360-100091,User 5599,65,New York,"Standard service, nothing special to note.",Neutral
-C360-100092,User 4860,47,New York,Terrible customer service. Waiting too long for claims.,Negative
-C360-100093,User 5002,26,Toronto,Thinking of cancelling. Found a cheaper motor insurance elsewhere.,Negative
-C360-100094,User 6170,53,Sydney,The premiums are too expensive and keep increasing every year.,Negative
-C360-100095,User 5625,55,New York,Just renewing my standard policy for another year.,Neutral
-C360-100096,User 2085,34,Sydney,Terrible customer service. Waiting too long for claims.,Negative
-C360-100097,User 2870,26,Berlin,I am unhappy with the hidden fees in my life insurance policy.,Negative
-C360-100098,User 6476,39,Sydney,The premium is affordable and the support team is excellent.,Positive
-C360-100099,User 8972,58,Berlin,"No issues, everything is fine.",Neutral
-C360-100100,User 9319,55,London,Great experience so far. Highly recommend the health bundle.,Positive
-C360-100101,User 8392,36,Berlin,"I have some questions about the coverage limits, please call me.",Neutral
-C360-100102,User 7374,63,Toronto,The premium is affordable and the support team is excellent.,Positive
-C360-100103,User 9175,58,Toronto,Great experience so far. Highly recommend the health bundle.,Positive
-C360-100104,User 7841,28,London,Great experience so far. Highly recommend the health bundle.,Positive
-C360-100105,User 8148,46,Sydney,The premiums are too expensive and keep increasing every year.,Negative
-C360-100106,User 677,47,Berlin,The premiums are too expensive and keep increasing every year.,Negative
-C360-100107,User 9229,46,Toronto,Very frustrating experience with the recent claim rejection.,Negative
-C360-100108,User 4298,27,Toronto,Quick responses. Thinking about upgrading my motor insurance.,Positive
-C360-100109,User 3317,43,Sydney,The premium is affordable and the support team is excellent.,Positive
-C360-100110,User 6226,26,Berlin,Terrible customer service. Waiting too long for claims.,Negative
-C360-100111,User 7322,65,Sydney,I am very happy with the coverage and the easy claim process.,Positive
-C360-100112,User 9163,32,Toronto,The premium is affordable and the support team is excellent.,Positive
-C360-100113,User 8855,47,Toronto,"No issues, everything is fine.",Neutral
-C360-100114,User 3721,34,New York,Great experience so far. Highly recommend the health bundle.,Positive
-C360-100115,User 912,46,London,"Standard service, nothing special to note.",Neutral
-C360-100116,User 3150,64,Sydney,Very frustrating experience with the recent claim rejection.,Negative
-C360-100117,User 5476,31,London,"No issues, everything is fine.",Neutral
-C360-100118,User 5404,63,Sydney,Great experience so far. Highly recommend the health bundle.,Positive
-C360-100119,User 7462,39,New York,"Standard service, nothing special to note.",Neutral
-C360-100120,User 7079,31,Berlin,Just renewing my standard policy for another year.,Neutral
-C360-100121,User 7392,33,London,"Standard service, nothing special to note.",Neutral
-C360-100122,User 6924,56,Sydney,I am unhappy with the hidden fees in my life insurance policy.,Negative
-C360-100123,User 6195,50,New York,Very frustrating experience with the recent claim rejection.,Negative
-C360-100124,User 1356,63,Berlin,"I have some questions about the coverage limits, please call me.",Neutral
-C360-100125,User 4968,49,Toronto,Very frustrating experience with the recent claim rejection.,Negative
-C360-100126,User 2850,26,Berlin,Need to update my address on the accidental policy.,Neutral
-C360-100127,User 6333,41,Toronto,Very frustrating experience with the recent claim rejection.,Negative
-C360-100128,User 9172,27,London,Terrible customer service. Waiting too long for claims.,Negative
-C360-100129,User 3625,53,Sydney,The premium is affordable and the support team is excellent.,Positive
-C360-100130,User 2965,57,Toronto,Thinking of cancelling. Found a cheaper motor insurance elsewhere.,Negative
-C360-100131,User 9426,32,New York,Thinking of cancelling. Found a cheaper motor insurance elsewhere.,Negative
-C360-100132,User 8614,58,Toronto,"Standard service, nothing special to note.",Neutral
-C360-100133,User 2078,26,Berlin,Quick responses. Thinking about upgrading my motor insurance.,Positive
-C360-100134,User 9942,25,New York,Very satisfied with the accidental coverage terms.,Positive
-C360-100135,User 8265,55,New York,Very frustrating experience with the recent claim rejection.,Negative
-C360-100136,User 4347,47,Toronto,I am unhappy with the hidden fees in my life insurance policy.,Negative
-C360-100137,User 2547,36,Toronto,I am very happy with the coverage and the easy claim process.,Positive
-C360-100138,User 2939,59,Berlin,Great experience so far. Highly recommend the health bundle.,Positive
-C360-100139,User 9,59,Berlin,Terrible customer service. Waiting too long for claims.,Negative
-C360-100140,User 1563,36,New York,Quick responses. Thinking about upgrading my motor insurance.,Positive
-C360-100141,User 2191,65,London,I am very happy with the coverage and the easy claim process.,Positive
-C360-100142,User 6910,33,Toronto,"I have some questions about the coverage limits, please call me.",Neutral
-C360-100143,User 7919,34,Sydney,Just renewing my standard policy for another year.,Neutral
-C360-100144,User 7455,61,Toronto,Great experience so far. Highly recommend the health bundle.,Positive
-C360-100145,User 4760,44,Toronto,Terrible customer service. Waiting too long for claims.,Negative
-C360-100146,User 8003,54,New York,Terrible customer service. Waiting too long for claims.,Negative
-C360-100147,User 1114,65,London,Just renewing my standard policy for another year.,Neutral
-C360-100148,User 7305,64,Berlin,Just renewing my standard policy for another year.,Neutral
-C360-100149,User 7056,57,Sydney,Terrible customer service. Waiting too long for claims.,Negative
-C360-100150,User 3416,53,Toronto,Thinking of cancelling. Found a cheaper motor insurance elsewhere.,Negative
-C360-100151,User 9115,51,Toronto,"I have some questions about the coverage limits, please call me.",Neutral
-C360-100152,User 3134,30,New York,"No issues, everything is fine.",Neutral
-C360-100153,User 8423,53,Berlin,Terrible customer service. Waiting too long for claims.,Negative
-C360-100154,User 7651,27,New York,Very satisfied with the accidental coverage terms.,Positive
-C360-100155,User 464,34,Toronto,Great experience so far. Highly recommend the health bundle.,Positive
-C360-100156,User 95,58,Berlin,Very frustrating experience with the recent claim rejection.,Negative
-C360-100157,User 7940,30,Toronto,Very frustrating experience with the recent claim rejection.,Negative
-C360-100158,User 2149,31,London,Great experience so far. Highly recommend the health bundle.,Positive
-C360-100159,User 7448,52,Sydney,I am very happy with the coverage and the easy claim process.,Positive
-C360-100160,User 8750,25,Sydney,Just renewing my standard policy for another year.,Neutral
-C360-100161,User 1288,34,London,Terrible customer service. Waiting too long for claims.,Negative
-C360-100162,User 4289,27,Sydney,"Standard service, nothing special to note.",Neutral
-C360-100163,User 3378,59,Berlin,Very frustrating experience with the recent claim rejection.,Negative
-C360-100164,User 3887,44,London,"No issues, everything is fine.",Neutral
-C360-100165,User 3004,52,London,Great experience so far. Highly recommend the health bundle.,Positive
-C360-100166,User 930,57,Berlin,Quick responses. Thinking about upgrading my motor insurance.,Positive
-C360-100167,User 8767,60,Sydney,The premiums are too expensive and keep increasing every year.,Negative
-C360-100168,User 7231,64,Berlin,"Standard service, nothing special to note.",Neutral
-C360-100169,User 3762,53,Sydney,Quick responses. Thinking about upgrading my motor insurance.,Positive
-C360-100170,User 3112,32,Sydney,"Standard service, nothing special to note.",Neutral
-C360-100171,User 1080,55,Berlin,Very frustrating experience with the recent claim rejection.,Negative
-C360-100172,User 9848,44,London,"No issues, everything is fine.",Neutral
-C360-100173,User 649,59,London,Terrible customer service. Waiting too long for claims.,Negative
-C360-100174,User 8610,46,Berlin,I am unhappy with the hidden fees in my life insurance policy.,Negative
-C360-100175,User 3992,42,Berlin,The premiums are too expensive and keep increasing every year.,Negative
-C360-100176,User 2848,63,Toronto,I am very happy with the coverage and the easy claim process.,Positive
-C360-100177,User 1585,35,Sydney,I am unhappy with the hidden fees in my life insurance policy.,Negative
-C360-100178,User 7798,49,Berlin,Thinking of cancelling. Found a cheaper motor insurance elsewhere.,Negative
-C360-100179,User 3038,32,New York,Thinking of cancelling. Found a cheaper motor insurance elsewhere.,Negative
-C360-100180,User 7103,40,Toronto,"No issues, everything is fine.",Neutral
-C360-100181,User 1361,43,London,"Standard service, nothing special to note.",Neutral
-C360-100182,User 942,62,Toronto,Terrible customer service. Waiting too long for claims.,Negative
-C360-100183,User 2623,45,New York,The premiums are too expensive and keep increasing every year.,Negative
-C360-100184,User 5188,41,Toronto,"Standard service, nothing special to note.",Neutral
-C360-100185,User 1217,36,New York,Terrible customer service. Waiting too long for claims.,Negative
-C360-100186,User 2511,57,Toronto,Very satisfied with the accidental coverage terms.,Positive
-C360-100187,User 8197,27,Toronto,Terrible customer service. Waiting too long for claims.,Negative
-C360-100188,User 7959,36,London,Terrible customer service. Waiting too long for claims.,Negative
-C360-100189,User 5251,64,Berlin,Terrible customer service. Waiting too long for claims.,Negative
-C360-100190,User 6713,53,Toronto,"No issues, everything is fine.",Neutral
-C360-100191,User 9390,40,Berlin,Great experience so far. Highly recommend the health bundle.,Positive
-C360-100192,User 6668,26,Sydney,Great experience so far. Highly recommend the health bundle.,Positive
-C360-100193,User 9279,47,Sydney,Very satisfied with the accidental coverage terms.,Positive
-C360-100194,User 7108,27,Toronto,Very satisfied with the accidental coverage terms.,Positive
-C360-100195,User 8501,41,New York,The premiums are too expensive and keep increasing every year.,Negative
-C360-100196,User 3482,45,London,Terrible customer service. Waiting too long for claims.,Negative
-C360-100197,User 9923,37,London,I am unhappy with the hidden fees in my life insurance policy.,Negative
-C360-100198,User 1046,38,New York,"Standard service, nothing special to note.",Neutral
-C360-100199,User 7953,43,Sydney,Very satisfied with the accidental coverage terms.,Positive
-C360-100200,User 3586,44,New York,The premiums are too expensive and keep increasing every year.,Negative
-C360-100201,User 5512,63,London,I am very happy with the coverage and the easy claim process.,Positive
-C360-100202,User 3315,33,London,Very satisfied with the accidental coverage terms.,Positive
-C360-100203,User 2329,55,New York,"I have some questions about the coverage limits, please call me.",Neutral
-C360-100204,User 2642,44,Berlin,Thinking of cancelling. Found a cheaper motor insurance elsewhere.,Negative
-C360-100205,User 7476,48,Berlin,I am very happy with the coverage and the easy claim process.,Positive
-C360-100206,User 8305,42,Toronto,The premiums are too expensive and keep increasing every year.,Negative
-C360-100207,User 6070,40,New York,"I have some questions about the coverage limits, please call me.",Neutral
-C360-100208,User 5122,50,Sydney,I am very happy with the coverage and the easy claim process.,Positive
-C360-100209,User 5041,59,Sydney,The premium is affordable and the support team is excellent.,Positive
-C360-100210,User 4299,43,Sydney,I am unhappy with the hidden fees in my life insurance policy.,Negative
-C360-100211,User 801,52,Sydney,Great experience so far. Highly recommend the health bundle.,Positive
-C360-100212,User 1808,55,New York,"No issues, everything is fine.",Neutral
-C360-100213,User 519,43,London,Very frustrating experience with the recent claim rejection.,Negative
-C360-100214,User 2170,36,Berlin,The premiums are too expensive and keep increasing every year.,Negative
-C360-100215,User 2667,36,New York,Quick responses. Thinking about upgrading my motor insurance.,Positive
-C360-100216,User 6917,37,Toronto,Quick responses. Thinking about upgrading my motor insurance.,Positive
-C360-100217,User 5338,43,Toronto,"I have some questions about the coverage limits, please call me.",Neutral
-C360-100218,User 6722,46,Toronto,Great experience so far. Highly recommend the health bundle.,Positive
-C360-100219,User 5755,49,New York,The premium is affordable and the support team is excellent.,Positive
-C360-100220,User 5820,64,London,Very satisfied with the accidental coverage terms.,Positive
-C360-100221,User 2227,57,Berlin,The premium is affordable and the support team is excellent.,Positive
-C360-100222,User 4832,37,Sydney,Quick responses. Thinking about upgrading my motor insurance.,Positive
-C360-100223,User 2349,52,New York,The premiums are too expensive and keep increasing every year.,Negative
-C360-100224,User 9373,63,Berlin,Very satisfied with the accidental coverage terms.,Positive
-C360-100225,User 3310,45,Sydney,Need to update my address on the accidental policy.,Neutral
-C360-100226,User 9471,29,Berlin,Need to update my address on the accidental policy.,Neutral
-C360-100227,User 7663,62,Sydney,"No issues, everything is fine.",Neutral
-C360-100228,User 9061,49,Berlin,I am unhappy with the hidden fees in my life insurance policy.,Negative
-C360-100229,User 2863,44,Sydney,"I have some questions about the coverage limits, please call me.",Neutral
-C360-100230,User 6887,33,Toronto,I am very happy with the coverage and the easy claim process.,Positive
-C360-100231,User 9379,28,London,Just renewing my standard policy for another year.,Neutral
-C360-100232,User 3519,36,London,Need to update my address on the accidental policy.,Neutral
-C360-100233,User 774,61,London,The premium is affordable and the support team is excellent.,Positive
-C360-100234,User 116,52,London,I am unhappy with the hidden fees in my life insurance policy.,Negative
-C360-100235,User 7123,39,Toronto,Need to update my address on the accidental policy.,Neutral
-C360-100236,User 5672,38,New York,Very frustrating experience with the recent claim rejection.,Negative
-C360-100237,User 4133,53,Berlin,Terrible customer service. Waiting too long for claims.,Negative
-C360-100238,User 6570,26,Berlin,Just renewing my standard policy for another year.,Neutral
-C360-100239,User 3293,42,Toronto,"No issues, everything is fine.",Neutral
-C360-100240,User 8854,40,Toronto,I am very happy with the coverage and the easy claim process.,Positive
-C360-100241,User 5807,41,New York,Need to update my address on the accidental policy.,Neutral
-C360-100242,User 5257,35,London,The premiums are too expensive and keep increasing every year.,Negative
-C360-100243,User 8994,35,Berlin,Quick responses. Thinking about upgrading my motor insurance.,Positive
-C360-100244,User 5460,31,London,Thinking of cancelling. Found a cheaper motor insurance elsewhere.,Negative
-C360-100245,User 2573,59,Toronto,Terrible customer service. Waiting too long for claims.,Negative
-C360-100246,User 3701,56,London,I am unhappy with the hidden fees in my life insurance policy.,Negative
-C360-100247,User 7629,38,Sydney,I am unhappy with the hidden fees in my life insurance policy.,Negative
-C360-100248,User 7862,56,New York,"No issues, everything is fine.",Neutral
-C360-100249,User 8418,41,Sydney,I am very happy with the coverage and the easy claim process.,Positive
-C360-100250,User 2151,32,Berlin,Thinking of cancelling. Found a cheaper motor insurance elsewhere.,Negative
-C360-100251,User 5955,50,New York,Thinking of cancelling. Found a cheaper motor insurance elsewhere.,Negative
-C360-100252,User 2188,59,Sydney,Need to update my address on the accidental policy.,Neutral
-C360-100253,User 237,49,Toronto,Great experience so far. Highly recommend the health bundle.,Positive
-C360-100254,User 4992,62,New York,The premium is affordable and the support team is excellent.,Positive
-C360-100255,User 1714,61,Sydney,Very frustrating experience with the recent claim rejection.,Negative
-C360-100256,User 5805,27,Toronto,Thinking of cancelling. Found a cheaper motor insurance elsewhere.,Negative
-C360-100257,User 4541,39,London,I am unhappy with the hidden fees in my life insurance policy.,Negative
-C360-100258,User 7169,29,New York,Very satisfied with the accidental coverage terms.,Positive
-C360-100259,User 7487,47,Berlin,The premium is affordable and the support team is excellent.,Positive
-C360-100260,User 9821,41,Toronto,Thinking of cancelling. Found a cheaper motor insurance elsewhere.,Negative
-C360-100261,User 212,63,New York,The premium is affordable and the support team is excellent.,Positive
-C360-100262,User 8846,57,London,Terrible customer service. Waiting too long for claims.,Negative
-C360-100263,User 5458,46,Berlin,"Standard service, nothing special to note.",Neutral
-C360-100264,User 7167,49,New York,Very frustrating experience with the recent claim rejection.,Negative
-C360-100265,User 5673,39,London,I am unhappy with the hidden fees in my life insurance policy.,Negative
-C360-100266,User 9945,35,Sydney,The premiums are too expensive and keep increasing every year.,Negative
-C360-100267,User 5232,26,Sydney,Terrible customer service. Waiting too long for claims.,Negative
-C360-100268,User 7802,28,New York,Need to update my address on the accidental policy.,Neutral
-C360-100269,User 3739,32,Toronto,Very frustrating experience with the recent claim rejection.,Negative
-C360-100270,User 9333,41,New York,I am unhappy with the hidden fees in my life insurance policy.,Negative
-C360-100271,User 6798,30,Toronto,The premium is affordable and the support team is excellent.,Positive
-C360-100272,User 284,58,New York,Need to update my address on the accidental policy.,Neutral
-C360-100273,User 8221,60,Berlin,I am unhappy with the hidden fees in my life insurance policy.,Negative
-C360-100274,User 9827,60,Toronto,"No issues, everything is fine.",Neutral
-C360-100275,User 2054,26,New York,The premium is affordable and the support team is excellent.,Positive
-C360-100276,User 9617,40,London,Thinking of cancelling. Found a cheaper motor insurance elsewhere.,Negative
-C360-100277,User 3336,64,London,I am very happy with the coverage and the easy claim process.,Positive
-C360-100278,User 2571,26,Toronto,Just renewing my standard policy for another year.,Neutral
-C360-100279,User 1711,62,New York,Terrible customer service. Waiting too long for claims.,Negative
-C360-100280,User 9170,46,New York,"I have some questions about the coverage limits, please call me.",Neutral
-C360-100281,User 9799,35,New York,The premiums are too expensive and keep increasing every year.,Negative
-C360-100282,User 4178,45,London,Great experience so far. Highly recommend the health bundle.,Positive
-C360-100283,User 8557,46,Toronto,The premiums are too expensive and keep increasing every year.,Negative
-C360-100284,User 3246,48,Toronto,Thinking of cancelling. Found a cheaper motor insurance elsewhere.,Negative
-C360-100285,User 4108,49,London,The premium is affordable and the support team is excellent.,Positive
-C360-100286,User 4424,57,Berlin,I am very happy with the coverage and the easy claim process.,Positive
-C360-100287,User 1804,35,Toronto,I am very happy with the coverage and the easy claim process.,Positive
-C360-100288,User 180,59,Berlin,The premiums are too expensive and keep increasing every year.,Negative
-C360-100289,User 3999,30,Sydney,Very frustrating experience with the recent claim rejection.,Negative
-C360-100290,User 3573,61,New York,I am unhappy with the hidden fees in my life insurance policy.,Negative
-C360-100291,User 6453,39,London,Thinking of cancelling. Found a cheaper motor insurance elsewhere.,Negative
-C360-100292,User 7343,48,Berlin,"Standard service, nothing special to note.",Neutral
-C360-100293,User 7052,50,New York,Terrible customer service. Waiting too long for claims.,Negative
-C360-100294,User 3892,46,Berlin,"Standard service, nothing special to note.",Neutral
-C360-100295,User 2184,45,London,Terrible customer service. Waiting too long for claims.,Negative
-C360-100296,User 8505,55,Sydney,Need to update my address on the accidental policy.,Neutral
-C360-100297,User 5500,41,Berlin,Just renewing my standard policy for another year.,Neutral
-C360-100298,User 4398,52,Toronto,Need to update my address on the accidental policy.,Neutral
-C360-100299,User 6541,51,Sydney,Very frustrating experience with the recent claim rejection.,Negative
-C360-100300,User 8928,45,London,The premium is affordable and the support team is excellent.,Positive
-C360-100301,User 4936,57,London,The premiums are too expensive and keep increasing every year.,Negative
-C360-100302,User 2752,31,New York,The premiums are too expensive and keep increasing every year.,Negative
-C360-100303,User 132,63,New York,Quick responses. Thinking about upgrading my motor insurance.,Positive
-C360-100304,User 4022,45,Sydney,Very satisfied with the accidental coverage terms.,Positive
-C360-100305,User 7207,49,Sydney,I am unhappy with the hidden fees in my life insurance policy.,Negative
-C360-100306,User 3099,59,Sydney,Quick responses. Thinking about upgrading my motor insurance.,Positive
-C360-100307,User 1031,34,New York,Just renewing my standard policy for another year.,Neutral
-C360-100308,User 6993,34,London,I am very happy with the coverage and the easy claim process.,Positive
-C360-100309,User 2962,42,Sydney,"No issues, everything is fine.",Neutral
-C360-100310,User 5358,43,London,Thinking of cancelling. Found a cheaper motor insurance elsewhere.,Negative
-C360-100311,User 8924,63,Sydney,Terrible customer service. Waiting too long for claims.,Negative
-C360-100312,User 4092,44,Sydney,The premiums are too expensive and keep increasing every year.,Negative
-C360-100313,User 4798,53,Berlin,The premium is affordable and the support team is excellent.,Positive
-C360-100314,User 6561,30,Toronto,The premium is affordable and the support team is excellent.,Positive
-C360-100315,User 5335,28,Berlin,I am very happy with the coverage and the easy claim process.,Positive
-C360-100316,User 5647,49,New York,Thinking of cancelling. Found a cheaper motor insurance elsewhere.,Negative
-C360-100317,User 2228,48,Toronto,"Standard service, nothing special to note.",Neutral
-C360-100318,User 9018,64,New York,Great experience so far. Highly recommend the health bundle.,Positive
-C360-100319,User 2696,43,Berlin,Very satisfied with the accidental coverage terms.,Positive
-C360-100320,User 2248,56,London,Thinking of cancelling. Found a cheaper motor insurance elsewhere.,Negative
-C360-100321,User 3026,53,New York,I am very happy with the coverage and the easy claim process.,Positive
-C360-100322,User 6954,62,Toronto,I am unhappy with the hidden fees in my life insurance policy.,Negative
-C360-100323,User 996,33,Toronto,The premiums are too expensive and keep increasing every year.,Negative
-C360-100324,User 7881,60,Berlin,Terrible customer service. Waiting too long for claims.,Negative
-C360-100325,User 852,56,New York,Quick responses. Thinking about upgrading my motor insurance.,Positive
-C360-100326,User 7741,43,Toronto,Just renewing my standard policy for another year.,Neutral
-C360-100327,User 7143,52,Sydney,Quick responses. Thinking about upgrading my motor insurance.,Positive
-C360-100328,User 7512,63,Berlin,"Standard service, nothing special to note.",Neutral
-C360-100329,User 7724,58,Toronto,Just renewing my standard policy for another year.,Neutral
-C360-100330,User 9529,36,New York,I am very happy with the coverage and the easy claim process.,Positive
-C360-100331,User 7194,27,Toronto,Quick responses. Thinking about upgrading my motor insurance.,Positive
-C360-100332,User 2874,62,Berlin,Thinking of cancelling. Found a cheaper motor insurance elsewhere.,Negative
-C360-100333,User 2999,62,New York,"I have some questions about the coverage limits, please call me.",Neutral
-C360-100334,User 1692,48,New York,I am unhappy with the hidden fees in my life insurance policy.,Negative
-C360-100335,User 3812,35,Toronto,The premium is affordable and the support team is excellent.,Positive
-C360-100336,User 4628,42,Berlin,"I have some questions about the coverage limits, please call me.",Neutral
-C360-100337,User 9448,60,Toronto,I am unhappy with the hidden fees in my life insurance policy.,Negative
-C360-100338,User 16,57,Sydney,Just renewing my standard policy for another year.,Neutral
-C360-100339,User 4013,61,Berlin,Great experience so far. Highly recommend the health bundle.,Positive
-C360-100340,User 9911,34,Berlin,"Standard service, nothing special to note.",Neutral
-C360-100341,User 365,49,Berlin,Great experience so far. Highly recommend the health bundle.,Positive
-C360-100342,User 7989,39,Toronto,Very frustrating experience with the recent claim rejection.,Negative
-C360-100343,User 7025,57,London,Very satisfied with the accidental coverage terms.,Positive
-C360-100344,User 9681,64,Berlin,Very frustrating experience with the recent claim rejection.,Negative
-C360-100345,User 4921,45,London,Very satisfied with the accidental coverage terms.,Positive
-C360-100346,User 2199,65,New York,The premiums are too expensive and keep increasing every year.,Negative
-C360-100347,User 853,54,Sydney,"Standard service, nothing special to note.",Neutral
-C360-100348,User 9641,45,Sydney,"Standard service, nothing special to note.",Neutral
-C360-100349,User 3786,42,Berlin,I am unhappy with the hidden fees in my life insurance policy.,Negative
-C360-100350,User 9432,34,Sydney,The premium is affordable and the support team is excellent.,Positive
-C360-100351,User 5568,34,New York,Just renewing my standard policy for another year.,Neutral
-C360-100352,User 1766,62,Sydney,Thinking of cancelling. Found a cheaper motor insurance elsewhere.,Negative
-C360-100353,User 1212,54,Sydney,The premium is affordable and the support team is excellent.,Positive
-C360-100354,User 1505,59,Berlin,Very satisfied with the accidental coverage terms.,Positive
-C360-100355,User 1108,26,New York,I am unhappy with the hidden fees in my life insurance policy.,Negative
-C360-100356,User 8745,37,Toronto,Very satisfied with the accidental coverage terms.,Positive
-C360-100357,User 6315,41,Berlin,The premium is affordable and the support team is excellent.,Positive
-C360-100358,User 8527,64,Toronto,The premiums are too expensive and keep increasing every year.,Negative
-C360-100359,User 1047,52,London,Thinking of cancelling. Found a cheaper motor insurance elsewhere.,Negative
-C360-100360,User 295,59,Berlin,Quick responses. Thinking about upgrading my motor insurance.,Positive
-C360-100361,User 9309,28,Berlin,I am unhappy with the hidden fees in my life insurance policy.,Negative
-C360-100362,User 2272,27,London,I am very happy with the coverage and the easy claim process.,Positive
-C360-100363,User 4369,57,London,Terrible customer service. Waiting too long for claims.,Negative
-C360-100364,User 5044,54,Sydney,Terrible customer service. Waiting too long for claims.,Negative
-C360-100365,User 7072,62,Sydney,Thinking of cancelling. Found a cheaper motor insurance elsewhere.,Negative
-C360-100366,User 3665,58,London,The premiums are too expensive and keep increasing every year.,Negative
-C360-100367,User 1568,33,New York,I am very happy with the coverage and the easy claim process.,Positive
-C360-100368,User 7729,33,Toronto,Just renewing my standard policy for another year.,Neutral
-C360-100369,User 7078,40,London,"No issues, everything is fine.",Neutral
-C360-100370,User 5721,63,New York,"I have some questions about the coverage limits, please call me.",Neutral
-C360-100371,User 2367,64,Berlin,Quick responses. Thinking about upgrading my motor insurance.,Positive
-C360-100372,User 5833,60,New York,I am unhappy with the hidden fees in my life insurance policy.,Negative
-C360-100373,User 9606,38,Berlin,"No issues, everything is fine.",Neutral
-C360-100374,User 3531,62,New York,Need to update my address on the accidental policy.,Neutral
-C360-100375,User 8759,55,Sydney,"Standard service, nothing special to note.",Neutral
-C360-100376,User 2741,26,London,"I have some questions about the coverage limits, please call me.",Neutral
-C360-100377,User 7355,37,New York,Just renewing my standard policy for another year.,Neutral
-C360-100378,User 7762,44,New York,Very satisfied with the accidental coverage terms.,Positive
-C360-100379,User 99,52,Toronto,Terrible customer service. Waiting too long for claims.,Negative
-C360-100380,User 391,28,Toronto,I am very happy with the coverage and the easy claim process.,Positive
-C360-100381,User 2396,26,New York,"I have some questions about the coverage limits, please call me.",Neutral
-C360-100382,User 1978,37,London,"I have some questions about the coverage limits, please call me.",Neutral
-C360-100383,User 1058,25,Berlin,Great experience so far. Highly recommend the health bundle.,Positive
-C360-100384,User 6236,57,Toronto,The premium is affordable and the support team is excellent.,Positive
-C360-100385,User 4300,37,Sydney,I am unhappy with the hidden fees in my life insurance policy.,Negative
-C360-100386,User 8327,35,Sydney,Quick responses. Thinking about upgrading my motor insurance.,Positive
-C360-100387,User 7761,55,Berlin,Terrible customer service. Waiting too long for claims.,Negative
-C360-100388,User 2539,56,Berlin,Thinking of cancelling. Found a cheaper motor insurance elsewhere.,Negative
-C360-100389,User 1017,41,Toronto,Terrible customer service. Waiting too long for claims.,Negative
-C360-100390,User 5024,50,New York,"I have some questions about the coverage limits, please call me.",Neutral
-C360-100391,User 5935,34,Sydney,"I have some questions about the coverage limits, please call me.",Neutral
-C360-100392,User 6310,28,London,Just renewing my standard policy for another year.,Neutral
-C360-100393,User 3842,49,Toronto,"No issues, everything is fine.",Neutral
-C360-100394,User 834,25,Berlin,The premiums are too expensive and keep increasing every year.,Negative
-C360-100395,User 5013,37,Sydney,"No issues, everything is fine.",Neutral
-C360-100396,User 3079,50,Toronto,Thinking of cancelling. Found a cheaper motor insurance elsewhere.,Negative
-C360-100397,User 1164,65,Berlin,Great experience so far. Highly recommend the health bundle.,Positive
-C360-100398,User 5116,43,Berlin,"Standard service, nothing special to note.",Neutral
-C360-100399,User 4509,59,Sydney,Very frustrating experience with the recent claim rejection.,Negative
-C360-100400,User 8636,40,Toronto,Thinking of cancelling. Found a cheaper motor insurance elsewhere.,Negative
-C360-100401,User 1969,37,London,The premiums are too expensive and keep increasing every year.,Negative
-C360-100402,User 2267,45,Berlin,Thinking of cancelling. Found a cheaper motor insurance elsewhere.,Negative
-C360-100403,User 4684,53,Toronto,The premiums are too expensive and keep increasing every year.,Negative
-C360-100404,User 1593,51,Berlin,I am unhappy with the hidden fees in my life insurance policy.,Negative
-C360-100405,User 5929,26,Toronto,I am very happy with the coverage and the easy claim process.,Positive
-C360-100406,User 2323,47,London,Great experience so far. Highly recommend the health bundle.,Positive
-C360-100407,User 165,42,London,Need to update my address on the accidental policy.,Neutral
-C360-100408,User 972,49,Sydney,Just renewing my standard policy for another year.,Neutral
-C360-100409,User 7499,52,Sydney,The premiums are too expensive and keep increasing every year.,Negative
-C360-100410,User 3189,43,Toronto,Thinking of cancelling. Found a cheaper motor insurance elsewhere.,Negative
-C360-100411,User 6473,54,London,Very satisfied with the accidental coverage terms.,Positive
-C360-100412,User 6388,65,Berlin,The premium is affordable and the support team is excellent.,Positive
-C360-100413,User 9351,26,Berlin,"I have some questions about the coverage limits, please call me.",Neutral
-C360-100414,User 6827,57,London,Just renewing my standard policy for another year.,Neutral
-C360-100415,User 3517,27,London,Need to update my address on the accidental policy.,Neutral
-C360-100416,User 9056,34,Berlin,Thinking of cancelling. Found a cheaper motor insurance elsewhere.,Negative
-C360-100417,User 5286,32,London,Terrible customer service. Waiting too long for claims.,Negative
-C360-100418,User 1562,27,New York,"I have some questions about the coverage limits, please call me.",Neutral
-C360-100419,User 4757,62,Berlin,Terrible customer service. Waiting too long for claims.,Negative
-C360-100420,User 6284,44,London,I am very happy with the coverage and the easy claim process.,Positive
-C360-100421,User 3976,42,Sydney,The premium is affordable and the support team is excellent.,Positive
-C360-100422,User 4686,28,Toronto,The premium is affordable and the support team is excellent.,Positive
-C360-100423,User 4331,59,New York,Great experience so far. Highly recommend the health bundle.,Positive
-C360-100424,User 2973,27,New York,I am very happy with the coverage and the easy claim process.,Positive
-C360-100425,User 1825,42,London,"No issues, everything is fine.",Neutral
-C360-100426,User 3387,65,Berlin,Quick responses. Thinking about upgrading my motor insurance.,Positive
-C360-100427,User 4369,31,Sydney,"No issues, everything is fine.",Neutral
-C360-100428,User 6308,42,Berlin,Terrible customer service. Waiting too long for claims.,Negative
-C360-100429,User 3556,32,Toronto,"I have some questions about the coverage limits, please call me.",Neutral
-C360-100430,User 233,35,London,Just renewing my standard policy for another year.,Neutral
-C360-100431,User 2829,58,Sydney,I am unhappy with the hidden fees in my life insurance policy.,Negative
-C360-100432,User 4803,44,London,Quick responses. Thinking about upgrading my motor insurance.,Positive
-C360-100433,User 3605,58,New York,The premiums are too expensive and keep increasing every year.,Negative
-C360-100434,User 7937,29,Berlin,Very satisfied with the accidental coverage terms.,Positive
-C360-100435,User 7253,52,Toronto,The premiums are too expensive and keep increasing every year.,Negative
-C360-100436,User 4075,55,Sydney,Very frustrating experience with the recent claim rejection.,Negative
-C360-100437,User 6559,43,New York,Very frustrating experience with the recent claim rejection.,Negative
-C360-100438,User 1587,48,Sydney,Quick responses. Thinking about upgrading my motor insurance.,Positive
-C360-100439,User 8062,64,London,Very frustrating experience with the recent claim rejection.,Negative
-C360-100440,User 7184,29,Toronto,Thinking of cancelling. Found a cheaper motor insurance elsewhere.,Negative
-C360-100441,User 3733,53,New York,The premiums are too expensive and keep increasing every year.,Negative
-C360-100442,User 5040,49,Berlin,Just renewing my standard policy for another year.,Neutral
-C360-100443,User 789,63,London,Thinking of cancelling. Found a cheaper motor insurance elsewhere.,Negative
-C360-100444,User 9236,51,Toronto,"Standard service, nothing special to note.",Neutral
-C360-100445,User 8088,57,Berlin,Terrible customer service. Waiting too long for claims.,Negative
-C360-100446,User 3655,46,Berlin,Quick responses. Thinking about upgrading my motor insurance.,Positive
-C360-100447,User 811,42,Toronto,Quick responses. Thinking about upgrading my motor insurance.,Positive
-C360-100448,User 2589,50,Berlin,Quick responses. Thinking about upgrading my motor insurance.,Positive
-C360-100449,User 8049,46,London,Very satisfied with the accidental coverage terms.,Positive
-C360-100450,User 7653,46,Sydney,Very frustrating experience with the recent claim rejection.,Negative
-C360-100451,User 7122,47,New York,Terrible customer service. Waiting too long for claims.,Negative
-C360-100452,User 4064,64,New York,Need to update my address on the accidental policy.,Neutral
-C360-100453,User 642,34,Toronto,I am very happy with the coverage and the easy claim process.,Positive
-C360-100454,User 4512,46,London,"I have some questions about the coverage limits, please call me.",Neutral
-C360-100455,User 2906,43,Berlin,Thinking of cancelling. Found a cheaper motor insurance elsewhere.,Negative
-C360-100456,User 3071,64,New York,Need to update my address on the accidental policy.,Neutral
-C360-100457,User 6151,53,Berlin,I am very happy with the coverage and the easy claim process.,Positive
-C360-100458,User 5949,26,Berlin,I am unhappy with the hidden fees in my life insurance policy.,Negative
-C360-100459,User 6966,58,London,Just renewing my standard policy for another year.,Neutral
-C360-100460,User 7790,60,London,"No issues, everything is fine.",Neutral
-C360-100461,User 6286,41,Sydney,Thinking of cancelling. Found a cheaper motor insurance elsewhere.,Negative
-C360-100462,User 7327,54,Sydney,"I have some questions about the coverage limits, please call me.",Neutral
-C360-100463,User 4174,31,Toronto,Terrible customer service. Waiting too long for claims.,Negative
-C360-100464,User 3821,62,Sydney,I am unhappy with the hidden fees in my life insurance policy.,Negative
-C360-100465,User 4950,36,London,The premiums are too expensive and keep increasing every year.,Negative
-C360-100466,User 5103,42,London,Thinking of cancelling. Found a cheaper motor insurance elsewhere.,Negative
-C360-100467,User 9011,59,Berlin,I am unhappy with the hidden fees in my life insurance policy.,Negative
-C360-100468,User 6218,50,London,Terrible customer service. Waiting too long for claims.,Negative
-C360-100469,User 7409,35,Sydney,"Standard service, nothing special to note.",Neutral
-C360-100470,User 7626,61,New York,Just renewing my standard policy for another year.,Neutral
-C360-100471,User 7539,42,Toronto,"I have some questions about the coverage limits, please call me.",Neutral
-C360-100472,User 1599,52,Sydney,"I have some questions about the coverage limits, please call me.",Neutral
-C360-100473,User 3619,42,Toronto,Terrible customer service. Waiting too long for claims.,Negative
-C360-100474,User 3883,33,Sydney,"I have some questions about the coverage limits, please call me.",Neutral
-C360-100475,User 4382,34,Sydney,The premium is affordable and the support team is excellent.,Positive
-C360-100476,User 5278,25,Toronto,The premiums are too expensive and keep increasing every year.,Negative
-C360-100477,User 2317,51,Berlin,Great experience so far. Highly recommend the health bundle.,Positive
-C360-100478,User 5319,45,New York,Need to update my address on the accidental policy.,Neutral
-C360-100479,User 1232,29,Berlin,Thinking of cancelling. Found a cheaper motor insurance elsewhere.,Negative
-C360-100480,User 8959,32,Berlin,Very satisfied with the accidental coverage terms.,Positive
-C360-100481,User 2145,62,London,Great experience so far. Highly recommend the health bundle.,Positive
-C360-100482,User 5629,50,Sydney,The premium is affordable and the support team is excellent.,Positive
-C360-100483,User 8962,29,London,Terrible customer service. Waiting too long for claims.,Negative
-C360-100484,User 9771,56,Sydney,"I have some questions about the coverage limits, please call me.",Neutral
-C360-100485,User 5591,25,Berlin,Very frustrating experience with the recent claim rejection.,Negative
-C360-100486,User 2677,58,Sydney,Great experience so far. Highly recommend the health bundle.,Positive
-C360-100487,User 1581,28,Sydney,I am unhappy with the hidden fees in my life insurance policy.,Negative
-C360-100488,User 7643,57,New York,Very satisfied with the accidental coverage terms.,Positive
-C360-100489,User 4219,62,New York,The premium is affordable and the support team is excellent.,Positive
-C360-100490,User 6077,37,Toronto,Very frustrating experience with the recent claim rejection.,Negative
-C360-100491,User 5874,46,Berlin,I am unhappy with the hidden fees in my life insurance policy.,Negative
-C360-100492,User 5016,28,Berlin,The premium is affordable and the support team is excellent.,Positive
-C360-100493,User 2846,28,Berlin,Thinking of cancelling. Found a cheaper motor insurance elsewhere.,Negative
-C360-100494,User 856,45,Berlin,Thinking of cancelling. Found a cheaper motor insurance elsewhere.,Negative
-C360-100495,User 192,48,London,Very satisfied with the accidental coverage terms.,Positive
-C360-100496,User 6649,39,Toronto,I am unhappy with the hidden fees in my life insurance policy.,Negative
-C360-100497,User 1957,40,Berlin,The premium is affordable and the support team is excellent.,Positive
-C360-100498,User 6505,63,Berlin,Need to update my address on the accidental policy.,Neutral
-C360-100499,User 9249,50,Toronto,"I have some questions about the coverage limits, please call me.",Neutral
+C360-100000,Jeffrey Cruz,49,New York,Quick responses. Thinking about upgrading my motor insurance.,Positive
+C360-100001,Gregory James,35,London,Need to update my address on the accidental policy.,Neutral
+C360-100002,Kevin Nelson,32,Sydney,Terrible customer service. Waiting too long for claims.,Negative
+C360-100003,Kenneth Hill,36,Toronto,Great experience so far. Highly recommend the health bundle.,Positive
+C360-100004,Debra Bennett,43,New York,Terrible customer service. Waiting too long for claims.,Negative
+C360-100005,Catheirne Sanders,56,London,Just renewing my standard policy for another year.,Neutral
+C360-100006,Joshua rGeen,62,Toronto,The premium is affordable and the support team is excellent.,Positive
+C360-100007,LarryR eed,56,Berlin,Thinking of cancelling. Found a cheaper motor insurance elsewhere.,Negative
+C360-100008,Benajmin Watson,61,Berlin,The premiums are too expensive and keep increasing every year.,Negative
+C360-100009,James Smith,41,London,"Standard service, nothing special to note.",Neutral
+C360-100010,Stephen Pteerson,30,London,"No issues, everything is fine.",Neutral
+C360-100011,Amy oMrris,65,London,"Standard service, nothing special to note.",Neutral
+C360-100012,Ronald Gomez,52,Sydney,Thinking of cancelling. Found a cheaper motor insurance elsewhere.,Negative
+C360-100013,Brenda Baiely,39,New York,Terrible customer service. Waiting too long for claims.,Negative
+C360-100014,Dennis Long,61,London,Great experience so far. Highly recommend the health bundle.,Positive
+C360-100015,Shirley Murphy,56,London,"No issues, everything is fine.",Neutral
+C360-100016,Janet Alvarez,48,Berlin,Terrible customer service. Waiting too long for claims.,Negative
+C360-100017,Stephanie Roberts,28,London,The premiums are too expensive and keep increasing every year.,Negative
+C360-100018,Jonathan Mogran,51,Berlin,Quick responses. Thinking about upgrading my motor insurance.,Positive
+C360-100019,Carolyn Hughes,65,Toronto,Quick responses. Thinking about upgrading my motor insurance.,Positive
+C360-100020,Kathleen Reyes,35,New York,Just renewing my standard policy for another year.,Neutral
+C360-100021,Stephen Pteerson,46,Sydney,Quick responses. Thinking about upgrading my motor insurance.,Positive
+C360-100022,Michelle Flores,63,Sydney,Very frustrating experience with the recent claim rejection.,Negative
+C360-100023,Sanrda Robinson,25,Toronto,Quick responses. Thinking about upgrading my motor insurance.,Positive
+C360-100024,Charles Jackson,52,Toronto,"I have some questions about the coverage limits, please call me.",Neutral
+C360-100025,Betty Sanchez,61,Sydney,The premiums are too expensive and keep increasing every year.,Negative
+C360-100026,Benjamin Waston,41,Sydney,Thinking of cancelling. Found a cheaper motor insurance elsewhere.,Negative
+C360-100027,Gary Morales,39,Sydney,I am unhappy with the hidden fees in my life insurance policy.,Negative
+C360-100028,Donald Walker,35,New York,I am very happy with the coverage and the easy claim process.,Positive
+C360-100029,Joshua rGeen,48,Toronto,Great experience so far. Highly recommend the health bundle.,Positive
+C360-100030,Thomas Taylor,53,Berlin,Need to update my address on the accidental policy.,Neutral
+C360-100031,Alexander Ruiz,45,New York,I am unhappy with the hidden fees in my life insurance policy.,Negative
+C360-100032,Catehrine Sanders,41,Sydney,The premium is affordable and the support team is excellent.,Positive
+C360-100033,Gregory James,65,New York,Thinking of cancelling. Found a cheaper motor insurance elsewhere.,Negative
+C360-100034,Brandon Ward,51,Sydney,"Standard service, nothing special to note.",Neutral
+C360-100035,Kimberly King,36,Berlin,Need to update my address on the accidental policy.,Neutral
+C360-100036,Kathleen Reyes,44,London,I am very happy with the coverage and the easy claim process.,Positive
+C360-100037,Anna Cooper,65,London,Terrible customer service. Waiting too long for claims.,Negative
+C360-100038,Laura Pakrer,47,New York,The premium is affordable and the support team is excellent.,Positive
+C360-100039,Shirley Murphy,62,New York,"Standard service, nothing special to note.",Neutral
+C360-100040,Cynthia Edwards,28,Sydney,"I have some questions about the coverage limits, please call me.",Neutral
+C360-100041,Debra Bennett,42,Toronto,I am very happy with the coverage and the easy claim process.,Positive
+C360-100042,Brenad Bailey,45,Toronto,I am unhappy with the hidden fees in my life insurance policy.,Negative
+C360-100043,Stephanie Roberts,56,Sydney,Just renewing my standard policy for another year.,Neutral
+C360-100044,Brend aBailey,57,Sydney,Great experience so far. Highly recommend the health bundle.,Positive
+C360-100045,Christopher Lee,48,Toronto,"I have some questions about the coverage limits, please call me.",Neutral
+C360-100046,Anna Cooper,25,London,Very frustrating experience with the recent claim rejection.,Negative
+C360-100047,Heather Ross,40,Toronto,Great experience so far. Highly recommend the health bundle.,Positive
+C360-100048,Eric Guteirrez,44,New York,Thinking of cancelling. Found a cheaper motor insurance elsewhere.,Negative
+C360-100049,George Campbell,34,Sydney,Quick responses. Thinking about upgrading my motor insurance.,Positive
+C360-100050,Jacob Stewart,52,Sydney,I am unhappy with the hidden fees in my life insurance policy.,Negative
+C360-100051,Samantha Richardson,39,London,"Standard service, nothing special to note.",Neutral
+C360-100052,Anna Cooper,57,Toronto,Just renewing my standard policy for another year.,Neutral
+C360-100053,Emma Cox,52,London,Just renewing my standard policy for another year.,Neutral
+C360-100054,Amanda Baker,32,Berlin,I am unhappy with the hidden fees in my life insurance policy.,Negative
+C360-100055,Jonathan Morgna,36,London,Great experience so far. Highly recommend the health bundle.,Positive
+C360-100056,Paul Wright,54,Toronto,Very frustrating experience with the recent claim rejection.,Negative
+C360-100057,Heather Ross,41,Berlin,"No issues, everything is fine.",Neutral
+C360-100058,Nicole Ramos,49,Sydney,Great experience so far. Highly recommend the health bundle.,Positive
+C360-100059,AmyM orris,49,Toronto,I am very happy with the coverage and the easy claim process.,Positive
+C360-100060,Pamela Kelly,64,Toronto,"No issues, everything is fine.",Neutral
+C360-100061,LarryR eed,36,New York,Very frustrating experience with the recent claim rejection.,Negative
+C360-100062,Alexander Ruiz,49,Toronto,The premiums are too expensive and keep increasing every year.,Negative
+C360-100063,Rebecca Phillips,43,Toronto,Need to update my address on the accidental policy.,Neutral
+C360-100064,Helen Ortiz,26,New York,Need to update my address on the accidental policy.,Neutral
+C360-100065,Thomas Taylor,48,New York,Thinking of cancelling. Found a cheaper motor insurance elsewhere.,Negative
+C360-100066,Matthew Harris,43,Toronto,I am very happy with the coverage and the easy claim process.,Positive
+C360-100067,Helen Ortiz,33,New York,Terrible customer service. Waiting too long for claims.,Negative
+C360-100068,Brandon Ward,64,Berlin,Great experience so far. Highly recommend the health bundle.,Positive
+C360-100069,Samantha Richardson,35,Toronto,Terrible customer service. Waiting too long for claims.,Negative
+C360-100070,James Smith,56,Toronto,"Standard service, nothing special to note.",Neutral
+C360-100071,Joseph Anderson,52,Berlin,Need to update my address on the accidental policy.,Neutral
+C360-100072,Emma Cox,37,Sydney,The premiums are too expensive and keep increasing every year.,Negative
+C360-100073,Matthew Harris,32,New York,Need to update my address on the accidental policy.,Neutral
+C360-100074,Patrick Castillo,51,Sydney,Thinking of cancelling. Found a cheaper motor insurance elsewhere.,Negative
+C360-100075,Rihcard Gonzalez,37,Berlin,Need to update my address on the accidental policy.,Neutral
+C360-100076,Michael Miller,33,New York,Thinking of cancelling. Found a cheaper motor insurance elsewhere.,Negative
+C360-100077,Helen Ortiz,43,New York,Just renewing my standard policy for another year.,Neutral
+C360-100078,Karen Maritn,25,Sydney,Just renewing my standard policy for another year.,Neutral
+C360-100079,Janet Alvarez,64,New York,The premiums are too expensive and keep increasing every year.,Negative
+C360-100080,Scot tKim,33,Sydney,Great experience so far. Highly recommend the health bundle.,Positive
+C360-100081,Donald Walker,43,New York,Thinking of cancelling. Found a cheaper motor insurance elsewhere.,Negative
+C360-100082,Christine Wood,49,Berlin,The premium is affordable and the support team is excellent.,Positive
+C360-100083,Patricia Brown,43,New York,Terrible customer service. Waiting too long for claims.,Negative
+C360-100084,Sarah Moore,64,London,Need to update my address on the accidental policy.,Neutral
+C360-100085,Betty Sanchez,43,Berlin,"I have some questions about the coverage limits, please call me.",Neutral
+C360-100086,Mark Lewis,47,London,I am very happy with the coverage and the easy claim process.,Positive
+C360-100087,Jack Patel,27,Toronto,Thinking of cancelling. Found a cheaper motor insurance elsewhere.,Negative
+C360-100088,Kimberly King,30,Berlin,The premiums are too expensive and keep increasing every year.,Negative
+C360-100089,Nicole Ramos,32,London,The premium is affordable and the support team is excellent.,Positive
+C360-100090,Scot tKim,30,Sydney,Terrible customer service. Waiting too long for claims.,Negative
+C360-100091,Brandon Ward,34,Sydney,The premium is affordable and the support team is excellent.,Positive
+C360-100092,Melissa Rivera,44,Toronto,Great experience so far. Highly recommend the health bundle.,Positive
+C360-100093,BenjaminW atson,26,London,"Standard service, nothing special to note.",Neutral
+C360-100094,Matthew Harris,60,Sydney,Just renewing my standard policy for another year.,Neutral
+C360-100095,Nancy Peerz,57,Toronto,"Standard service, nothing special to note.",Neutral
+C360-100096,Ronald Gomez,33,Berlin,I am unhappy with the hidden fees in my life insurance policy.,Negative
+C360-100097,Cynthia Edwards,54,Berlin,Thinking of cancelling. Found a cheaper motor insurance elsewhere.,Negative
+C360-100098,Brenda Baliey,26,Sydney,I am unhappy with the hidden fees in my life insurance policy.,Negative
+C360-100099,Helen Ortiz,41,Toronto,"I have some questions about the coverage limits, please call me.",Neutral
+C360-100100,Dennis Long,51,London,Need to update my address on the accidental policy.,Neutral
+C360-100101,Thomas Taylor,42,Berlin,The premiums are too expensive and keep increasing every year.,Negative
+C360-100102,Thomas Taylor,26,Toronto,Just renewing my standard policy for another year.,Neutral
+C360-100103,David Rodriguez,33,London,The premium is affordable and the support team is excellent.,Positive
+C360-100104,Donald Walker,55,London,Terrible customer service. Waiting too long for claims.,Negative
+C360-100105,Jerry Foster,31,Berlin,Great experience so far. Highly recommend the health bundle.,Positive
+C360-100106,Anna Cooper,62,London,I am unhappy with the hidden fees in my life insurance policy.,Negative
+C360-100107,Christine Wood,40,London,Very frustrating experience with the recent claim rejection.,Negative
+C360-100108,Rboert Williams,40,London,I am unhappy with the hidden fees in my life insurance policy.,Negative
+C360-100109,Kenneth Hill,25,London,The premiums are too expensive and keep increasing every year.,Negative
+C360-100110,Jennifer Garcia,41,London,Very frustrating experience with the recent claim rejection.,Negative
+C360-100111,Nicole Ramos,38,New York,Very satisfied with the accidental coverage terms.,Positive
+C360-100112,Michael Miller,25,Toronto,Great experience so far. Highly recommend the health bundle.,Positive
+C360-100113,Anthony Clark,46,Sydney,"I have some questions about the coverage limits, please call me.",Neutral
+C360-100114,Sharon Turner,45,Berlin,Terrible customer service. Waiting too long for claims.,Negative
+C360-100115,Mark Lewis,25,London,The premiums are too expensive and keep increasing every year.,Negative
+C360-100116,Kneneth Hill,29,Toronto,Terrible customer service. Waiting too long for claims.,Negative
+C360-100117,Jason Diaz,45,Toronto,Quick responses. Thinking about upgrading my motor insurance.,Positive
+C360-100118,Robert Willaims,46,London,Terrible customer service. Waiting too long for claims.,Negative
+C360-100119,Emma Cox,37,New York,"No issues, everything is fine.",Neutral
+C360-100120,Jason Diaz,50,Sydney,Terrible customer service. Waiting too long for claims.,Negative
+C360-100121,Ryan Collins,41,London,"I have some questions about the coverage limits, please call me.",Neutral
+C360-100122,Brian Hall,53,Toronto,Very frustrating experience with the recent claim rejection.,Negative
+C360-100123,Paul Wright,44,London,Very frustrating experience with the recent claim rejection.,Negative
+C360-100124,Barbara Lopez,30,London,Terrible customer service. Waiting too long for claims.,Negative
+C360-100125,Joanthan Morgan,48,Sydney,I am very happy with the coverage and the easy claim process.,Positive
+C360-100126,Kevin Nelson,57,London,Terrible customer service. Waiting too long for claims.,Negative
+C360-100127,Donald Walker,34,Toronto,"I have some questions about the coverage limits, please call me.",Neutral
+C360-100128,Stephanie Roberts,47,Toronto,I am unhappy with the hidden fees in my life insurance policy.,Negative
+C360-100129,Jonathan oMrgan,55,London,"Standard service, nothing special to note.",Neutral
+C360-100130,Emily Scott,39,London,Very frustrating experience with the recent claim rejection.,Negative
+C360-100131,Christopher Lee,28,Sydney,Thinking of cancelling. Found a cheaper motor insurance elsewhere.,Negative
+C360-100132,Nicholas Cook,62,New York,Very frustrating experience with the recent claim rejection.,Negative
+C360-100133,Emily Scott,27,New York,Just renewing my standard policy for another year.,Neutral
+C360-100134,Patricia Brown,62,Sydney,Thinking of cancelling. Found a cheaper motor insurance elsewhere.,Negative
+C360-100135,Kare nMartin,50,Toronto,Great experience so far. Highly recommend the health bundle.,Positive
+C360-100136,Ronald Gomez,61,New York,"I have some questions about the coverage limits, please call me.",Neutral
+C360-100137,Ctaherine Sanders,56,Berlin,I am very happy with the coverage and the easy claim process.,Positive
+C360-100138,Christopher Lee,50,Berlin,Very frustrating experience with the recent claim rejection.,Negative
+C360-100139,Rachel Mendoza,39,London,Very satisfied with the accidental coverage terms.,Positive
+C360-100140,Shirley Murphy,31,Berlin,The premiums are too expensive and keep increasing every year.,Negative
+C360-100141,Brenad Bailey,51,New York,Very satisfied with the accidental coverage terms.,Positive
+C360-100142,Melissa Rivera,39,London,Thinking of cancelling. Found a cheaper motor insurance elsewhere.,Negative
+C360-100143,Benjami nWatson,50,London,Quick responses. Thinking about upgrading my motor insurance.,Positive
+C360-100144,Jerry Foster,62,Sydney,The premium is affordable and the support team is excellent.,Positive
+C360-100145,Joshu aGreen,63,New York,Just renewing my standard policy for another year.,Neutral
+C360-100146,Patricia Brown,39,London,The premium is affordable and the support team is excellent.,Positive
+C360-100147,Heather Ross,27,Toronto,"Standard service, nothing special to note.",Neutral
+C360-100148,Carolyn Hughes,62,Berlin,The premiums are too expensive and keep increasing every year.,Negative
+C360-100149,Thomas Taylor,62,Toronto,Need to update my address on the accidental policy.,Neutral
+C360-100150,Elizabeth Martinez,61,Toronto,I am unhappy with the hidden fees in my life insurance policy.,Negative
+C360-100151,Daniel Thompson,42,Berlin,Very frustrating experience with the recent claim rejection.,Negative
+C360-100152,Rebecca Phillips,27,Sydney,Need to update my address on the accidental policy.,Neutral
+C360-100153,Nicholas Cook,28,Sydney,Just renewing my standard policy for another year.,Neutral
+C360-100154,Kevin Nelson,64,Sydney,Very satisfied with the accidental coverage terms.,Positive
+C360-100155,Justin Howard,25,Toronto,Just renewing my standard policy for another year.,Neutral
+C360-100156,Nicholas Cook,60,New York,Need to update my address on the accidental policy.,Neutral
+C360-100157,Emma Cox,40,Toronto,I am unhappy with the hidden fees in my life insurance policy.,Negative
+C360-100158,JoshuaG reen,65,New York,Thinking of cancelling. Found a cheaper motor insurance elsewhere.,Negative
+C360-100159,Michelle Flores,37,New York,The premium is affordable and the support team is excellent.,Positive
+C360-100160,Stpehen Peterson,31,Toronto,I am unhappy with the hidden fees in my life insurance policy.,Negative
+C360-100161,Helen Ortiz,65,London,Thinking of cancelling. Found a cheaper motor insurance elsewhere.,Negative
+C360-100162,John Jones,53,Toronto,Need to update my address on the accidental policy.,Neutral
+C360-100163,Emily Scott,33,London,The premium is affordable and the support team is excellent.,Positive
+C360-100164,Lisa White,60,Sydney,"Standard service, nothing special to note.",Neutral
+C360-100165,Stephanie Roberts,52,London,Very satisfied with the accidental coverage terms.,Positive
+C360-100166,Pamela Kelly,56,London,Very satisfied with the accidental coverage terms.,Positive
+C360-100167,Raymond Price,32,Berlin,Great experience so far. Highly recommend the health bundle.,Positive
+C360-100168,Jacob Stewart,30,Toronto,Need to update my address on the accidental policy.,Neutral
+C360-100169,Heather Ross,59,Toronto,Very satisfied with the accidental coverage terms.,Positive
+C360-100170,Christopher Lee,46,Toronto,Very frustrating experience with the recent claim rejection.,Negative
+C360-100171,Gary Morales,48,Berlin,Great experience so far. Highly recommend the health bundle.,Positive
+C360-100172,Paul Wright,43,Sydney,I am very happy with the coverage and the easy claim process.,Positive
+C360-100173,Michael Miller,37,Toronto,Terrible customer service. Waiting too long for claims.,Negative
+C360-100174,Edward Carter,51,Berlin,"No issues, everything is fine.",Neutral
+C360-100175,Dennis Long,42,Sydney,I am unhappy with the hidden fees in my life insurance policy.,Negative
+C360-100176,Shirley Murphy,31,Berlin,Quick responses. Thinking about upgrading my motor insurance.,Positive
+C360-100177,Jack Patel,41,Sydney,Very satisfied with the accidental coverage terms.,Positive
+C360-100178,William Hernandez,43,London,"No issues, everything is fine.",Neutral
+C360-100179,Janet Alvarez,58,New York,I am unhappy with the hidden fees in my life insurance policy.,Negative
+C360-100180,Rachel Mendoza,41,London,Terrible customer service. Waiting too long for claims.,Negative
+C360-100181,Kneneth Hill,41,London,"No issues, everything is fine.",Neutral
+C360-100182,Pamela Kelly,59,Sydney,"I have some questions about the coverage limits, please call me.",Neutral
+C360-100183,Brenda Bailye,63,Berlin,Need to update my address on the accidental policy.,Neutral
+C360-100184,Anna Cooper,61,London,Need to update my address on the accidental policy.,Neutral
+C360-100185,Aym Morris,33,London,"No issues, everything is fine.",Neutral
+C360-100186,Rcihard Gonzalez,25,Sydney,Thinking of cancelling. Found a cheaper motor insurance elsewhere.,Negative
+C360-100187,Jessica Thomas,51,Sydney,I am unhappy with the hidden fees in my life insurance policy.,Negative
+C360-100188,Carol Adams,56,Toronto,Quick responses. Thinking about upgrading my motor insurance.,Positive
+C360-100189,Samuel Chavez,64,New York,Terrible customer service. Waiting too long for claims.,Negative
+C360-100190,Margaret Ramirez,34,Toronto,Just renewing my standard policy for another year.,Neutral
+C360-100191,Lisa White,28,Sydney,"I have some questions about the coverage limits, please call me.",Neutral
+C360-100192,Catherine aSnders,61,New York,Thinking of cancelling. Found a cheaper motor insurance elsewhere.,Negative
+C360-100193,Betty Sanchez,28,Berlin,I am unhappy with the hidden fees in my life insurance policy.,Negative
+C360-100194,Dennis Long,28,Berlin,Very frustrating experience with the recent claim rejection.,Negative
+C360-100195,James Smith,55,London,"No issues, everything is fine.",Neutral
+C360-100196,Steven Allen,28,Sydney,"I have some questions about the coverage limits, please call me.",Neutral
+C360-100197,Sharon Turner,55,Toronto,I am very happy with the coverage and the easy claim process.,Positive
+C360-100198,Thomas Taylor,46,Sydney,Thinking of cancelling. Found a cheaper motor insurance elsewhere.,Negative
+C360-100199,Jeffrey Cruz,43,Berlin,Need to update my address on the accidental policy.,Neutral
+C360-100200,Sarah Moore,27,Berlin,The premium is affordable and the support team is excellent.,Positive
+C360-100201,Deborah Mitchell,42,New York,"Standard service, nothing special to note.",Neutral
+C360-100202,Paul Wright,33,Berlin,The premiums are too expensive and keep increasing every year.,Negative
+C360-100203,Timothy vEans,63,Toronto,Terrible customer service. Waiting too long for claims.,Negative
+C360-100204,Gregory James,25,Sydney,Very frustrating experience with the recent claim rejection.,Negative
+C360-100205,Lrary Reed,44,Berlin,I am unhappy with the hidden fees in my life insurance policy.,Negative
+C360-100206,Steven Aleln,63,Sydney,"No issues, everything is fine.",Neutral
+C360-100207,Nicole Ramos,34,London,The premiums are too expensive and keep increasing every year.,Negative
+C360-100208,Brandon Ward,42,Toronto,I am very happy with the coverage and the easy claim process.,Positive
+C360-100209,Larua Parker,59,Toronto,"I have some questions about the coverage limits, please call me.",Neutral
+C360-100210,Stephanie Roberts,44,Berlin,"No issues, everything is fine.",Neutral
+C360-100211,Mary Johnson,32,Sydney,I am unhappy with the hidden fees in my life insurance policy.,Negative
+C360-100212,Mark Lewis,34,Toronto,"I have some questions about the coverage limits, please call me.",Neutral
+C360-100213,Nancy ePrez,56,New York,The premiums are too expensive and keep increasing every year.,Negative
+C360-100214,Suasn Wilson,44,New York,Need to update my address on the accidental policy.,Neutral
+C360-100215,Brenda aBiley,61,Toronto,The premiums are too expensive and keep increasing every year.,Negative
+C360-100216,William Hernandez,32,London,"No issues, everything is fine.",Neutral
+C360-100217,Charles Jackson,27,London,I am unhappy with the hidden fees in my life insurance policy.,Negative
+C360-100218,Andrew Torres,30,Berlin,The premium is affordable and the support team is excellent.,Positive
+C360-100219,Patrick Castillo,52,Berlin,"Standard service, nothing special to note.",Neutral
+C360-100220,Ronald Gomez,26,Toronto,Thinking of cancelling. Found a cheaper motor insurance elsewhere.,Negative
+C360-100221,Helen Ortiz,44,London,Just renewing my standard policy for another year.,Neutral
+C360-100222,Matthew Harris,37,New York,Thinking of cancelling. Found a cheaper motor insurance elsewhere.,Negative
+C360-100223,Tiomthy Evans,50,London,"No issues, everything is fine.",Neutral
+C360-100224,Anthony Clark,41,New York,The premiums are too expensive and keep increasing every year.,Negative
+C360-100225,Deborah Mitchell,61,Berlin,The premium is affordable and the support team is excellent.,Positive
+C360-100226,Donna Nguyen,53,Toronto,Great experience so far. Highly recommend the health bundle.,Positive
+C360-100227,Pamela Kelly,41,Berlin,Need to update my address on the accidental policy.,Neutral
+C360-100228,Janet Alvarez,49,Berlin,"No issues, everything is fine.",Neutral
+C360-100229,Katherine Brooks,38,New York,I am unhappy with the hidden fees in my life insurance policy.,Negative
+C360-100230,Mark Lewis,41,Toronto,I am unhappy with the hidden fees in my life insurance policy.,Negative
+C360-100231,Brandon Ward,56,Sydney,Thinking of cancelling. Found a cheaper motor insurance elsewhere.,Negative
+C360-100232,Patricia Brown,39,Toronto,The premiums are too expensive and keep increasing every year.,Negative
+C360-100233,Charles Jackson,55,Sydney,The premiums are too expensive and keep increasing every year.,Negative
+C360-100234,Justin Howard,31,Toronto,Terrible customer service. Waiting too long for claims.,Negative
+C360-100235,Jack Patel,28,Toronto,Very frustrating experience with the recent claim rejection.,Negative
+C360-100236,Johsua Green,55,Sydney,Very satisfied with the accidental coverage terms.,Positive
+C360-100237,Brend aBailey,32,Toronto,Quick responses. Thinking about upgrading my motor insurance.,Positive
+C360-100238,Gregory James,64,New York,Terrible customer service. Waiting too long for claims.,Negative
+C360-100239,Andrew Torres,51,New York,I am unhappy with the hidden fees in my life insurance policy.,Negative
+C360-100240,Helen Ortiz,37,London,"Standard service, nothing special to note.",Neutral
+C360-100241,Heather Ross,34,Berlin,The premium is affordable and the support team is excellent.,Positive
+C360-100242,Patricia Brown,65,Berlin,Need to update my address on the accidental policy.,Neutral
+C360-100243,Larry Rede,59,Sydney,Just renewing my standard policy for another year.,Neutral
+C360-100244,Linda Davis,58,Toronto,Thinking of cancelling. Found a cheaper motor insurance elsewhere.,Negative
+C360-100245,Daniel Thompson,28,New York,I am unhappy with the hidden fees in my life insurance policy.,Negative
+C360-100246,Susan Wislon,30,London,I am unhappy with the hidden fees in my life insurance policy.,Negative
+C360-100247,Larua Parker,31,Toronto,Very frustrating experience with the recent claim rejection.,Negative
+C360-100248,Kathleen Reyes,59,Sydney,The premium is affordable and the support team is excellent.,Positive
+C360-100249,Edward Carter,30,Berlin,"Standard service, nothing special to note.",Neutral
+C360-100250,Samuel Chavez,33,Sydney,The premium is affordable and the support team is excellent.,Positive
+C360-100251,William Hernandez,40,Toronto,Very frustrating experience with the recent claim rejection.,Negative
+C360-100252,Emily Scott,25,Berlin,I am unhappy with the hidden fees in my life insurance policy.,Negative
+C360-100253,Amy Morirs,25,Toronto,The premiums are too expensive and keep increasing every year.,Negative
+C360-100254,Mary Johnson,27,Toronto,The premiums are too expensive and keep increasing every year.,Negative
+C360-100255,Janet Alvarez,27,Berlin,Very frustrating experience with the recent claim rejection.,Negative
+C360-100256,William Hernandez,65,Sydney,Just renewing my standard policy for another year.,Neutral
+C360-100257,Jnoathan Morgan,28,Sydney,Thinking of cancelling. Found a cheaper motor insurance elsewhere.,Negative
+C360-100258,Jerry Foster,40,New York,I am unhappy with the hidden fees in my life insurance policy.,Negative
+C360-100259,Bernda Bailey,63,Sydney,I am unhappy with the hidden fees in my life insurance policy.,Negative
+C360-100260,Michelle Flores,39,Toronto,Thinking of cancelling. Found a cheaper motor insurance elsewhere.,Negative
+C360-100261,Cynthia Edwards,56,Sydney,Quick responses. Thinking about upgrading my motor insurance.,Positive
+C360-100262,Donald Walker,36,Berlin,"Standard service, nothing special to note.",Neutral
+C360-100263,Jsohua Green,55,Sydney,I am very happy with the coverage and the easy claim process.,Positive
+C360-100264,Frank Gray,43,Toronto,Just renewing my standard policy for another year.,Neutral
+C360-100265,Stephanie Roberts,54,Berlin,Very frustrating experience with the recent claim rejection.,Negative
+C360-100266,Bnejamin Watson,60,London,Terrible customer service. Waiting too long for claims.,Negative
+C360-100267,James Smith,37,Toronto,Just renewing my standard policy for another year.,Neutral
+C360-100268,Benjamin Wtason,29,Toronto,Very frustrating experience with the recent claim rejection.,Negative
+C360-100269,George Campbell,38,Toronto,Quick responses. Thinking about upgrading my motor insurance.,Positive
+C360-100270,Andrew Torres,37,London,I am very happy with the coverage and the easy claim process.,Positive
+C360-100271,Scott Kim,26,Berlin,"Standard service, nothing special to note.",Neutral
+C360-100272,Nicholas Cook,30,Sydney,Need to update my address on the accidental policy.,Neutral
+C360-100273,Brian Hall,27,Berlin,I am very happy with the coverage and the easy claim process.,Positive
+C360-100274,Matthew Harris,39,Berlin,Just renewing my standard policy for another year.,Neutral
+C360-100275,AmyM orris,26,Berlin,Just renewing my standard policy for another year.,Neutral
+C360-100276,Pamela Kelly,40,New York,I am unhappy with the hidden fees in my life insurance policy.,Negative
+C360-100277,William Hernandez,39,Sydney,"Standard service, nothing special to note.",Neutral
+C360-100278,KennethH ill,63,Toronto,The premiums are too expensive and keep increasing every year.,Negative
+C360-100279,Frank Gray,41,New York,"Standard service, nothing special to note.",Neutral
+C360-100280,Karen aMrtin,47,Sydney,Very satisfied with the accidental coverage terms.,Positive
+C360-100281,Betty Sanchez,31,Toronto,The premiums are too expensive and keep increasing every year.,Negative
+C360-100282,Jonahtan Morgan,45,Toronto,"Standard service, nothing special to note.",Neutral
+C360-100283,Deborah Mitchell,53,Toronto,Very satisfied with the accidental coverage terms.,Positive
+C360-100284,Justin Howard,61,Toronto,Great experience so far. Highly recommend the health bundle.,Positive
+C360-100285,Kaern Martin,65,Berlin,Terrible customer service. Waiting too long for claims.,Negative
+C360-100286,Kathleen Reyes,47,Sydney,The premiums are too expensive and keep increasing every year.,Negative
+C360-100287,Christine Wood,52,Berlin,"Standard service, nothing special to note.",Neutral
+C360-100288,Kneneth Hill,55,New York,The premiums are too expensive and keep increasing every year.,Negative
+C360-100289,Carol Adams,56,Sydney,Very frustrating experience with the recent claim rejection.,Negative
+C360-100290,Donna Nguyen,35,Berlin,Just renewing my standard policy for another year.,Neutral
+C360-100291,Maria Myers,35,New York,I am very happy with the coverage and the easy claim process.,Positive
+C360-100292,Ronald Gomez,49,Toronto,"I have some questions about the coverage limits, please call me.",Neutral
+C360-100293,Rebecca Phillips,42,New York,Very frustrating experience with the recent claim rejection.,Negative
+C360-100294,Debra Bennett,62,Sydney,Thinking of cancelling. Found a cheaper motor insurance elsewhere.,Negative
+C360-100295,Diane Jimenez,26,Toronto,Thinking of cancelling. Found a cheaper motor insurance elsewhere.,Negative
+C360-100296,Larua Parker,42,Berlin,The premium is affordable and the support team is excellent.,Positive
+C360-100297,Andrew Torres,60,New York,Need to update my address on the accidental policy.,Neutral
+C360-100298,Betty Sanchez,52,Toronto,"No issues, everything is fine.",Neutral
+C360-100299,Brian Hall,55,Toronto,Need to update my address on the accidental policy.,Neutral
+C360-100300,Brandon Ward,60,Berlin,Terrible customer service. Waiting too long for claims.,Negative
+C360-100301,Mary Johnson,56,New York,Great experience so far. Highly recommend the health bundle.,Positive
+C360-100302,Pamela Kelly,60,Sydney,Very frustrating experience with the recent claim rejection.,Negative
+C360-100303,Cynthia Edwards,34,New York,Terrible customer service. Waiting too long for claims.,Negative
+C360-100304,Christopher Lee,28,Toronto,Thinking of cancelling. Found a cheaper motor insurance elsewhere.,Negative
+C360-100305,Lisa White,25,Toronto,I am unhappy with the hidden fees in my life insurance policy.,Negative
+C360-100306,Anna Cooper,33,Berlin,"No issues, everything is fine.",Neutral
+C360-100307,Ryan Collins,44,Toronto,Very frustrating experience with the recent claim rejection.,Negative
+C360-100308,Samantha Richardson,54,New York,Thinking of cancelling. Found a cheaper motor insurance elsewhere.,Negative
+C360-100309,John Jones,65,Sydney,"Standard service, nothing special to note.",Neutral
+C360-100310,Anna Cooper,63,Berlin,"I have some questions about the coverage limits, please call me.",Neutral
+C360-100311,Nancy Perze,33,London,Great experience so far. Highly recommend the health bundle.,Positive
+C360-100312,Catherine Sadners,50,Toronto,Need to update my address on the accidental policy.,Neutral
+C360-100313,Jerry Foster,49,Berlin,Just renewing my standard policy for another year.,Neutral
+C360-100314,James Smith,42,Toronto,Just renewing my standard policy for another year.,Neutral
+C360-100315,Alexander Ruiz,54,Berlin,Terrible customer service. Waiting too long for claims.,Negative
+C360-100316,William Hernandez,35,Sydney,"No issues, everything is fine.",Neutral
+C360-100317,Betty Sanchez,43,Sydney,Very satisfied with the accidental coverage terms.,Positive
+C360-100318,Jacob Stewart,55,Toronto,The premiums are too expensive and keep increasing every year.,Negative
+C360-100319,Robert Williams,54,Sydney,Thinking of cancelling. Found a cheaper motor insurance elsewhere.,Negative
+C360-100320,Elizabeth Martinez,35,Toronto,"No issues, everything is fine.",Neutral
+C360-100321,Pamela Kelly,63,London,Just renewing my standard policy for another year.,Neutral
+C360-100322,Jessica Thomas,27,Toronto,Need to update my address on the accidental policy.,Neutral
+C360-100323,Christopher Lee,61,Toronto,The premium is affordable and the support team is excellent.,Positive
+C360-100324,Laura Pakrer,34,Berlin,I am very happy with the coverage and the easy claim process.,Positive
+C360-100325,Jacob Stewart,34,London,Very frustrating experience with the recent claim rejection.,Negative
+C360-100326,Carol Adams,61,Sydney,Very satisfied with the accidental coverage terms.,Positive
+C360-100327,Matthew Harris,42,New York,Very frustrating experience with the recent claim rejection.,Negative
+C360-100328,Ashley Young,63,Toronto,Thinking of cancelling. Found a cheaper motor insurance elsewhere.,Negative
+C360-100329,Jennifer Garcia,35,Toronto,Terrible customer service. Waiting too long for claims.,Negative
+C360-100330,Justin Howard,51,London,"Standard service, nothing special to note.",Neutral
+C360-100331,Mark Lewis,58,London,Thinking of cancelling. Found a cheaper motor insurance elsewhere.,Negative
+C360-100332,Dennis Long,65,Sydney,Very satisfied with the accidental coverage terms.,Positive
+C360-100333,Brenda Baiely,29,London,The premiums are too expensive and keep increasing every year.,Negative
+C360-100334,Charles Jackson,29,Sydney,I am unhappy with the hidden fees in my life insurance policy.,Negative
+C360-100335,Brend aBailey,33,Sydney,Terrible customer service. Waiting too long for claims.,Negative
+C360-100336,Richard Gonazlez,50,Sydney,I am very happy with the coverage and the easy claim process.,Positive
+C360-100337,Katherine Brooks,64,Sydney,Great experience so far. Highly recommend the health bundle.,Positive
+C360-100338,Jerry Foster,43,London,Terrible customer service. Waiting too long for claims.,Negative
+C360-100339,Jeffrey Cruz,29,New York,I am unhappy with the hidden fees in my life insurance policy.,Negative
+C360-100340,Steevn Allen,61,Berlin,"No issues, everything is fine.",Neutral
+C360-100341,Debra Bennett,64,London,Need to update my address on the accidental policy.,Neutral
+C360-100342,Nicholas Cook,46,Toronto,Terrible customer service. Waiting too long for claims.,Negative
+C360-100343,Alexander Ruiz,38,London,Great experience so far. Highly recommend the health bundle.,Positive
+C360-100344,Paul Wright,51,London,Terrible customer service. Waiting too long for claims.,Negative
+C360-100345,BenjaminW atson,43,New York,Great experience so far. Highly recommend the health bundle.,Positive
+C360-100346,Larry Rede,64,Berlin,Just renewing my standard policy for another year.,Neutral
+C360-100347,Andrew Torres,30,New York,"I have some questions about the coverage limits, please call me.",Neutral
+C360-100348,Steven Allne,48,Berlin,"No issues, everything is fine.",Neutral
+C360-100349,Mary Johnson,43,New York,Great experience so far. Highly recommend the health bundle.,Positive
+C360-100350,David Rodriguez,47,Berlin,I am very happy with the coverage and the easy claim process.,Positive
+C360-100351,Jacob Stewart,51,Berlin,Very frustrating experience with the recent claim rejection.,Negative
+C360-100352,Debra Bennett,60,New York,Very frustrating experience with the recent claim rejection.,Negative
+C360-100353,Samuel Chavez,57,Toronto,Very frustrating experience with the recent claim rejection.,Negative
+C360-100354,Amanda Baker,63,London,Terrible customer service. Waiting too long for claims.,Negative
+C360-100355,Charles Jackson,62,Berlin,The premium is affordable and the support team is excellent.,Positive
+C360-100356,Samuel Chavez,64,Berlin,Need to update my address on the accidental policy.,Neutral
+C360-100357,Jonahtan Morgan,33,Sydney,Need to update my address on the accidental policy.,Neutral
+C360-100358,John Jones,57,New York,The premiums are too expensive and keep increasing every year.,Negative
+C360-100359,Donald Walker,51,Toronto,Need to update my address on the accidental policy.,Neutral
+C360-100360,Edward Carter,59,Toronto,Very satisfied with the accidental coverage terms.,Positive
+C360-100361,Paul Wright,51,Toronto,Very satisfied with the accidental coverage terms.,Positive
+C360-100362,Jessica Thomas,38,Berlin,Great experience so far. Highly recommend the health bundle.,Positive
+C360-100363,Raymond Price,29,Sydney,I am very happy with the coverage and the easy claim process.,Positive
+C360-100364,Helen Ortiz,29,Sydney,Thinking of cancelling. Found a cheaper motor insurance elsewhere.,Negative
+C360-100365,Michael Miller,41,New York,Terrible customer service. Waiting too long for claims.,Negative
+C360-100366,Donald Walker,38,Berlin,The premium is affordable and the support team is excellent.,Positive
+C360-100367,Mary Johnson,28,Sydney,The premiums are too expensive and keep increasing every year.,Negative
+C360-100368,Paul Wright,34,Berlin,"Standard service, nothing special to note.",Neutral
+C360-100369,Carolyn Hughes,61,Berlin,I am unhappy with the hidden fees in my life insurance policy.,Negative
+C360-100370,Angela Rogers,26,New York,I am unhappy with the hidden fees in my life insurance policy.,Negative
+C360-100371,Samantha Richardson,48,London,The premiums are too expensive and keep increasing every year.,Negative
+C360-100372,Nancy Perze,38,London,Thinking of cancelling. Found a cheaper motor insurance elsewhere.,Negative
+C360-100373,Gary Morales,44,London,Very satisfied with the accidental coverage terms.,Positive
+C360-100374,Paul Wright,63,New York,Very frustrating experience with the recent claim rejection.,Negative
+C360-100375,Ryan Collins,52,Berlin,Thinking of cancelling. Found a cheaper motor insurance elsewhere.,Negative
+C360-100376,Pamela Kelly,44,Toronto,"I have some questions about the coverage limits, please call me.",Neutral
+C360-100377,Frank Gray,65,New York,Very frustrating experience with the recent claim rejection.,Negative
+C360-100378,Mark Lewis,39,Toronto,The premium is affordable and the support team is excellent.,Positive
+C360-100379,Jerry Foster,43,New York,The premiums are too expensive and keep increasing every year.,Negative
+C360-100380,George Campbell,61,Sydney,I am very happy with the coverage and the easy claim process.,Positive
+C360-100381,Sharon Turner,35,Toronto,Very frustrating experience with the recent claim rejection.,Negative
+C360-100382,Nancy ePrez,43,Sydney,I am unhappy with the hidden fees in my life insurance policy.,Negative
+C360-100383,Kenneth Hill,48,New York,Terrible customer service. Waiting too long for claims.,Negative
+C360-100384,Susan Wilsno,41,London,Terrible customer service. Waiting too long for claims.,Negative
+C360-100385,Carolyn Hughes,59,New York,Very frustrating experience with the recent claim rejection.,Negative
+C360-100386,Melissa Rivera,40,Toronto,Quick responses. Thinking about upgrading my motor insurance.,Positive
+C360-100387,Maria Myers,62,Berlin,Quick responses. Thinking about upgrading my motor insurance.,Positive
+C360-100388,Robert Willimas,31,Toronto,Very frustrating experience with the recent claim rejection.,Negative
+C360-100389,Debra Bennett,36,Berlin,Very frustrating experience with the recent claim rejection.,Negative
+C360-100390,Jeffrey Cruz,56,Toronto,Very frustrating experience with the recent claim rejection.,Negative
+C360-100391,Charles Jackson,61,Berlin,Just renewing my standard policy for another year.,Neutral
+C360-100392,Frank Gray,34,Sydney,"I have some questions about the coverage limits, please call me.",Neutral
+C360-100393,Stephen Pteerson,30,New York,Just renewing my standard policy for another year.,Neutral
+C360-100394,Angela Rogers,49,London,The premiums are too expensive and keep increasing every year.,Negative
+C360-100395,Mark Lewis,52,Toronto,Thinking of cancelling. Found a cheaper motor insurance elsewhere.,Negative
+C360-100396,Angela Rogers,28,Toronto,Just renewing my standard policy for another year.,Neutral
+C360-100397,Shirley Murphy,33,Toronto,Great experience so far. Highly recommend the health bundle.,Positive
+C360-100398,Brandon Ward,25,London,The premium is affordable and the support team is excellent.,Positive
+C360-100399,Gary Morales,33,London,The premiums are too expensive and keep increasing every year.,Negative
+C360-100400,Joseph Anderson,57,New York,Just renewing my standard policy for another year.,Neutral
+C360-100401,Susan iWlson,47,New York,Thinking of cancelling. Found a cheaper motor insurance elsewhere.,Negative
+C360-100402,Emily Scott,30,Berlin,The premium is affordable and the support team is excellent.,Positive
+C360-100403,Paul Wright,63,Sydney,"Standard service, nothing special to note.",Neutral
+C360-100404,Stephanie Roberts,40,Berlin,Terrible customer service. Waiting too long for claims.,Negative
+C360-100405,Andrew Torres,49,New York,The premiums are too expensive and keep increasing every year.,Negative
+C360-100406,Nicholas Cook,31,Sydney,Great experience so far. Highly recommend the health bundle.,Positive
+C360-100407,Nnacy Perez,47,Sydney,Very frustrating experience with the recent claim rejection.,Negative
+C360-100408,Jacob Stewart,26,Toronto,Great experience so far. Highly recommend the health bundle.,Positive
+C360-100409,Angela Rogers,59,New York,The premiums are too expensive and keep increasing every year.,Negative
+C360-100410,Kathleen Reyes,62,Toronto,Very frustrating experience with the recent claim rejection.,Negative
+C360-100411,Anna Cooper,63,Toronto,I am unhappy with the hidden fees in my life insurance policy.,Negative
+C360-100412,Amanda Baker,40,Berlin,"I have some questions about the coverage limits, please call me.",Neutral
+C360-100413,Paul Wright,35,Berlin,"No issues, everything is fine.",Neutral
+C360-100414,Kathleen Reyes,44,Berlin,"I have some questions about the coverage limits, please call me.",Neutral
+C360-100415,Carol Adams,57,Toronto,Very satisfied with the accidental coverage terms.,Positive
+C360-100416,Rachel Mendoza,34,Toronto,"Standard service, nothing special to note.",Neutral
+C360-100417,Betty Sanchez,35,Toronto,The premiums are too expensive and keep increasing every year.,Negative
+C360-100418,Kraen Martin,43,Toronto,Thinking of cancelling. Found a cheaper motor insurance elsewhere.,Negative
+C360-100419,Pamela Kelly,57,New York,Need to update my address on the accidental policy.,Neutral
+C360-100420,Shirley Murphy,48,New York,Very satisfied with the accidental coverage terms.,Positive
+C360-100421,Raymond Price,62,New York,Quick responses. Thinking about upgrading my motor insurance.,Positive
+C360-100422,Michael Miller,61,New York,Very frustrating experience with the recent claim rejection.,Negative
+C360-100423,Heather Ross,60,Toronto,Need to update my address on the accidental policy.,Neutral
+C360-100424,Edward Carter,26,Toronto,Very frustrating experience with the recent claim rejection.,Negative
+C360-100425,Paul Wright,38,Berlin,The premium is affordable and the support team is excellent.,Positive
+C360-100426,Robert Willimas,44,New York,"Standard service, nothing special to note.",Neutral
+C360-100427,Jason Diaz,29,New York,The premiums are too expensive and keep increasing every year.,Negative
+C360-100428,Michael Miller,39,Toronto,Need to update my address on the accidental policy.,Neutral
+C360-100429,Katherine Brooks,38,Sydney,I am unhappy with the hidden fees in my life insurance policy.,Negative
+C360-100430,Karen aMrtin,50,London,Very frustrating experience with the recent claim rejection.,Negative
+C360-100431,Emily Scott,41,New York,Very frustrating experience with the recent claim rejection.,Negative
+C360-100432,Catherien Sanders,28,New York,Great experience so far. Highly recommend the health bundle.,Positive
+C360-100433,Brandon Ward,55,London,Thinking of cancelling. Found a cheaper motor insurance elsewhere.,Negative
+C360-100434,Jerry Foster,48,Berlin,I am very happy with the coverage and the easy claim process.,Positive
+C360-100435,Jeffrey Cruz,41,Sydney,Very frustrating experience with the recent claim rejection.,Negative
+C360-100436,Samuel Chavez,63,London,"No issues, everything is fine.",Neutral
+C360-100437,Paul Wright,62,Sydney,Thinking of cancelling. Found a cheaper motor insurance elsewhere.,Negative
+C360-100438,Christine Wood,46,London,Need to update my address on the accidental policy.,Neutral
+C360-100439,James Smith,65,London,I am unhappy with the hidden fees in my life insurance policy.,Negative
+C360-100440,Laura Parkre,51,New York,I am very happy with the coverage and the easy claim process.,Positive
+C360-100441,Nancy Preez,25,London,I am unhappy with the hidden fees in my life insurance policy.,Negative
+C360-100442,William Hernandez,64,Sydney,Terrible customer service. Waiting too long for claims.,Negative
+C360-100443,Pamela Kelly,62,Berlin,Very frustrating experience with the recent claim rejection.,Negative
+C360-100444,Kimberly King,32,Berlin,Very frustrating experience with the recent claim rejection.,Negative
+C360-100445,Nnacy Perez,25,Toronto,Just renewing my standard policy for another year.,Neutral
+C360-100446,Alexander Ruiz,38,New York,Very frustrating experience with the recent claim rejection.,Negative
+C360-100447,William Hernandez,41,New York,"No issues, everything is fine.",Neutral
+C360-100448,Amy Morrsi,64,Berlin,The premiums are too expensive and keep increasing every year.,Negative
+C360-100449,Daniel Thompson,49,Berlin,I am unhappy with the hidden fees in my life insurance policy.,Negative
+C360-100450,Helen Ortiz,31,London,Need to update my address on the accidental policy.,Neutral
+C360-100451,Daniel Thompson,58,Toronto,Quick responses. Thinking about upgrading my motor insurance.,Positive
+C360-100452,Joseph Anderson,45,Sydney,Need to update my address on the accidental policy.,Neutral
+C360-100453,Betty Sanchez,28,Sydney,"I have some questions about the coverage limits, please call me.",Neutral
+C360-100454,Susan Wilsno,37,Sydney,The premium is affordable and the support team is excellent.,Positive
+C360-100455,Carolyn Hughes,36,London,Great experience so far. Highly recommend the health bundle.,Positive
+C360-100456,Joanthan Morgan,35,Sydney,Just renewing my standard policy for another year.,Neutral
+C360-100457,Melissa Rivera,49,New York,I am unhappy with the hidden fees in my life insurance policy.,Negative
+C360-100458,Richard Gonzlaez,27,London,Great experience so far. Highly recommend the health bundle.,Positive
+C360-100459,Emily Scott,42,New York,The premium is affordable and the support team is excellent.,Positive
+C360-100460,Pamela Kelly,36,Toronto,Very satisfied with the accidental coverage terms.,Positive
+C360-100461,Shirley Murphy,57,London,I am unhappy with the hidden fees in my life insurance policy.,Negative
+C360-100462,Edward Carter,44,Sydney,Quick responses. Thinking about upgrading my motor insurance.,Positive
+C360-100463,SandraR obinson,40,Sydney,Very satisfied with the accidental coverage terms.,Positive
+C360-100464,Nancy ePrez,58,New York,Thinking of cancelling. Found a cheaper motor insurance elsewhere.,Negative
+C360-100465,Donald Walker,26,London,"No issues, everything is fine.",Neutral
+C360-100466,Donald Walker,42,London,"Standard service, nothing special to note.",Neutral
+C360-100467,Thomas Taylor,29,Berlin,I am unhappy with the hidden fees in my life insurance policy.,Negative
+C360-100468,Maria Myers,58,Sydney,Need to update my address on the accidental policy.,Neutral
+C360-100469,John Jones,41,Sydney,Just renewing my standard policy for another year.,Neutral
+C360-100470,Benajmin Watson,36,London,Great experience so far. Highly recommend the health bundle.,Positive
+C360-100471,Gary Morales,58,Sydney,Great experience so far. Highly recommend the health bundle.,Positive
+C360-100472,Matthew Harris,31,Berlin,Very frustrating experience with the recent claim rejection.,Negative
+C360-100473,David Rodriguez,48,New York,Very satisfied with the accidental coverage terms.,Positive
+C360-100474,Amanda Baker,41,Berlin,"No issues, everything is fine.",Neutral
+C360-100475,Nanyc Perez,40,Toronto,Quick responses. Thinking about upgrading my motor insurance.,Positive
+C360-100476,Jessica Thomas,26,Toronto,The premiums are too expensive and keep increasing every year.,Negative
+C360-100477,Jennifer Garcia,47,New York,The premiums are too expensive and keep increasing every year.,Negative
+C360-100478,Carol Adams,25,Berlin,Thinking of cancelling. Found a cheaper motor insurance elsewhere.,Negative
+C360-100479,Karen Maritn,36,Berlin,Quick responses. Thinking about upgrading my motor insurance.,Positive
+C360-100480,Amanda Baker,31,Sydney,I am unhappy with the hidden fees in my life insurance policy.,Negative
+C360-100481,Maria Myers,29,New York,I am unhappy with the hidden fees in my life insurance policy.,Negative
+C360-100482,Matthew Harris,61,London,The premium is affordable and the support team is excellent.,Positive
+C360-100483,Ashley Young,47,London,Need to update my address on the accidental policy.,Neutral
+C360-100484,Sarah Moore,65,Toronto,The premium is affordable and the support team is excellent.,Positive
+C360-100485,Steven Aleln,28,Toronto,The premium is affordable and the support team is excellent.,Positive
+C360-100486,Sarah Moore,40,Toronto,Quick responses. Thinking about upgrading my motor insurance.,Positive
+C360-100487,Elizabeth Martinez,37,London,I am unhappy with the hidden fees in my life insurance policy.,Negative
+C360-100488,Sharon Turner,27,Toronto,Thinking of cancelling. Found a cheaper motor insurance elsewhere.,Negative
+C360-100489,Emma Cox,35,Sydney,Quick responses. Thinking about upgrading my motor insurance.,Positive
+C360-100490,Ronald Gomez,55,New York,Need to update my address on the accidental policy.,Neutral
+C360-100491,Emma Cox,27,Toronto,Very satisfied with the accidental coverage terms.,Positive
+C360-100492,Susan Wilosn,32,Toronto,Thinking of cancelling. Found a cheaper motor insurance elsewhere.,Negative
+C360-100493,Mary Johnson,61,Toronto,Very frustrating experience with the recent claim rejection.,Negative
+C360-100494,JoshuaG reen,49,Toronto,The premiums are too expensive and keep increasing every year.,Negative
+C360-100495,Charles Jackson,56,Toronto,"No issues, everything is fine.",Neutral
+C360-100496,Rebecca Phillips,56,Berlin,"No issues, everything is fine.",Neutral
+C360-100497,Margaret Ramirez,33,New York,"Standard service, nothing special to note.",Neutral
+C360-100498,Karne Martin,52,Sydney,"I have some questions about the coverage limits, please call me.",Neutral
+C360-100499,Helen Ortiz,34,New York,Just renewing my standard policy for another year.,Neutral

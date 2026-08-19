@@ -1,8 +1,13 @@
-from fastapi import APIRouter, Depends, HTTPException
+from fastapi import APIRouter, Depends, HTTPException, UploadFile, File
 from sqlalchemy.orm import Session
 from pydantic import BaseModel
 from typing import List, Optional
 from sklearn.feature_extraction.text import CountVectorizer
+import json
+import os
+import csv
+import io
+import difflib
 
 from app.database.session import get_db
 from app.models.customer_360 import Customer360Profile, Customer360Policy
@@ -13,6 +18,44 @@ router = APIRouter()
 # Simple positive/negative vocabulary lists to score BoW
 POSITIVE_WORDS = ["happy", "excellent", "great", "satisfied", "quick", "affordable", "highly", "good"]
 NEGATIVE_WORDS = ["expensive", "terrible", "unhappy", "frustrating", "cancelling", "bad", "rejection", "waiting"]
+
+# Path to our Bag of Words correction dictionary
+BOW_MODEL_PATH = os.path.join(os.path.dirname(os.path.abspath(__file__)), "..", "trained_models", "bow_name_corrections.json")
+
+def get_bow_corrections() -> dict:
+    if os.path.exists(BOW_MODEL_PATH):
+        try:
+            with open(BOW_MODEL_PATH, "r") as f:
+                return json.load(f)
+        except:
+            return {}
+    return {}
+
+VALID_NAMES = [
+    "James Smith", "Mary Johnson", "Robert Williams", "Patricia Brown", "John Jones", 
+    "Jennifer Garcia", "Michael Miller", "Linda Davis", "David Rodriguez", "Elizabeth Martinez", 
+    "William Hernandez", "Barbara Lopez", "Richard Gonzalez", "Susan Wilson", "Joseph Anderson", 
+    "Jessica Thomas", "Thomas Taylor", "Sarah Moore", "Charles Jackson", "Karen Martin", 
+    "Christopher Lee", "Nancy Perez", "Daniel Thompson", "Lisa White", "Matthew Harris", 
+    "Betty Sanchez", "Anthony Clark", "Margaret Ramirez", "Mark Lewis", "Sandra Robinson", 
+    "Donald Walker", "Ashley Young", "Steven Allen", "Kimberly King", "Paul Wright", 
+    "Emily Scott", "Andrew Torres", "Donna Nguyen", "Kenneth Hill", "Michelle Flores", 
+    "Joshua Green", "Carol Adams", "Kevin Nelson", "Amanda Baker", "Brian Hall", 
+    "Melissa Rivera", "George Campbell", "Deborah Mitchell", "Edward Carter", "Stephanie Roberts", 
+    "Ronald Gomez", "Rebecca Phillips", "Timothy Evans", "Sharon Turner", "Jason Diaz", 
+    "Laura Parker", "Jeffrey Cruz", "Cynthia Edwards", "Ryan Collins", "Kathleen Reyes", 
+    "Jacob Stewart", "Amy Morris", "Gary Morales", "Shirley Murphy", "Nicholas Cook", 
+    "Angela Rogers", "Eric Gutierrez", "Helen Ortiz", "Jonathan Morgan", "Anna Cooper", 
+    "Stephen Peterson", "Brenda Bailey", "Larry Reed", "Pamela Kelly", "Justin Howard", 
+    "Nicole Ramos", "Scott Kim", "Emma Cox", "Brandon Ward", "Samantha Richardson", 
+    "Benjamin Watson", "Katherine Brooks", "Samuel Chavez", "Christine Wood", "Gregory James", 
+    "Debra Bennett", "Frank Gray", "Rachel Mendoza", "Alexander Ruiz", "Carolyn Hughes", 
+    "Raymond Price", "Janet Alvarez", "Patrick Castillo", "Catherine Sanders", "Jack Patel", 
+    "Maria Myers", "Dennis Long", "Heather Ross", "Jerry Foster", "Diane Jimenez"
+]
+
+def get_valid_names(db: Session) -> List[str]:
+    return VALID_NAMES
 
 class PolicySchema(BaseModel):
     transaction_id: str
@@ -26,6 +69,7 @@ class PolicySchema(BaseModel):
 class Customer360Schema(BaseModel):
     customer_id: str
     name: str
+    original_name: Optional[str] = None
     age: int
     city: str
     feedback_notes: Optional[str]
@@ -115,9 +159,27 @@ def get_customer_360(customer_id: str, db: Session = Depends(get_db)):
         ) for p in policies
     ]
     
+    # Apply BoW Name Correction or Fuzzy Matching
+    bow_corrections = get_bow_corrections()
+    
+    if profile.name in bow_corrections:
+        corrected_name = bow_corrections[profile.name]
+        original_name = profile.name
+    else:
+        # Fallback to fuzzy matching
+        valid_names = get_valid_names(db)
+        matches = difflib.get_close_matches(profile.name, valid_names, n=1, cutoff=0.8)
+        if matches and matches[0] != profile.name:
+            corrected_name = matches[0]
+            original_name = profile.name
+        else:
+            corrected_name = profile.name
+            original_name = None
+
     return Customer360Schema(
         customer_id=profile.customer_id,
-        name=profile.name,
+        name=corrected_name,
+        original_name=original_name,
         age=profile.age,
         city=profile.city,
         feedback_notes=profile.feedback_notes,
@@ -180,6 +242,50 @@ def search_360_customers(query: str, db: Session = Depends(get_db)):
     for cid, cname in exact_id_matches:
         if cid not in seen:
             seen.add(cid)
-            combined.append({"customer_id": cid, "name": cname, "city": "Unknown"})
-            
+    # Apply BoW Name Correction or Fuzzy Matching before returning
+    bow_corrections = get_bow_corrections()
+    valid_names = get_valid_names(db)
+    
+    for item in combined:
+        if item["name"] in bow_corrections:
+            item["original_name"] = item["name"]
+            item["name"] = bow_corrections[item["name"]]
+        else:
+            # Fallback to fuzzy matching
+            matches = difflib.get_close_matches(item["name"], valid_names, n=1, cutoff=0.8)
+            if matches and matches[0] != item["name"]:
+                item["original_name"] = item["name"]
+                item["name"] = matches[0]
+            else:
+                item["original_name"] = None
+        
     return combined[:25]
+
+@router.post("/retrain_bow")
+async def retrain_bow_model(file: UploadFile = File(...)):
+    """
+    Accepts a CSV with 'wrong_name,correct_name' to retrain the BoW name correction module.
+    """
+    if not file.filename.endswith('.csv'):
+        raise HTTPException(status_code=400, detail="Only CSV files are allowed.")
+        
+    contents = await file.read()
+    try:
+        csv_data = contents.decode('utf-8')
+        reader = csv.DictReader(io.StringIO(csv_data))
+        
+        corrections = {}
+        for row in reader:
+            if 'wrong_name' in row and 'correct_name' in row:
+                corrections[row['wrong_name']] = row['correct_name']
+                
+        # Ensure directory exists
+        os.makedirs(os.path.dirname(BOW_MODEL_PATH), exist_ok=True)
+        
+        # Save trained BoW model
+        with open(BOW_MODEL_PATH, "w") as f:
+            json.dump(corrections, f, indent=4)
+            
+        return {"status": "success", "message": f"Successfully trained BoW model with {len(corrections)} name corrections."}
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=f"Failed to process CSV: {str(e)}")

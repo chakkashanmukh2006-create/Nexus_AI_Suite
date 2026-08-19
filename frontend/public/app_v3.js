@@ -1792,52 +1792,59 @@ const chartInstances = {
 };
 
 async function initMultiDomainOptions() {
-    // Insurance Options
-    try {
-        const res = await fetch(`http://127.0.0.1:8002/insurance_5model/options`);
-        const data = await res.json();
-        window.insuranceOptions = data;
-    } catch(e) { console.log(e); }
+    const fetchOptions = async (domain, port) => {
+        try {
+            const endpoint = domain === "insurance" ? "insurance_5model" : domain;
+            const res = await fetch(`http://127.0.0.1:${port}/${endpoint}/options`);
+            return await res.json();
+        } catch(e) { return null; }
+    };
     
-    // Grocery Options
-    try {
-        const res = await fetch(`http://127.0.0.1:8002/grocery/options`);
-        const data = await res.json();
-        window.groceryOptions = data;
-    } catch(e) { console.log(e); }
-    
-    // Logistics Options
-    try {
-        const res = await fetch(`http://127.0.0.1:8002/logistics/options`);
-        const data = await res.json();
-        window.logisticsOptions = data;
-    } catch(e) { console.log(e); }
+    // Store globally
+    window.insuranceOptions = await fetchOptions("insurance", 8002) || { stores: [], categories: [], products: [] };
+    window.groceryOptions = await fetchOptions("grocery", 8002) || { stores: [], categories: [], products: [] };
+    window.logisticsOptions = await fetchOptions("logistics", 8002) || { stores: [], categories: [], products: [] };
+    window.maintenanceOptions = await fetchOptions("maintenance", 8002) || { stores: [], categories: [], products: [] };
+    window.retailOptions = window.retailOptions || await fetchOptions("retail", 8002) || { stores: [], categories: [], products: [] };
 
-    // Maintenance Options
-    try {
-        const res = await fetch(`http://127.0.0.1:8002/maintenance/options`);
-        const data = await res.json();
-        window.maintenanceOptions = data;
-    } catch(e) { console.log(e); }
+    const populateSelect = (id, items) => {
+        const el = document.getElementById(id);
+        if (el) {
+            el.innerHTML = "";
+            items.forEach(i => {
+                const opt = document.createElement("option");
+                opt.value = i;
+                opt.textContent = i;
+                el.appendChild(opt);
+            });
+        }
+    };
+    
+    populateSelect("retail-store-select", window.retailOptions.stores);
+    populateSelect("insurance-store-select", window.insuranceOptions.stores);
+    populateSelect("grocery-store-select", window.groceryOptions.stores);
+    populateSelect("logistics-store-select", window.logisticsOptions.stores);
+    populateSelect("maintenance-store-select", window.maintenanceOptions.stores);
 }
 
 async function loadDomainForecast(domain) {
     const level = document.getElementById(`${domain}-level-select`).value;
-    const horizon = document.getElementById(`${domain}-horizon-select`).value || '90';
+    const store = document.getElementById(`${domain}-store-select`)?.value || "Default";
+    const horizon = document.getElementById(`${domain}-horizon-select`).value || "90";
     const nameSelect = document.getElementById(`${domain}-item-select`);
-    const name = nameSelect.style.display !== 'none' ? nameSelect.value : '';
+    const name = nameSelect.style.display !== "none" ? nameSelect.value : "";
     
-    document.getElementById(`${domain}-loading-overlay`).style.display = 'flex';
+    document.getElementById(`${domain}-loading-overlay`).style.display = "flex";
     
     try {
         let endpoint = `http://127.0.0.1:8002/${domain}/forecast`;
-        if (domain === 'insurance') endpoint = `http://127.0.0.1:8002/insurance_5model/forecast`;
+        if (domain === "insurance") endpoint = `http://127.0.0.1:8002/insurance_5model/forecast`;
         
         const url = new URL(endpoint);
-        url.searchParams.append('store', 'Default');
-        url.searchParams.append('level', level);
-        url.searchParams.append('horizon_days', horizon);
-        if (name) url.searchParams.append('name', name);
+        url.searchParams.append("store", store);
+        url.searchParams.append("level", level);
+        url.searchParams.append("horizon_days", horizon);
+        if (name) url.searchParams.append("name", name);
         
         const res = await fetch(url);
         const data = await res.json();
@@ -1847,12 +1854,14 @@ async function loadDomainForecast(domain) {
         renderDomainChart(domain, data);
         
         if (data.reasoning) {
-            document.getElementById(`${domain}-reasoning-text`).innerHTML = data.reasoning;
+            const el = document.getElementById(`${domain}-reasoning-text`);
+            if (el) el.innerHTML = data.reasoning;
         }
     } catch (e) {
-        appendToToastContainer('Forecast failed: ' + e.message, 'error');
+        appendToToastContainer("Forecast failed: " + e.message, "error");
     } finally {
-        document.getElementById(`${domain}-loading-overlay`).style.display = 'none';
+        const overlay = document.getElementById(`${domain}-loading-overlay`);
+        if (overlay) overlay.style.display = "none";
     }
 }
 

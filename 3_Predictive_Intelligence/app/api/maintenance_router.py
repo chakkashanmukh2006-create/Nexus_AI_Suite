@@ -16,25 +16,24 @@ warnings.filterwarnings("ignore")
 router = APIRouter()
 
 def get_kaggle_dataset():
-    csv_path = os.path.join(os.path.dirname(__file__), "../../../datasets/retail_multistore.csv")
+    csv_path = os.path.join(os.path.dirname(__file__), "../../../datasets/maintenance_records.csv")
     df = pd.read_csv(csv_path)
-    df['Order Date'] = pd.to_datetime(df['Order Date'], format="mixed", dayfirst=False)
+    df['Date'] = pd.to_datetime(df['Date'], format="mixed", dayfirst=False)
     return df
 
-@router.get("/retail/options")
-def get_retail_options():
+@router.get("/maintenance/options")
+def get_maintenance_options():
     df = get_kaggle_dataset()
-    stores = sorted(df['Store'].dropna().unique().tolist())
-    categories = sorted(df['Category'].dropna().unique().tolist())
-    products = sorted(df['Sub-Category'].dropna().unique().tolist())
+    stores = sorted(df['Mall'].dropna().unique().tolist())
+    categories = sorted(df['Equipment_ID'].dropna().unique().tolist())
     return {
         "stores": stores,
         "categories": categories,
-        "products": products
+        "products": []
     }
 
-@router.get("/retail/forecast")
-def get_retail_forecast(
+@router.get("/maintenance/forecast")
+def get_maintenance_forecast(
     store: str = Query(..., description="Store Name"),
     level: str = Query("store", description="store, category, or product"),
     name: str = Query(None, description="The specific category or product name"),
@@ -43,19 +42,17 @@ def get_retail_forecast(
     df = get_kaggle_dataset()
     
     # Filter by Store first (Hierarchy level 1)
-    df = df[df['Store'] == store]
+    df = df[df['Mall'] == store]
     
-    # Filter by Category/Product (Hierarchy level 2/3)
+    # Filter by Category (Equipment_ID)
     if level == "category" and name:
-        df = df[df['Category'] == name]
-    elif level == "product" and name:
-        df = df[df['Sub-Category'] == name]
+        df = df[df['Equipment_ID'] == name]
     
-    df_agg = df.groupby('Order Date')['Sales'].sum().reset_index()
-    df_agg = df_agg.sort_values('Order Date')
+    df_agg = df.groupby('Date')['Vibration_mm_s'].mean().reset_index()
+    df_agg = df_agg.sort_values('Date')
     
-    df_agg.set_index('Order Date', inplace=True)
-    df_agg = df_agg.resample('W-MON').sum().reset_index()
+    df_agg.set_index('Date', inplace=True)
+    df_agg = df_agg.resample('W-MON').mean().reset_index()
     
     # Convert horizon days to weeks
     HORIZON = max(1, horizon_days // 7)
@@ -66,13 +63,13 @@ def get_retail_forecast(
     df_train = df_agg.copy()
     df_chart = df_train.tail(52).copy()
     
-    historical_dates = df_chart['Order Date'].dt.strftime('%Y-%m-%d').tolist()
-    historical_values = df_chart['Sales'].tolist()
+    historical_dates = df_chart['Date'].dt.strftime('%Y-%m-%d').tolist()
+    historical_values = df_chart['Vibration_mm_s'].tolist()
     
-    future_dates_dt = [df_train['Order Date'].iloc[-1] + timedelta(weeks=i) for i in range(1, HORIZON + 1)]
+    future_dates_dt = [df_train['Date'].iloc[-1] + timedelta(weeks=i) for i in range(1, HORIZON + 1)]
     future_dates = [d.strftime('%Y-%m-%d') for d in future_dates_dt]
     
-    series = df_train['Sales'].values
+    series = df_train['Vibration_mm_s'].values
     
     # 1. Simple Moving Average (SMA)
     sma_value = np.mean(series[-4:])
@@ -97,7 +94,7 @@ def get_retail_forecast(
         sarima_pred = [sma_value] * HORIZON
         
     # 4. Prophet
-    prophet_df = df_train[['Order Date', 'Sales']].rename(columns={'Order Date': 'ds', 'Sales': 'y'})
+    prophet_df = df_train[['Date', 'Vibration_mm_s']].rename(columns={'Date': 'ds', 'Vibration_mm_s': 'y'})
     m = Prophet(weekly_seasonality=False, yearly_seasonality=True, daily_seasonality=False)
     m.fit(prophet_df)
     future = m.make_future_dataframe(periods=HORIZON, freq='W')
@@ -107,12 +104,12 @@ def get_retail_forecast(
     # 5. XGBoost
     xgb_df = df_train.copy()
     for lag in range(1, 5):
-        xgb_df[f'lag_{lag}'] = xgb_df['Sales'].shift(lag)
-    xgb_df['month'] = xgb_df['Order Date'].dt.month
+        xgb_df[f'lag_{lag}'] = xgb_df['Vibration_mm_s'].shift(lag)
+    xgb_df['month'] = xgb_df['Date'].dt.month
     xgb_df = xgb_df.dropna()
     
     X_train = xgb_df[[f'lag_{lag}' for lag in range(1, 5)] + ['month']]
-    y_train = xgb_df['Sales']
+    y_train = xgb_df['Vibration_mm_s']
     
     xgb_model = xgb.XGBRegressor(n_estimators=50, max_depth=3)
     if len(X_train) > 5:
@@ -120,7 +117,7 @@ def get_retail_forecast(
         
         xgb_pred = []
         current_lags = y_train.tail(4).values[::-1].tolist()
-        current_date = df_train['Order Date'].iloc[-1]
+        current_date = df_train['Date'].iloc[-1]
         
         for i in range(HORIZON):
             current_date += timedelta(weeks=1)
@@ -139,16 +136,16 @@ def get_retail_forecast(
     variance = ((avg_future - avg_past) / (avg_past + 1)) * 100
     
     target_name = name if name else store
-    reasoning = f"AI Insight for {target_name}: "
+    reasoning = f"AI Insight for {target_name} Vibration Sensors: "
     if variance > 10:
-        reasoning += f"We anticipate a {variance:.1f}% HIKE in demand over the next {horizon_days} days. This upward spike is driven by historical yearly seasonality and recent weekly momentum detected by the XGBoost lag features. "
-        reasoning += f"ACTION PLAN: Order {int(avg_future * HORIZON * 1.2)} units immediately to prevent supply chain stockouts."
+        reasoning += f"We anticipate a {variance:.1f}% HIKE in vibration levels over the next {horizon_days} days. This upward spike indicates accelerated mechanical wear. "
+        reasoning += f"ACTION PLAN: Schedule immediate preventative maintenance for affected equipment to prevent catastrophic failure."
     elif variance < -10:
-        reasoning += f"We project a {abs(variance):.1f}% DROP in demand over the next {horizon_days} days due to post-peak seasonality detected by Prophet. "
-        reasoning += f"ACTION PLAN: Halt immediate re-ordering. Liquidate current stock. Only {int(avg_future * HORIZON * 0.8)} units required."
+        reasoning += f"We project a {abs(variance):.1f}% DROP in vibration levels over the next {horizon_days} days. "
+        reasoning += f"ACTION PLAN: Equipment is settling into normal operating parameters. Continue standard monitoring."
     else:
-        reasoning += f"Demand is highly STABLE with only a {abs(variance):.1f}% deviation. The 5-model consensus indicates steady baseline volume. "
-        reasoning += f"ACTION PLAN: Maintain standard replenishment. Order {int(avg_future * HORIZON)} units for the {horizon_days}-day horizon."
+        reasoning += f"Vibration levels are highly STABLE with only a {abs(variance):.1f}% deviation. The 5-model consensus indicates steady baseline mechanical health. "
+        reasoning += f"ACTION PLAN: Maintain standard quarterly inspection schedule."
 
     return {
         "dates": historical_dates + future_dates,

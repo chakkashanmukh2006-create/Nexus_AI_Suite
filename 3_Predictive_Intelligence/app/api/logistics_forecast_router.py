@@ -16,25 +16,25 @@ warnings.filterwarnings("ignore")
 router = APIRouter()
 
 def get_kaggle_dataset():
-    csv_path = os.path.join(os.path.dirname(__file__), "../../../datasets/retail_multistore.csv")
+    csv_path = os.path.join(os.path.dirname(__file__), "../../../datasets/logistics_forecast.csv")
     df = pd.read_csv(csv_path)
-    df['Order Date'] = pd.to_datetime(df['Order Date'], format="mixed", dayfirst=False)
+    df['Date'] = pd.to_datetime(df['Date'], format="mixed", dayfirst=False)
     return df
 
-@router.get("/retail/options")
-def get_retail_options():
+@router.get("/logistics/options")
+def get_logistics_options():
     df = get_kaggle_dataset()
-    stores = sorted(df['Store'].dropna().unique().tolist())
-    categories = sorted(df['Category'].dropna().unique().tolist())
-    products = sorted(df['Sub-Category'].dropna().unique().tolist())
+    stores = sorted(df['Company'].dropna().unique().tolist())
+    categories = sorted(df['Freight_Type'].dropna().unique().tolist())
+    products = sorted(df['Shipping_Lane'].dropna().unique().tolist())
     return {
         "stores": stores,
         "categories": categories,
         "products": products
     }
 
-@router.get("/retail/forecast")
-def get_retail_forecast(
+@router.get("/logistics/forecast")
+def get_logistics_forecast(
     store: str = Query(..., description="Store Name"),
     level: str = Query("store", description="store, category, or product"),
     name: str = Query(None, description="The specific category or product name"),
@@ -42,19 +42,20 @@ def get_retail_forecast(
 ):
     df = get_kaggle_dataset()
     
-    # Filter by Store first (Hierarchy level 1)
-    df = df[df['Store'] == store]
+    # Filter by Store (Company)
+    if store and store != "All":
+        df = df[df['Company'] == store]
     
     # Filter by Category/Product (Hierarchy level 2/3)
     if level == "category" and name:
-        df = df[df['Category'] == name]
+        df = df[df['Freight_Type'] == name]
     elif level == "product" and name:
-        df = df[df['Sub-Category'] == name]
+        df = df[df['Shipping_Lane'] == name]
     
-    df_agg = df.groupby('Order Date')['Sales'].sum().reset_index()
-    df_agg = df_agg.sort_values('Order Date')
+    df_agg = df.groupby('Date')['Volume_Tons'].sum().reset_index()
+    df_agg = df_agg.sort_values('Date')
     
-    df_agg.set_index('Order Date', inplace=True)
+    df_agg.set_index('Date', inplace=True)
     df_agg = df_agg.resample('W-MON').sum().reset_index()
     
     # Convert horizon days to weeks
@@ -66,13 +67,13 @@ def get_retail_forecast(
     df_train = df_agg.copy()
     df_chart = df_train.tail(52).copy()
     
-    historical_dates = df_chart['Order Date'].dt.strftime('%Y-%m-%d').tolist()
-    historical_values = df_chart['Sales'].tolist()
+    historical_dates = df_chart['Date'].dt.strftime('%Y-%m-%d').tolist()
+    historical_values = df_chart['Volume_Tons'].tolist()
     
-    future_dates_dt = [df_train['Order Date'].iloc[-1] + timedelta(weeks=i) for i in range(1, HORIZON + 1)]
+    future_dates_dt = [df_train['Date'].iloc[-1] + timedelta(weeks=i) for i in range(1, HORIZON + 1)]
     future_dates = [d.strftime('%Y-%m-%d') for d in future_dates_dt]
     
-    series = df_train['Sales'].values
+    series = df_train['Volume_Tons'].values
     
     # 1. Simple Moving Average (SMA)
     sma_value = np.mean(series[-4:])
@@ -97,7 +98,7 @@ def get_retail_forecast(
         sarima_pred = [sma_value] * HORIZON
         
     # 4. Prophet
-    prophet_df = df_train[['Order Date', 'Sales']].rename(columns={'Order Date': 'ds', 'Sales': 'y'})
+    prophet_df = df_train[['Date', 'Volume_Tons']].rename(columns={'Date': 'ds', 'Volume_Tons': 'y'})
     m = Prophet(weekly_seasonality=False, yearly_seasonality=True, daily_seasonality=False)
     m.fit(prophet_df)
     future = m.make_future_dataframe(periods=HORIZON, freq='W')
@@ -107,12 +108,12 @@ def get_retail_forecast(
     # 5. XGBoost
     xgb_df = df_train.copy()
     for lag in range(1, 5):
-        xgb_df[f'lag_{lag}'] = xgb_df['Sales'].shift(lag)
-    xgb_df['month'] = xgb_df['Order Date'].dt.month
+        xgb_df[f'lag_{lag}'] = xgb_df['Volume_Tons'].shift(lag)
+    xgb_df['month'] = xgb_df['Date'].dt.month
     xgb_df = xgb_df.dropna()
     
     X_train = xgb_df[[f'lag_{lag}' for lag in range(1, 5)] + ['month']]
-    y_train = xgb_df['Sales']
+    y_train = xgb_df['Volume_Tons']
     
     xgb_model = xgb.XGBRegressor(n_estimators=50, max_depth=3)
     if len(X_train) > 5:
@@ -120,7 +121,7 @@ def get_retail_forecast(
         
         xgb_pred = []
         current_lags = y_train.tail(4).values[::-1].tolist()
-        current_date = df_train['Order Date'].iloc[-1]
+        current_date = df_train['Date'].iloc[-1]
         
         for i in range(HORIZON):
             current_date += timedelta(weeks=1)
@@ -133,10 +134,24 @@ def get_retail_forecast(
     else:
         xgb_pred = [sma_value] * HORIZON
 
-    # AI Reasoning Logic
+    # AI Reasoning Logic pre-calc
     avg_future = np.mean(prophet_pred)
     avg_past = np.mean(historical_values[-4:])
     variance = ((avg_future - avg_past) / (avg_past + 1)) * 100
+
+    # Extract Vessel details
+    vessel_name = df['Vessel_Name'].iloc[0] if 'Vessel_Name' in df.columns and not df['Vessel_Name'].empty else "Unknown Vessel"
+    imo_number = df['IMO_Number'].iloc[0] if 'IMO_Number' in df.columns and not df['IMO_Number'].empty else "Unknown IMO"
+    vessel_capacity = df['Vessel_Capacity'].iloc[0] if 'Vessel_Capacity' in df.columns and not df['Vessel_Capacity'].empty else 0
+    
+    # Calculate utilization
+    expected_freight = int(avg_future * HORIZON)
+    utilization_percent = (expected_freight / (vessel_capacity if vessel_capacity > 0 else 1)) * 100
+    if utilization_percent > 100:
+        utilization_percent = 100.0
+        
+    safe_name = name if name else ""
+    optimal_speed = 18 if 'Container' in safe_name else 14
     
     target_name = name if name else store
     reasoning = f"AI Insight for {target_name}: "
@@ -154,6 +169,13 @@ def get_retail_forecast(
         "dates": historical_dates + future_dates,
         "history": historical_values + [None] * HORIZON,
         "reasoning": reasoning,
+        "vessel_recommendations": {
+            "recommended_vessel": str(vessel_name),
+            "imo_number": str(imo_number),
+            "capacity_utilization": f"{utilization_percent:.1f}%",
+            "optimal_speed": f"{optimal_speed} knots",
+            "reasoning": f"AI selected {vessel_name} (IMO {imo_number}) for the {target_name} route based on projected freight volumes."
+        },
         "predictions": {
             "SMA": [None] * len(historical_values) + sma_pred,
             "HoltWinters": [None] * len(historical_values) + hw_pred,

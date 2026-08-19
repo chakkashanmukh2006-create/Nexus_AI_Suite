@@ -11,6 +11,38 @@ POLICY_TYPES = ["Health Insurance", "Life Insurance", "Motor Insurance", "Accide
 YEARS_HISTORY = 5
 BASE_DATE = datetime(2026, 7, 1)
 
+REALISTIC_NAMES = [
+    "James Smith", "Mary Johnson", "Robert Williams", "Patricia Brown", "John Jones", 
+    "Jennifer Garcia", "Michael Miller", "Linda Davis", "David Rodriguez", "Elizabeth Martinez", 
+    "William Hernandez", "Barbara Lopez", "Richard Gonzalez", "Susan Wilson", "Joseph Anderson", 
+    "Jessica Thomas", "Thomas Taylor", "Sarah Moore", "Charles Jackson", "Karen Martin", 
+    "Christopher Lee", "Nancy Perez", "Daniel Thompson", "Lisa White", "Matthew Harris", 
+    "Betty Sanchez", "Anthony Clark", "Margaret Ramirez", "Mark Lewis", "Sandra Robinson", 
+    "Donald Walker", "Ashley Young", "Steven Allen", "Kimberly King", "Paul Wright", 
+    "Emily Scott", "Andrew Torres", "Donna Nguyen", "Kenneth Hill", "Michelle Flores", 
+    "Joshua Green", "Carol Adams", "Kevin Nelson", "Amanda Baker", "Brian Hall", 
+    "Melissa Rivera", "George Campbell", "Deborah Mitchell", "Edward Carter", "Stephanie Roberts", 
+    "Ronald Gomez", "Rebecca Phillips", "Timothy Evans", "Sharon Turner", "Jason Diaz", 
+    "Laura Parker", "Jeffrey Cruz", "Cynthia Edwards", "Ryan Collins", "Kathleen Reyes", 
+    "Jacob Stewart", "Amy Morris", "Gary Morales", "Shirley Murphy", "Nicholas Cook", 
+    "Angela Rogers", "Eric Gutierrez", "Helen Ortiz", "Jonathan Morgan", "Anna Cooper", 
+    "Stephen Peterson", "Brenda Bailey", "Larry Reed", "Pamela Kelly", "Justin Howard", 
+    "Nicole Ramos", "Scott Kim", "Emma Cox", "Brandon Ward", "Samantha Richardson", 
+    "Benjamin Watson", "Katherine Brooks", "Samuel Chavez", "Christine Wood", "Gregory James", 
+    "Debra Bennett", "Frank Gray", "Rachel Mendoza", "Alexander Ruiz", "Carolyn Hughes", 
+    "Raymond Price", "Janet Alvarez", "Patrick Castillo", "Catherine Sanders", "Jack Patel", 
+    "Maria Myers", "Dennis Long", "Heather Ross", "Jerry Foster", "Diane Jimenez"
+]
+
+def make_typo(name):
+    # simple typo generator (swap characters)
+    if len(name) < 4: return name
+    chars = list(name)
+    idx = random.randint(1, len(name) - 2)
+    chars[idx], chars[idx+1] = chars[idx+1], chars[idx]
+    return "".join(chars)
+BASE_DATE = datetime(2026, 7, 1)
+
 # NLP Feedback Dictionary
 POSITIVE_FEEDBACK = [
     "I am very happy with the coverage and the easy claim process.",
@@ -37,12 +69,27 @@ NEUTRAL_FEEDBACK = [
 def generate_360_datasets():
     profiles = []
     policies = []
+    bow_corrections = []
     
     print("Generating Customer 360 Dataset...")
     
+    # 20 names chosen for typos
+    typo_names = random.sample(REALISTIC_NAMES, 20)
+    
     for i in range(NUM_CUSTOMERS):
         cust_id = f"C360-100{i:03d}"
-        name = f"User {random.randint(1, 9999)}"
+        
+        correct_name = random.choice(REALISTIC_NAMES)
+        
+        # apply typo
+        if correct_name in typo_names:
+            name = make_typo(correct_name)
+            # save mapping for BoW retraining upload dataset
+            if {"wrong_name": name, "correct_name": correct_name} not in bow_corrections:
+                bow_corrections.append({"wrong_name": name, "correct_name": correct_name})
+        else:
+            name = correct_name
+            
         age = random.randint(25, 65)
         city = random.choice(["New York", "London", "Sydney", "Toronto", "Berlin"])
         
@@ -114,13 +161,16 @@ def generate_360_datasets():
 
     df_profiles = pd.DataFrame(profiles)
     df_policies = pd.DataFrame(policies)
+    df_bow = pd.DataFrame(bow_corrections)
     
     # Save to root datasets folder for easy upload testing
     df_profiles.to_csv("customer_360_profiles.csv", index=False)
     df_policies.to_csv("customer_360_policies.csv", index=False)
+    df_bow.to_csv("name_corrections_dataset.csv", index=False)
     
     print(f"✅ Generated {len(df_profiles)} 360 profiles.")
     print(f"✅ Generated {len(df_policies)} transactional policy records.")
+    print(f"✅ Generated {len(df_bow)} typo correction pairs (saved to name_corrections_dataset.csv).")
     
 if __name__ == "__main__":
     generate_360_datasets()

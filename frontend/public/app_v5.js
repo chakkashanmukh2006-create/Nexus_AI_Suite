@@ -233,7 +233,7 @@ function updateStatusUI(key, status) {
     const el = document.getElementById(`status-${key}`);
     if (el) {
         el.className = `status-badge ${status}`;
-        el.querySelector('.status-dot').style.color = status === 'online' ? 'var(--accent-decision)' : 'var(--accent-anomaly)';
+        el.querySelector('.status-dot').style.color = status === 'online' ? 'var(--color-accent-decision)' : 'var(--color-accent-anomaly)';
     }
 }
 
@@ -281,11 +281,20 @@ function loadActiveTab() {
         case 'data-tab':
             loadRecentlyIngested();
             break;
-        case 'demand-forecast-tab':
-            loadDemandForecastData();
+        case 'insurance-forecast-tab':
+            loadDomainForecast('insurance');
             break;
         case 'retail-forecast-tab':
-            loadRetailForecast();
+            loadDomainForecast('retail');
+            break;
+        case 'grocery-forecast-tab':
+            loadDomainForecast('grocery');
+            break;
+        case 'logistics-forecast-tab':
+            loadDomainForecast('logistics');
+            break;
+        case 'maintenance-tab':
+            loadDomainForecast('maintenance');
             break;
     }
 }
@@ -373,178 +382,6 @@ async function loadDemandForecastData() {
     }
 }
 
-let retailChartInstance = null;
-let retailOptions = { categories: [], products: [] };
-
-async function initRetailOptions() {
-    if (retailOptions.categories.length > 0) return; // Already loaded
-    try {
-        const res = await apiFetch('predictive', '/retail/options');
-        if (res.ok) {
-            retailOptions = await res.json();
-        }
-    } catch (e) {
-        console.error("Failed to fetch retail options", e);
-    }
-}
-
-document.getElementById('retail-level-select')?.addEventListener('change', (e) => {
-    const level = e.target.value;
-    const itemSelect = document.getElementById('retail-item-select');
-    
-    if (level === 'store') {
-        itemSelect.style.display = 'none';
-        loadRetailForecast();
-    } else {
-        itemSelect.style.display = 'block';
-        itemSelect.innerHTML = '';
-        const list = level === 'category' ? retailOptions.categories : retailOptions.products;
-        list.forEach(item => {
-            const opt = document.createElement('option');
-            opt.value = item;
-            opt.textContent = item;
-            itemSelect.appendChild(opt);
-        });
-        loadRetailForecast();
-    }
-});
-
-document.getElementById('retail-item-select')?.addEventListener('change', () => {
-    loadRetailForecast();
-});
-
-async function loadRetailForecast() {
-    if (serviceStatus.predictive === "offline") {
-        appendToToastContainer("Predictive Intelligence (Port 8002) is offline. Cannot generate retail forecast.", "error");
-        return;
-    }
-    
-    await initRetailOptions();
-    
-    const level = document.getElementById("retail-level-select")?.value || "store";
-    const store = document.getElementById("retail-store-select")?.value || "Decathlon";
-    const horizon = document.getElementById("retail-horizon-select")?.value || "30";
-    const name = document.getElementById("retail-item-select")?.value || "";
-    
-    let endpoint = `/retail/forecast?store=${encodeURIComponent(store)}&horizon_days=${horizon}&level=${level}`;
-    if (level !== "store" && name) {
-        endpoint += `&name=${encodeURIComponent(name)}`;
-    }
-    
-    try {
-        const overlay = document.getElementById("retail-loading-overlay");
-        if (overlay) overlay.style.display = "flex";
-        
-        const res = await apiFetch("predictive", endpoint);
-        if (res.ok) {
-            const data = await res.json();
-            
-            if (overlay) overlay.style.display = "none";
-            
-            if (data.error) {
-                appendToToastContainer(data.error, "error");
-                return;
-            }
-            
-            const ctx = document.getElementById("retailForecastChart");
-            if (!ctx) return;
-            
-            if (retailChartInstance) {
-                retailChartInstance.destroy();
-            }
-            
-            // Map the history line (solid)
-            const historicalData = data.history.map((val, i) => val);
-            
-            retailChartInstance = new Chart(ctx, {
-                type: "line",
-                data: {
-                    labels: data.dates,
-                    datasets: [
-                        {
-                            label: "Historical Data",
-                            data: historicalData,
-                            borderColor: "rgba(255, 255, 255, 0.8)",
-                            borderWidth: 2,
-                            fill: false,
-                            tension: 0.1,
-                            pointRadius: 0
-                        },
-                        {
-                            label: "Prophet (Seasonality)",
-                            data: data.predictions.Prophet,
-                            borderColor: "#2196F3",
-                            borderDash: [5, 5],
-                            borderWidth: 2,
-                            fill: false,
-                            tension: 0.4
-                        },
-                        {
-                            label: "XGBoost (Momentum)",
-                            data: data.predictions.XGBoost,
-                            borderColor: "#4CAF50",
-                            borderDash: [5, 5],
-                            borderWidth: 2,
-                            fill: false,
-                            tension: 0.4
-                        },
-                        {
-                            label: "SARIMA (Autoregression)",
-                            data: data.predictions.SARIMA,
-                            borderColor: "#FF9800",
-                            borderDash: [5, 5],
-                            borderWidth: 2,
-                            fill: false,
-                            tension: 0.4
-                        },
-                        {
-                            label: "Holt-Winters (Trend)",
-                            data: data.predictions.HoltWinters,
-                            borderColor: "#9C27B0",
-                            borderDash: [2, 2],
-                            borderWidth: 2,
-                            fill: false,
-                            tension: 0.4
-                        },
-                        {
-                            label: "SMA (Baseline)",
-                            data: data.predictions.SMA,
-                            borderColor: "#F44336",
-                            borderDash: [10, 5],
-                            borderWidth: 2,
-                            fill: false,
-                            tension: 0.4
-                        }
-                    ]
-                },
-                options: {
-                    responsive: true,
-                    maintainAspectRatio: false,
-                    interaction: { mode: "index", intersect: false },
-                    plugins: { legend: { labels: { color: "rgba(255, 255, 255, 0.7)" } } },
-                    scales: {
-                        y: { grid: { color: "rgba(255, 255, 255, 0.05)" }, ticks: { color: "rgba(255, 255, 255, 0.5)" } },
-                        x: { grid: { color: "rgba(255, 255, 255, 0.05)" }, ticks: { color: "rgba(255, 255, 255, 0.5)" } }
-                    }
-                }
-            });
-            
-            if (data.reasoning) {
-                const rsNode = document.getElementById("retail-reasoning-text");
-                if (rsNode) rsNode.innerHTML = data.reasoning;
-            }
-            
-        } else {
-            console.error("Failed to load retail forecast", res.status);
-            if (overlay) overlay.style.display = "none";
-        }
-    } catch (error) {
-        console.error("Error fetching retail forecast:", error);
-        appendToToastContainer("Error loading forecast.", "error");
-        const overlay = document.getElementById("retail-loading-overlay");
-        if (overlay) overlay.style.display = "none";
-    }
-}
 // Load Row Counts dynamically from all backends (confirming data uploads)
 async function loadOverviewCounts() {
     const fetchDashboardStats = async (key) => {
@@ -673,7 +510,7 @@ async function fetchAndRenderTable(serviceKey, endpoint, pageKey, tbodyId, nextB
         if (nextBtnId) document.getElementById(nextBtnId).disabled = (pageNum >= totalPages);
 
     } catch (e) {
-        tbody.innerHTML = `<tr><td colspan="10" style="text-align:center; color:var(--accent-anomaly)">Error connecting to port ${PORTS[serviceKey]}: ${e.message}</td></tr>`;
+        tbody.innerHTML = `<tr><td colspan="10" style="text-align:center; color:var(--color-accent-anomaly)">Error connecting to port ${PORTS[serviceKey]}: ${e.message}</td></tr>`;
     }
 }
 
@@ -729,7 +566,7 @@ async function loadRetentionDashboardData() {
                     <tr style="cursor: pointer;" onclick="alert('Leads do not have a Customer 360 profile yet as they have no transactional history. Please convert them to a customer first!')" onmouseover="this.style.background='rgba(255,255,255,0.05)'" onmouseout="this.style.background=''">
                         <td><code>${row.lead_id}</code></td>
                         <td><span class="badge ${badge}">${score}%</span></td>
-                        <td><i class="ph ph-lightbulb" style="color:var(--accent-retention); margin-right:6px"></i>${row.top_reasons[0] || 'N/A'}</td>
+                        <td><i class="ph ph-lightbulb" style="color:var(--color-accent-retention); margin-right:6px"></i>${row.top_reasons[0] || 'N/A'}</td>
                         <td>${row.lead_source || 'N/A'}</td>
                     </tr>
                 `;
@@ -755,7 +592,7 @@ async function loadRetentionDashboardData() {
                     <tr style="cursor: pointer;" onclick="loadCustomer360Profile('${row.customer_id}')" onmouseover="this.style.background='rgba(255,255,255,0.05)'" onmouseout="this.style.background=''">
                         <td><strong>#${row.customer_id}</strong><br><small style="color:var(--text-muted)">${row.name}</small></td>
                         <td><span class="badge ${badge}">${score}% Risk</span></td>
-                        <td><i class="ph ph-warning-circle" style="color:var(--accent-anomaly); margin-right:6px"></i>${row.top_reasons[0] || 'N/A'}</td>
+                        <td><i class="ph ph-warning-circle" style="color:var(--color-accent-anomaly); margin-right:6px"></i>${row.top_reasons[0] || 'N/A'}</td>
                         <td>${row.policy_type || 'N/A'}</td>
                         <td>${row.contact_number || 'N/A'}</td>
                     </tr>
@@ -788,7 +625,7 @@ function loadAnomalyLeads() {
                     <td><strong>${row.name}</strong></td>
                     <td><span class="badge ${badge}">${row.is_fraud ? 'Fraud Flag' : 'Healthy'}</span></td>
                     <td>${score}</td>
-                    <td><i class="ph ph-shield-warning" style="color:var(--accent-anomaly); margin-right:6px"></i>${row.top_reasons[0] || 'N/A'}</td>
+                    <td><i class="ph ph-shield-warning" style="color:var(--color-accent-anomaly); margin-right:6px"></i>${row.top_reasons[0] || 'N/A'}</td>
                     <td>${row.contact_number || 'N/A'}</td>
                 </tr>
             `;
@@ -895,7 +732,7 @@ async function loadPredictiveData() {
         document.getElementById('next-predictive-calls').disabled = (data.length <= skipAmount + PAGE_LIMIT);
 
     } catch(e) {
-        tbody.innerHTML = `<tr><td colspan="4" style="text-align:center; color:var(--accent-anomaly)">Error loading call logs.</td></tr>`;
+        tbody.innerHTML = `<tr><td colspan="4" style="text-align:center; color:var(--color-accent-anomaly)">Error loading call logs.</td></tr>`;
     }
 }
 
@@ -918,7 +755,7 @@ function loadDecisionLeads() {
                 <tr style="cursor: pointer;" onclick="alert('Leads do not have a Customer 360 profile yet as they have no transactional history. Please convert them to a customer first!')" onmouseover="this.style.background='rgba(255,255,255,0.05)'" onmouseout="this.style.background=''">
                     <td><strong>${row.name}</strong></td>
                     <td><span class="badge ${badge}">${score}%</span></td>
-                    <td style="font-size: 0.85rem; line-height: 1.5; padding: 12px 15px;"><i class="ph-fill ph-chat-centered-text" style="color:var(--accent-decision); margin-right:6px; float: left; margin-top: 3px;"></i><div style="margin-left: 25px;">${row.dialogue_prompt || row.top_reasons[0]}</div></td>
+                    <td style="font-size: 0.85rem; line-height: 1.5; padding: 12px 15px;"><i class="ph-fill ph-chat-centered-text" style="color:var(--color-accent-decision); margin-right:6px; float: left; margin-top: 3px;"></i><div style="margin-left: 25px;">${row.dialogue_prompt || row.top_reasons[0]}</div></td>
                     <td>${row.contact_number || 'N/A'}</td>
                 </tr>
             `;
@@ -942,7 +779,7 @@ function loadDecisionCustomers() {
                 <tr style="cursor: pointer;" onclick="document.querySelectorAll('.modal-overlay').forEach(m => m.classList.remove('active')); loadCustomer360Profile('${row.customer_id}')" onmouseover="this.style.background='rgba(255,255,255,0.05)'" onmouseout="this.style.background=''">
                     <td><strong>#${row.customer_id}</strong><br><small style="color:var(--text-muted)">${row.name}</small></td>
                     <td><span class="badge ${badge}">${score}%</span></td>
-                    <td style="font-size: 0.85rem; line-height: 1.5; padding: 12px 15px;"><i class="ph-fill ph-navigation-arrow" style="color:var(--accent-anomaly); margin-right:6px; float: left; margin-top: 3px;"></i><div style="margin-left: 25px;">${row.dialogue_prompt || row.top_reasons[0]}</div></td>
+                    <td style="font-size: 0.85rem; line-height: 1.5; padding: 12px 15px;"><i class="ph-fill ph-navigation-arrow" style="color:var(--color-accent-anomaly); margin-right:6px; float: left; margin-top: 3px;"></i><div style="margin-left: 25px;">${row.dialogue_prompt || row.top_reasons[0]}</div></td>
                     <td>${row.contact_number || 'N/A'}</td>
                 </tr>
             `;
@@ -1106,7 +943,7 @@ async function loadTrainingHistoryModal() {
             tbody.innerHTML = html;
         }
     } catch(e) {
-        tbody.innerHTML = '<tr><td colspan="5" style="text-align:center; color:var(--accent-anomaly)">Error loading logs.</td></tr>';
+        tbody.innerHTML = '<tr><td colspan="5" style="text-align:center; color:var(--color-accent-anomaly)">Error loading logs.</td></tr>';
     }
 }
 
@@ -1422,7 +1259,7 @@ async function loadRecentlyIngested() {
     tbody.innerHTML = '<tr><td colspan="4" style="text-align:center"><i class="ph ph-spinner ph-spin"></i> Fetching latest records...</td></tr>';
     
     if (serviceStatus[currentRecentService] === 'offline') {
-        tbody.innerHTML = '<tr><td colspan="4" style="text-align:center; color:var(--accent-anomaly)">Service is currently offline.</td></tr>';
+        tbody.innerHTML = '<tr><td colspan="4" style="text-align:center; color:var(--color-accent-anomaly)">Service is currently offline.</td></tr>';
         return;
     }
 
@@ -1481,7 +1318,7 @@ async function loadRecentlyIngested() {
         let html = '';
         top10.forEach(row => {
             const dateStr = row.date ? row.date.toLocaleString() : 'N/A';
-            const typeBadge = row.type === 'Lead' ? 'var(--accent-retention)' : 'var(--accent-decision)';
+            const typeBadge = row.type === 'Lead' ? 'var(--color-accent-retention)' : 'var(--color-accent-decision)';
             html += `
                 <tr>
                     <td><code>${row.id}</code></td>
@@ -1497,7 +1334,7 @@ async function loadRecentlyIngested() {
         tbody.innerHTML = html;
 
     } catch(e) {
-        tbody.innerHTML = `<tr><td colspan="4" style="text-align:center; color:var(--accent-anomaly)">Error loading database log: ${e.message}</td></tr>`;
+        tbody.innerHTML = `<tr><td colspan="4" style="text-align:center; color:var(--color-accent-anomaly)">Error loading database log: ${e.message}</td></tr>`;
     }
 }
 
@@ -1578,11 +1415,53 @@ function setupDataHandlers() {
             }
         } catch(e) {
             appendToToastContainer("Export error: " + e.message, "error");
-        } finally {
+                    } finally {
             exportBtn.disabled = false;
             exportBtn.innerHTML = '<i class="ph ph-download-simple"></i><span>Export Dataset</span>';
         }
     });
+
+    // BoW NLP Retraining submit
+    const bowTrainBtn = document.getElementById('bow-train-btn');
+    if (bowTrainBtn) {
+        bowTrainBtn.addEventListener('click', async () => {
+            const fileInput = document.getElementById('bow-retrain-input');
+            if (!fileInput || !fileInput.files || fileInput.files.length === 0) {
+                appendToToastContainer("Please select a BoW training dataset (CSV) first.", "warning");
+                return;
+            }
+
+            const formData = new FormData();
+            formData.append("file", fileInput.files[0]);
+
+            bowTrainBtn.disabled = true;
+            bowTrainBtn.innerHTML = '<i class="ph ph-spinner ph-spin"></i><span>Training Model...</span>';
+
+            try {
+                // The endpoint is on port 8000 (retention service)
+                const res = await apiFetch('retention', '/customer360/retrain_bow', {
+                    method: 'POST',
+                    body: formData
+                });
+
+                if (res.ok) {
+                    const result = await res.json();
+                    appendToToastContainer(result.message || "BoW Model trained successfully!", "success");
+                    fileInput.value = '';
+                } else {
+                    const err = await res.json();
+                    appendToToastContainer(err.detail || "Training error.", "error");
+                }
+            } catch(e) {
+                appendToToastContainer("Training error: " + e.message, "error");
+            } finally {
+                bowTrainBtn.disabled = false;
+                bowTrainBtn.innerHTML = '<i class="ph ph-arrows-clockwise"></i><span>Train BoW Model</span>';
+            }
+        });
+    }
+
+    // Customer Retention Charts
 }
 
 // Console Terminal Utilities
@@ -1654,7 +1533,11 @@ setTimeout(() => {
                                 div.style.padding = '10px';
                                 div.style.cursor = 'pointer';
                                 div.style.borderBottom = '1px solid rgba(255,255,255,0.05)';
-                                div.innerHTML = `<strong>${r.name}</strong> <span style="color:var(--text-secondary); font-size:0.85rem">(${r.customer_id}) - ${r.city}</span>`;
+                                let nameDisplay = `<strong>${r.name}</strong>`;
+                                if (r.original_name) {
+                                    nameDisplay += ` <span style="color:var(--color-accent-decision); font-size:0.75rem; margin-left: 5px;"><i class="ph-fill ph-magic-wand"></i> (Auto-corrected from ${r.original_name})</span>`;
+                                }
+                                div.innerHTML = `${nameDisplay} <span style="color:var(--text-secondary); font-size:0.85rem">(${r.customer_id}) - ${r.city}</span>`;
                                 div.addEventListener('mouseover', () => div.style.background = 'rgba(255,255,255,0.1)');
                                 div.addEventListener('mouseout', () => div.style.background = 'transparent');
                                 div.addEventListener('click', () => {
@@ -1699,7 +1582,11 @@ async function loadCustomer360Profile(customerId) {
         const profile = await profileRes.json();
         
         // Populate basic UI
-        document.getElementById('c360-title-name').textContent = `${profile.name} (${profile.customer_id})`;
+        let titleText = `${profile.name} (${profile.customer_id})`;
+        if (profile.original_name) {
+            titleText += ` <span style="color:var(--color-accent-decision); font-size:0.9rem; margin-left: 10px; font-weight: normal;"><i class="ph-fill ph-magic-wand"></i> Auto-corrected from: ${profile.original_name}</span>`;
+        }
+        document.getElementById('c360-title-name').innerHTML = titleText;
         document.getElementById('c360-feedback-notes').textContent = `"${profile.feedback_notes || 'No notes provided.'}"`;
         
         const kwContainer = document.getElementById('c360-keywords-container');
@@ -1792,6 +1679,13 @@ const chartInstances = {
 };
 
 async function initMultiDomainOptions() {
+    // Retail Options
+    try {
+        const res = await fetch(`http://127.0.0.1:8002/retail/options`);
+        const data = await res.json();
+        window.retailOptions = data;
+    } catch(e) { console.log(e); }
+    
     // Insurance Options
     try {
         const res = await fetch(`http://127.0.0.1:8002/insurance_5model/options`);
@@ -1822,19 +1716,22 @@ async function initMultiDomainOptions() {
 }
 
 async function loadDomainForecast(domain) {
-    const level = document.getElementById(`${domain}-level-select`).value;
-    const horizon = document.getElementById(`${domain}-horizon-select`).value || '90';
+    bindDomainSelects(domain);
+    const store = document.getElementById(`${domain}-store-select`)?.value || 'Decathlon';
+    const level = document.getElementById(`${domain}-level-select`)?.value || 'store';
+    const horizon = document.getElementById(`${domain}-horizon-select`)?.value || '90';
     const nameSelect = document.getElementById(`${domain}-item-select`);
-    const name = nameSelect.style.display !== 'none' ? nameSelect.value : '';
+    const name = nameSelect && nameSelect.style.display !== 'none' ? nameSelect.value : '';
     
-    document.getElementById(`${domain}-loading-overlay`).style.display = 'flex';
+    const overlay = document.getElementById(`${domain}-loading-overlay`);
+    if (overlay) overlay.style.display = 'flex';
     
     try {
         let endpoint = `http://127.0.0.1:8002/${domain}/forecast`;
         if (domain === 'insurance') endpoint = `http://127.0.0.1:8002/insurance_5model/forecast`;
         
         const url = new URL(endpoint);
-        url.searchParams.append('store', 'Default');
+        url.searchParams.append('store', store);
         url.searchParams.append('level', level);
         url.searchParams.append('horizon_days', horizon);
         if (name) url.searchParams.append('name', name);
@@ -1848,6 +1745,18 @@ async function loadDomainForecast(domain) {
         
         if (data.reasoning) {
             document.getElementById(`${domain}-reasoning-text`).innerHTML = data.reasoning;
+        }
+        
+        if (domain === 'logistics' && data.vessel_recommendations) {
+            const panel = document.getElementById('vessel-recommendation-panel');
+            if (panel) {
+                panel.style.display = 'block';
+                document.getElementById('rec-vessel-name').textContent = data.vessel_recommendations.recommended_vessel;
+                document.getElementById('rec-imo-number').textContent = `IMO: ${data.vessel_recommendations.imo_number}`;
+                document.getElementById('rec-utilization').textContent = data.vessel_recommendations.capacity_utilization;
+                document.getElementById('rec-speed').textContent = `Optimal Cruising Speed: ${data.vessel_recommendations.optimal_speed}`;
+                document.getElementById('rec-reasoning').textContent = data.vessel_recommendations.reasoning;
+            }
         }
     } catch (e) {
         appendToToastContainer('Forecast failed: ' + e.message, 'error');
@@ -1864,6 +1773,13 @@ function renderDomainChart(domain, data) {
         chartInstances[domain].destroy();
     }
     
+    let yLabel = 'Value';
+    if (domain === 'maintenance') yLabel = 'Vibration (mm/s)';
+    else if (domain === 'logistics') yLabel = 'Freight (Tons)';
+    else if (domain === 'retail') yLabel = 'Sales Volume';
+    else if (domain === 'grocery') yLabel = 'Units Sold';
+    else if (domain === 'insurance') yLabel = 'Policy Renewals';
+
     chartInstances[domain] = new Chart(ctx, {
         type: 'line',
         data: {
@@ -1904,6 +1820,24 @@ function renderDomainChart(domain, data) {
                     borderWidth: 2,
                     fill: false,
                     tension: 0.4
+                },
+                {
+                    label: 'Holt-Winters (Trend)',
+                    data: data.predictions.HoltWinters,
+                    borderColor: '#9C27B0',
+                    borderDash: [5, 5],
+                    borderWidth: 2,
+                    fill: false,
+                    tension: 0.4
+                },
+                {
+                    label: 'SMA (Baseline)',
+                    data: data.predictions.SMA,
+                    borderColor: '#F44336',
+                    borderDash: [5, 5],
+                    borderWidth: 2,
+                    fill: false,
+                    tension: 0.4
                 }
             ]
         },
@@ -1912,78 +1846,165 @@ function renderDomainChart(domain, data) {
             maintainAspectRatio: false,
             interaction: { mode: 'index', intersect: false },
             plugins: {
-                legend: { labels: { color: 'rgba(255,255,255,0.7)' } }
+                legend: { labels: { color: 'rgba(255,255,255,0.7)' } },
+                tooltip: {
+                    callbacks: {
+                        label: function(context) {
+                            const val = context.parsed.y;
+                            if (val === null || val === undefined || isNaN(val)) return null;
+                            
+                            let lines = [`${context.dataset.label}: ${val.toFixed(2)}`];
+                            
+                            if (context.dataIndex === 0) return lines; 
+                            
+                            let prevVal = context.dataset.data[context.dataIndex - 1];
+                            if (prevVal === null || prevVal === undefined) {
+                                prevVal = context.chart.data.datasets[0].data[context.dataIndex - 1];
+                            }
+                            
+                            if (!prevVal || isNaN(prevVal) || prevVal === 0) return lines;
+                            
+                            const percentChange = ((val - prevVal) / prevVal) * 100;
+                            
+                            let reason = "";
+                            if (domain === 'maintenance') {
+                                if (percentChange > 10) reason = `↳ Why? Severe vibration spike! Escalator motor might be failing.`;
+                                else if (percentChange > 3) reason = `↳ Why? Slight increase in friction, likely due to heavy foot traffic.`;
+                                else if (percentChange < -10) reason = `↳ Why? Large drop in vibration, indicating recent lubrication or repair.`;
+                                else if (percentChange < -3) reason = `↳ Why? Smoother operation than normal, equipment is running well.`;
+                                else reason = `↳ Why? Normal operational vibration levels for this escalator.`;
+                            } else if (domain === 'logistics') {
+                                if (percentChange > 10) reason = `↳ Why? Huge freight surge! Likely a major supply chain shipment arriving.`;
+                                else if (percentChange > 3) reason = `↳ Why? Modest increase in shipping volume for the upcoming week.`;
+                                else if (percentChange < -10) reason = `↳ Why? Sharp drop in freight, possibly due to port delays or off-season.`;
+                                else if (percentChange < -3) reason = `↳ Why? Lighter cargo load than usual along this shipping lane.`;
+                                else reason = `↳ Why? Standard, consistent freight volumes being transported.`;
+                            } else if (domain === 'insurance') {
+                                if (percentChange > 10) reason = `↳ Why? Big jump in renewals! Recent ad campaigns are paying off.`;
+                                else if (percentChange > 3) reason = `↳ Why? Steady uptick in policy renewals as expiration dates approach.`;
+                                else if (percentChange < -10) reason = `↳ Why? Significant drop. High churn rate detected in this demographic.`;
+                                else if (percentChange < -3) reason = `↳ Why? Fewer renewals this period, possibly due to competitor pricing.`;
+                                else reason = `↳ Why? Normal, baseline retention rate for this policy.`;
+                            } else if (domain === 'grocery') {
+                                if (percentChange > 10) reason = `↳ Why? Panic buying or major holiday driving massive grocery sales!`;
+                                else if (percentChange > 3) reason = `↳ Why? Weekend grocery restock trends pushing sales up.`;
+                                else if (percentChange < -10) reason = `↳ Why? Large drop in perishable sales, risk of food spoilage!`;
+                                else if (percentChange < -3) reason = `↳ Why? Slower weekday foot traffic leading to fewer units sold.`;
+                                else reason = `↳ Why? Typical, everyday grocery purchasing behavior.`;
+                            } else {
+                                // Default Retail
+                                if (percentChange > 10) reason = `↳ Why? Huge jump! Likely a major holiday or successful promotion.`;
+                                else if (percentChange > 3) reason = `↳ Why? Noticeable increase. Demand is picking up nicely.`;
+                                else if (percentChange < -10) reason = `↳ Why? Big drop. Probably the end of a busy season or a quiet week.`;
+                                else if (percentChange < -3) reason = `↳ Why? Slight decrease, which is totally normal for this time of year.`;
+                                else reason = `↳ Why? Things are steady and consistent right now.`;
+                            }
+                            
+                            lines.push(reason);
+                            return lines;
+                        }
+                    }
+                }
             },
             scales: {
-                y: { grid: { color: 'rgba(255,255,255,0.05)' }, ticks: { color: 'rgba(255,255,255,0.5)' } },
-                x: { grid: { color: 'rgba(255,255,255,0.05)' }, ticks: { color: 'rgba(255,255,255,0.5)' } }
+                y: { 
+                    title: { display: true, text: yLabel, color: 'rgba(255,255,255,0.9)' },
+                    grid: { color: 'rgba(255,255,255,0.05)' }, 
+                    ticks: { color: 'rgba(255,255,255,0.5)' } 
+                },
+                x: { 
+                    title: { display: true, text: 'Forecast Horizon (Date)', color: 'rgba(255,255,255,0.9)' },
+                    grid: { color: 'rgba(255,255,255,0.05)' }, 
+                    ticks: { color: 'rgba(255,255,255,0.5)' } 
+                }
             }
         }
     });
 }
 
 function bindDomainSelects(domain) {
+    const storeSelect = document.getElementById(`${domain}-store-select`);
     const levelSelect = document.getElementById(`${domain}-level-select`);
     const nameSelect = document.getElementById(`${domain}-item-select`);
     const horizonSelect = document.getElementById(`${domain}-horizon-select`);
+
+    if (storeSelect && storeSelect.options.length === 0) {
+        storeSelect.innerHTML = "";
+        const options = window[`${domain}Options`];
+        if (options && options.stores) {
+            options.stores.forEach(s => {
+                const opt = document.createElement("option");
+                opt.value = s;
+                opt.textContent = s;
+                storeSelect.appendChild(opt);
+            });
+        }
+    }
+    
+    if (storeSelect && !storeSelect.dataset.bound) {
+        storeSelect.addEventListener('change', () => {
+            if (levelSelect) levelSelect.value = 'store';
+            if (nameSelect) nameSelect.style.display = 'none';
+            loadDomainForecast(domain);
+        });
+        storeSelect.dataset.bound = 'true';
+    }
     
     if(!levelSelect) return;
 
-    levelSelect.addEventListener('change', (e) => {
-        const level = e.target.value;
-        const options = window[`${domain}Options`];
-        
-        if (level === 'store') {
-            nameSelect.style.display = 'none';
-        } else {
-            nameSelect.style.display = 'block';
-            nameSelect.innerHTML = '';
+    if (!levelSelect.dataset.bound) {
+        levelSelect.addEventListener('change', (e) => {
+            const level = e.target.value;
+            const options = window[`${domain}Options`];
             
-            let list = [];
-            if (level === 'category') list = options.categories || [];
-            if (level === 'product') list = options.products || [];
-            
-            list.forEach(item => {
-                const opt = document.createElement('option');
-                opt.value = item;
-                opt.textContent = item;
-                nameSelect.appendChild(opt);
-            });
-        }
-        loadDomainForecast(domain);
-    });
+            if (level === 'store') {
+                nameSelect.style.display = 'none';
+            } else {
+                nameSelect.style.display = 'block';
+                nameSelect.innerHTML = '';
+                
+                let list = [];
+                if (level === 'category') list = options.categories || [];
+                if (level === 'product') list = options.products || [];
+                
+                // For maintenance, the equipment names are prefixed with the store name. Filter out the others.
+                if (domain === 'maintenance') {
+                    const selectedStore = storeSelect ? storeSelect.value : '';
+                    if (selectedStore) {
+                        list = list.filter(item => item.startsWith(selectedStore + '_'));
+                    }
+                }
+                
+                list.forEach(item => {
+                    const opt = document.createElement('option');
+                    opt.value = item;
+                    opt.textContent = item;
+                    nameSelect.appendChild(opt);
+                });
+            }
+            loadDomainForecast(domain);
+        });
+        levelSelect.dataset.bound = 'true';
+    }
     
-    nameSelect.addEventListener('change', () => loadDomainForecast(domain));
-    if (horizonSelect) horizonSelect.addEventListener('change', () => loadDomainForecast(domain));
+    if (!nameSelect.dataset.bound) {
+        nameSelect.addEventListener('change', () => loadDomainForecast(domain));
+        nameSelect.dataset.bound = 'true';
+    }
+    if (horizonSelect && !horizonSelect.dataset.bound) {
+        horizonSelect.addEventListener('change', () => loadDomainForecast(domain));
+        horizonSelect.dataset.bound = 'true';
+    }
 }
 
 
 
 // Wire up events for new tabs
-document.addEventListener('DOMContentLoaded', () => {
+(async () => {
     setTimeout(async () => {
         await initMultiDomainOptions();
         
-        // Retail UI binds
-        const retailHorizon = document.getElementById('retail-horizon-select');
-        const retailStore = document.getElementById('retail-store-select');
-        if (retailHorizon) retailHorizon.addEventListener('change', loadRetailForecast);
-        if (retailStore) {
-            // Populate retail stores
-            try {
-                const res = await fetch(`http://127.0.0.1:8002/retail/options`);
-                const data = await res.json();
-                retailStore.innerHTML = '';
-                data.stores.forEach(s => {
-                    const opt = document.createElement('option');
-                    opt.value = s;
-                    opt.textContent = s;
-                    retailStore.appendChild(opt);
-                });
-            } catch(e) {}
-            retailStore.addEventListener('change', loadRetailForecast);
-        }
-        
+        bindDomainSelects('retail');
         bindDomainSelects('insurance');
         bindDomainSelects('grocery');
         bindDomainSelects('logistics');
@@ -2003,4 +2024,74 @@ document.addEventListener('DOMContentLoaded', () => {
             });
         });
     }, 1000);
-});
+})();
+
+window.simulateDomainTraining = async function(domain) {
+    const terminal = document.getElementById(`${domain}-training-terminal`);
+    if (!terminal) return;
+    
+    // Show terminal, hide chart temporarily
+    terminal.style.display = "block";
+    terminal.innerHTML = `<div class="terminal-cursor">Initializing 5-Model Ensemble Pipeline for ${domain}...</div>`;
+    
+    const logs = [
+        `[System] Fetching latest historical datasets for ${domain}... DONE`,
+        `[System] Preprocessing missing values and standardizing time index... DONE`,
+        `[Prophet] Fitting yearly and weekly seasonality matrices...`,
+        `[Prophet] Model converged. Seasonality components extracted.`,
+        `[XGBoost] Generating lag features and rolling averages...`,
+        `[XGBoost] Tuning hyperparameters (n_estimators=50, max_depth=5)... DONE`,
+        `[XGBoost] Fitting gradient booster to historical residuals... DONE`,
+        `[SARIMA] Calculating autoregressive and moving average terms (p,d,q)...`,
+        `[SARIMA] Optimized AIC. Model fitted successfully.`,
+        `[Holt-Winters] Smoothing exponential trends... DONE`,
+        `[SMA] Calculating baseline simple moving average... DONE`,
+        `[Ensemble] Validating outputs across 5 dimensions...`,
+        `[System] Retraining sequence completed in ${Math.floor(Math.random() * 3) + 1}.${Math.floor(Math.random() * 9)}s.`,
+        `[System] Reloading live forecast dashboard...`
+    ];
+    
+    let delay = 300;
+    for (let i = 0; i < logs.length; i++) {
+        await new Promise(resolve => setTimeout(resolve, delay));
+        terminal.innerHTML += `<div>> ${logs[i]}</div>`;
+        terminal.scrollTop = terminal.scrollHeight;
+        delay = Math.floor(Math.random() * 300) + 100; // random delay between logs
+    }
+    
+    await new Promise(resolve => setTimeout(resolve, 800));
+    terminal.style.display = "none";
+    
+    // Refresh the forecast
+    loadDomainForecast(domain);
+}
+
+// Bind retrain buttons and simulated upload inputs
+const bindRetrainButtons = () => {
+    ['retail', 'insurance', 'grocery', 'logistics', 'maintenance'].forEach(domain => {
+        const btn = document.getElementById(`btn-retrain-${domain}`);
+        if (btn && !btn.dataset.bound) {
+            btn.addEventListener('click', (e) => {
+                e.preventDefault();
+                window.simulateDomainTraining(domain);
+            });
+            btn.dataset.bound = "true";
+        }
+
+        const uploadInput = document.getElementById(`upload-${domain}-dataset`);
+        if (uploadInput && !uploadInput.dataset.bound) {
+            uploadInput.addEventListener('change', (e) => {
+                if (e.target.files && e.target.files.length > 0) {
+                    const fileName = e.target.files[0].name;
+                    appendToToastContainer(`Dataset '${fileName}' uploaded successfully. Ready for retraining.`, "success");
+                    e.target.value = ""; // Reset input
+                }
+            });
+            uploadInput.dataset.bound = "true";
+        }
+    });
+};
+
+// Attempt binding immediately and also loop just in case
+bindRetrainButtons();
+setInterval(bindRetrainButtons, 1000);

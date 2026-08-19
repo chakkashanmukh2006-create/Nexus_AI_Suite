@@ -13,8 +13,8 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Insure AI - Enterprise Ecosystem",
-  description: "Enterprise Ecosystem Master Hub",
+  title: "Nexus AI Suite - Multi-Industry Platform",
+  description: "Multi-Industry Predictive Intelligence Platform",
 };
 
 export default function RootLayout({

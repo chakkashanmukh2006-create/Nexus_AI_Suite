@@ -112,12 +112,20 @@ try:
     from app.api.call_logs_router import router as call_logs_router
     from app.api.forecast_router import router as forecast_router
     from app.api.retail_forecast_router import router as retail_forecast_router
+    from app.api.insurance_5model_router import router as insurance_5model_router
+    from app.api.grocery_forecast_router import router as grocery_forecast_router
+    from app.api.logistics_forecast_router import router as logistics_forecast_router
+    from app.api.maintenance_router import router as maintenance_router
 
     app.include_router(prediction_router, prefix="", tags=["Predictions"])
     app.include_router(dashboard_router, prefix="", tags=["Dashboard"])
     app.include_router(call_logs_router, prefix="", tags=["Call Logs"])
     app.include_router(forecast_router, prefix="", tags=["Demand Forecasting"])
     app.include_router(retail_forecast_router, tags=["Retail Forecasting"])
+    app.include_router(insurance_5model_router, tags=["Insurance 5-Model Forecasting"])
+    app.include_router(grocery_forecast_router, tags=["Grocery Forecasting"])
+    app.include_router(logistics_forecast_router, tags=["Logistics Forecasting"])
+    app.include_router(maintenance_router, tags=["Predictive Maintenance"])
     
     logger.info("✅ Prediction, Dashboard, and Call Logs routers loaded.")
 except ImportError:

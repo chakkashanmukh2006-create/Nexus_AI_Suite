@@ -281,11 +281,20 @@ function loadActiveTab() {
         case 'data-tab':
             loadRecentlyIngested();
             break;
-        case 'demand-forecast-tab':
-            loadDemandForecastData();
+        case 'insurance-forecast-tab':
+            loadDomainForecast('insurance');
             break;
         case 'retail-forecast-tab':
-            loadRetailForecast();
+            loadDomainForecast('retail');
+            break;
+        case 'grocery-forecast-tab':
+            loadDomainForecast('grocery');
+            break;
+        case 'logistics-forecast-tab':
+            loadDomainForecast('logistics');
+            break;
+        case 'maintenance-tab':
+            loadDomainForecast('maintenance');
             break;
     }
 }
@@ -373,178 +382,6 @@ async function loadDemandForecastData() {
     }
 }
 
-let retailChartInstance = null;
-let retailOptions = { categories: [], products: [] };
-
-async function initRetailOptions() {
-    if (retailOptions.categories.length > 0) return; // Already loaded
-    try {
-        const res = await apiFetch('predictive', '/retail/options');
-        if (res.ok) {
-            retailOptions = await res.json();
-        }
-    } catch (e) {
-        console.error("Failed to fetch retail options", e);
-    }
-}
-
-document.getElementById('retail-level-select')?.addEventListener('change', (e) => {
-    const level = e.target.value;
-    const itemSelect = document.getElementById('retail-item-select');
-    
-    if (level === 'store') {
-        itemSelect.style.display = 'none';
-        loadRetailForecast();
-    } else {
-        itemSelect.style.display = 'block';
-        itemSelect.innerHTML = '';
-        const list = level === 'category' ? retailOptions.categories : retailOptions.products;
-        list.forEach(item => {
-            const opt = document.createElement('option');
-            opt.value = item;
-            opt.textContent = item;
-            itemSelect.appendChild(opt);
-        });
-        loadRetailForecast();
-    }
-});
-
-document.getElementById('retail-item-select')?.addEventListener('change', () => {
-    loadRetailForecast();
-});
-
-async function loadRetailForecast() {
-    if (serviceStatus.predictive === "offline") {
-        appendToToastContainer("Predictive Intelligence (Port 8002) is offline. Cannot generate retail forecast.", "error");
-        return;
-    }
-    
-    await initRetailOptions();
-    
-    const level = document.getElementById("retail-level-select")?.value || "store";
-    const store = document.getElementById("retail-store-select")?.value || "Decathlon";
-    const horizon = document.getElementById("retail-horizon-select")?.value || "30";
-    const name = document.getElementById("retail-item-select")?.value || "";
-    
-    let endpoint = `/retail/forecast?store=${encodeURIComponent(store)}&horizon_days=${horizon}&level=${level}`;
-    if (level !== "store" && name) {
-        endpoint += `&name=${encodeURIComponent(name)}`;
-    }
-    
-    try {
-        const overlay = document.getElementById("retail-loading-overlay");
-        if (overlay) overlay.style.display = "flex";
-        
-        const res = await apiFetch("predictive", endpoint);
-        if (res.ok) {
-            const data = await res.json();
-            
-            if (overlay) overlay.style.display = "none";
-            
-            if (data.error) {
-                appendToToastContainer(data.error, "error");
-                return;
-            }
-            
-            const ctx = document.getElementById("retailForecastChart");
-            if (!ctx) return;
-            
-            if (retailChartInstance) {
-                retailChartInstance.destroy();
-            }
-            
-            // Map the history line (solid)
-            const historicalData = data.history.map((val, i) => val);
-            
-            retailChartInstance = new Chart(ctx, {
-                type: "line",
-                data: {
-                    labels: data.dates,
-                    datasets: [
-                        {
-                            label: "Historical Data",
-                            data: historicalData,
-                            borderColor: "rgba(255, 255, 255, 0.8)",
-                            borderWidth: 2,
-                            fill: false,
-                            tension: 0.1,
-                            pointRadius: 0
-                        },
-                        {
-                            label: "Prophet (Seasonality)",
-                            data: data.predictions.Prophet,
-                            borderColor: "#2196F3",
-                            borderDash: [5, 5],
-                            borderWidth: 2,
-                            fill: false,
-                            tension: 0.4
-                        },
-                        {
-                            label: "XGBoost (Momentum)",
-                            data: data.predictions.XGBoost,
-                            borderColor: "#4CAF50",
-                            borderDash: [5, 5],
-                            borderWidth: 2,
-                            fill: false,
-                            tension: 0.4
-                        },
-                        {
-                            label: "SARIMA (Autoregression)",
-                            data: data.predictions.SARIMA,
-                            borderColor: "#FF9800",
-                            borderDash: [5, 5],
-                            borderWidth: 2,
-                            fill: false,
-                            tension: 0.4
-                        },
-                        {
-                            label: "Holt-Winters (Trend)",
-                            data: data.predictions.HoltWinters,
-                            borderColor: "#9C27B0",
-                            borderDash: [2, 2],
-                            borderWidth: 2,
-                            fill: false,
-                            tension: 0.4
-                        },
-                        {
-                            label: "SMA (Baseline)",
-                            data: data.predictions.SMA,
-                            borderColor: "#F44336",
-                            borderDash: [10, 5],
-                            borderWidth: 2,
-                            fill: false,
-                            tension: 0.4
-                        }
-                    ]
-                },
-                options: {
-                    responsive: true,
-                    maintainAspectRatio: false,
-                    interaction: { mode: "index", intersect: false },
-                    plugins: { legend: { labels: { color: "rgba(255, 255, 255, 0.7)" } } },
-                    scales: {
-                        y: { grid: { color: "rgba(255, 255, 255, 0.05)" }, ticks: { color: "rgba(255, 255, 255, 0.5)" } },
-                        x: { grid: { color: "rgba(255, 255, 255, 0.05)" }, ticks: { color: "rgba(255, 255, 255, 0.5)" } }
-                    }
-                }
-            });
-            
-            if (data.reasoning) {
-                const rsNode = document.getElementById("retail-reasoning-text");
-                if (rsNode) rsNode.innerHTML = data.reasoning;
-            }
-            
-        } else {
-            console.error("Failed to load retail forecast", res.status);
-            if (overlay) overlay.style.display = "none";
-        }
-    } catch (error) {
-        console.error("Error fetching retail forecast:", error);
-        appendToToastContainer("Error loading forecast.", "error");
-        const overlay = document.getElementById("retail-loading-overlay");
-        if (overlay) overlay.style.display = "none";
-    }
-}
 // Load Row Counts dynamically from all backends (confirming data uploads)
 async function loadOverviewCounts() {
     const fetchDashboardStats = async (key) => {
@@ -1792,6 +1629,13 @@ const chartInstances = {
 };
 
 async function initMultiDomainOptions() {
+    // Retail Options
+    try {
+        const res = await fetch(`http://127.0.0.1:8002/retail/options`);
+        const data = await res.json();
+        window.retailOptions = data;
+    } catch(e) { console.log(e); }
+    
     // Insurance Options
     try {
         const res = await fetch(`http://127.0.0.1:8002/insurance_5model/options`);
@@ -1822,19 +1666,22 @@ async function initMultiDomainOptions() {
 }
 
 async function loadDomainForecast(domain) {
-    const level = document.getElementById(`${domain}-level-select`).value;
-    const horizon = document.getElementById(`${domain}-horizon-select`).value || '90';
+    bindDomainSelects(domain);
+    const store = document.getElementById(`${domain}-store-select`)?.value || 'Decathlon';
+    const level = document.getElementById(`${domain}-level-select`)?.value || 'store';
+    const horizon = document.getElementById(`${domain}-horizon-select`)?.value || '90';
     const nameSelect = document.getElementById(`${domain}-item-select`);
-    const name = nameSelect.style.display !== 'none' ? nameSelect.value : '';
+    const name = nameSelect && nameSelect.style.display !== 'none' ? nameSelect.value : '';
     
-    document.getElementById(`${domain}-loading-overlay`).style.display = 'flex';
+    const overlay = document.getElementById(`${domain}-loading-overlay`);
+    if (overlay) overlay.style.display = 'flex';
     
     try {
         let endpoint = `http://127.0.0.1:8002/${domain}/forecast`;
         if (domain === 'insurance') endpoint = `http://127.0.0.1:8002/insurance_5model/forecast`;
         
         const url = new URL(endpoint);
-        url.searchParams.append('store', 'Default');
+        url.searchParams.append('store', store);
         url.searchParams.append('level', level);
         url.searchParams.append('horizon_days', horizon);
         if (name) url.searchParams.append('name', name);
@@ -1904,6 +1751,24 @@ function renderDomainChart(domain, data) {
                     borderWidth: 2,
                     fill: false,
                     tension: 0.4
+                },
+                {
+                    label: 'Holt-Winters (Trend)',
+                    data: data.predictions.HoltWinters,
+                    borderColor: '#9C27B0',
+                    borderDash: [5, 5],
+                    borderWidth: 2,
+                    fill: false,
+                    tension: 0.4
+                },
+                {
+                    label: 'SMA (Baseline)',
+                    data: data.predictions.SMA,
+                    borderColor: '#F44336',
+                    borderDash: [5, 5],
+                    borderWidth: 2,
+                    fill: false,
+                    tension: 0.4
                 }
             ]
         },
@@ -1923,67 +1788,88 @@ function renderDomainChart(domain, data) {
 }
 
 function bindDomainSelects(domain) {
+    const storeSelect = document.getElementById(`${domain}-store-select`);
     const levelSelect = document.getElementById(`${domain}-level-select`);
     const nameSelect = document.getElementById(`${domain}-item-select`);
     const horizonSelect = document.getElementById(`${domain}-horizon-select`);
+
+    if (storeSelect && storeSelect.options.length === 0) {
+        storeSelect.innerHTML = "";
+        const options = window[`${domain}Options`];
+        if (options && options.stores) {
+            options.stores.forEach(s => {
+                const opt = document.createElement("option");
+                opt.value = s;
+                opt.textContent = s;
+                storeSelect.appendChild(opt);
+            });
+        }
+    }
+    
+    if (storeSelect && !storeSelect.dataset.bound) {
+        storeSelect.addEventListener('change', () => {
+            if (levelSelect) levelSelect.value = 'store';
+            if (nameSelect) nameSelect.style.display = 'none';
+            loadDomainForecast(domain);
+        });
+        storeSelect.dataset.bound = 'true';
+    }
     
     if(!levelSelect) return;
 
-    levelSelect.addEventListener('change', (e) => {
-        const level = e.target.value;
-        const options = window[`${domain}Options`];
-        
-        if (level === 'store') {
-            nameSelect.style.display = 'none';
-        } else {
-            nameSelect.style.display = 'block';
-            nameSelect.innerHTML = '';
+    if (!levelSelect.dataset.bound) {
+        levelSelect.addEventListener('change', (e) => {
+            const level = e.target.value;
+            const options = window[`${domain}Options`];
             
-            let list = [];
-            if (level === 'category') list = options.categories || [];
-            if (level === 'product') list = options.products || [];
-            
-            list.forEach(item => {
-                const opt = document.createElement('option');
-                opt.value = item;
-                opt.textContent = item;
-                nameSelect.appendChild(opt);
-            });
-        }
-        loadDomainForecast(domain);
-    });
+            if (level === 'store') {
+                nameSelect.style.display = 'none';
+            } else {
+                nameSelect.style.display = 'block';
+                nameSelect.innerHTML = '';
+                
+                let list = [];
+                if (level === 'category') list = options.categories || [];
+                if (level === 'product') list = options.products || [];
+                
+                // For maintenance, the equipment names are prefixed with the store name. Filter out the others.
+                if (domain === 'maintenance') {
+                    const selectedStore = storeSelect ? storeSelect.value : '';
+                    if (selectedStore) {
+                        list = list.filter(item => item.startsWith(selectedStore + '_'));
+                    }
+                }
+                
+                list.forEach(item => {
+                    const opt = document.createElement('option');
+                    opt.value = item;
+                    opt.textContent = item;
+                    nameSelect.appendChild(opt);
+                });
+            }
+            loadDomainForecast(domain);
+        });
+        levelSelect.dataset.bound = 'true';
+    }
     
-    nameSelect.addEventListener('change', () => loadDomainForecast(domain));
-    if (horizonSelect) horizonSelect.addEventListener('change', () => loadDomainForecast(domain));
+    if (!nameSelect.dataset.bound) {
+        nameSelect.addEventListener('change', () => loadDomainForecast(domain));
+        nameSelect.dataset.bound = 'true';
+    }
+    if (horizonSelect && !horizonSelect.dataset.bound) {
+        horizonSelect.addEventListener('change', () => loadDomainForecast(domain));
+        horizonSelect.dataset.bound = 'true';
+    }
 }
 
 
 
 // Wire up events for new tabs
-document.addEventListener('DOMContentLoaded', () => {
+(async () => {
     setTimeout(async () => {
         await initMultiDomainOptions();
         
-        // Retail UI binds
-        const retailHorizon = document.getElementById('retail-horizon-select');
-        const retailStore = document.getElementById('retail-store-select');
-        if (retailHorizon) retailHorizon.addEventListener('change', loadRetailForecast);
-        if (retailStore) {
-            // Populate retail stores
-            try {
-                const res = await fetch(`http://127.0.0.1:8002/retail/options`);
-                const data = await res.json();
-                retailStore.innerHTML = '';
-                data.stores.forEach(s => {
-                    const opt = document.createElement('option');
-                    opt.value = s;
-                    opt.textContent = s;
-                    retailStore.appendChild(opt);
-                });
-            } catch(e) {}
-            retailStore.addEventListener('change', loadRetailForecast);
-        }
-        
+        bindDomainSelects('retail');
         bindDomainSelects('insurance');
         bindDomainSelects('grocery');
         bindDomainSelects('logistics');
@@ -2003,4 +1889,4 @@ document.addEventListener('DOMContentLoaded', () => {
             });
         });
     }, 1000);
-});
+})();
