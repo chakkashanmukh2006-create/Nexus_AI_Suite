@@ -24,6 +24,6 @@ RUN pip install --no-cache-dir -r /app/1_Customer_Retention/requirements.txt \
 COPY start_services.sh /app/start_services.sh
 RUN chmod +x /app/start_services.sh
 
-EXPOSE 8000 8001 8002 8003
+EXPOSE 8020 8021 8022 8023
 
 CMD ["/app/start_services.sh"]

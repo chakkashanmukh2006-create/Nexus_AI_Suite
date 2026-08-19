@@ -31,7 +31,7 @@ services:
     environment:
       DATABASE_URL: postgresql://${POSTGRES_USER:-postgres}:${POSTGRES_PASSWORD:-postgres}@db:5432/${POSTGRES_DB:-insurance_ai_db}
     ports:
-      - "8003:8000"
+      - "8023:8023"
     volumes:
       - ./trained_models:/app/trained_models
       - ./uploads:/app/uploads

@@ -25,7 +25,7 @@ COPY . .
 RUN mkdir -p trained_models uploads datasets training_history
 
 # Expose port
-EXPOSE 8000
+EXPOSE 8022
 
 # Run the application
-CMD ["uvicorn", "app.main:app", "--host", "0.0.0.0", "--port", "8000"]
+CMD ["uvicorn", "app.main:app", "--host", "0.0.0.0", "--port", "8022"]

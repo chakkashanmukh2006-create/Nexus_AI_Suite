@@ -1,0 +1,42 @@
+ml.api.sixsides.ai
+
+docker build -t sixsides-ml-be:latest .
+
+docker buildx build \
+  --platform linux/amd64 \
+  -t ghcr.io/mukhilan23elangovan/sixsides-ml-be:latest \
+  --push .
+
+docker pull ghcr.io/mukhilan23elangovan/sixsides-ml-be:latest
+
+docker rm -f sixsides-ml-be || true && docker run -d \
+  --name sixsides-ml-be \
+  -p 8020:8020 \
+  -p 8021:8021 \
+  -p 8022:8022 \
+  -p 8023:8023 \
+  --restart always \
+  ghcr.io/mukhilan23elangovan/sixsides-ml-be:latest
+
+# ---
+# The frontend (ml.sixsides.ai) is served over HTTPS, so it can't call the
+# backend over plain http://89.117.23.92:8020-8023 (mixed content). The
+# backend is fronted by Caddy at ml.api.sixsides.ai (under the *.api.sixsides.ai
+# wildcard, real Let's Encrypt cert, already live) via this Caddyfile block:
+#
+# ml.api.sixsides.ai {
+#     handle_path /retention/* {
+#         reverse_proxy localhost:8020
+#     }
+#     handle_path /anomaly/* {
+#         reverse_proxy localhost:8021
+#     }
+#     handle_path /predictive/* {
+#         reverse_proxy localhost:8022
+#     }
+#     handle_path /decision/* {
+#         reverse_proxy localhost:8023
+#     }
+# }
+#
+# ml-sixsides-fe/.env.production points at https://ml.api.sixsides.ai/{service}.

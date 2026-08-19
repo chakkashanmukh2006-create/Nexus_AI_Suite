@@ -38,7 +38,7 @@ class Settings(BaseSettings):
 
     # App
     APP_HOST: str = "0.0.0.0"
-    APP_PORT: int = 8000
+    APP_PORT: int = 8023
     DEBUG: bool = False
 
 
