@@ -1,0 +1,17 @@
+FROM python:3.10-slim
+
+WORKDIR /app
+
+# Install system dependencies for ML libraries (if any are needed)
+RUN apt-get update && apt-get install -y build-essential curl && rm -rf /var/lib/apt/lists/*
+
+# Assuming there is a requirements.txt at the root for backend dependencies.
+# If not, we install common ones.
+# In this workspace, each folder has a venv, but let's install the major ones globally.
+RUN pip install --no-cache-dir fastapi uvicorn pandas numpy scikit-learn pydantic spacy nltk python-multipart
+
+# Copy the entire backend workspace (all 4 modules + datasets)
+COPY . /app/
+
+# The CMD will be overridden in docker-compose for each specific microservice
+CMD ["uvicorn", "--host", "0.0.0.0", "--port", "8000"]
