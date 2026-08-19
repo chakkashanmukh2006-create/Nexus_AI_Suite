@@ -1,101 +1,64 @@
-# Insure AI Enterprise Ecosystem Dashboard
+# Nexus AI Suite
 
-A premium, unified single-page application (SPA) managing four distinct AI and rule-based subsystems for insurance analysis, predictive forecasting, anomaly detection, and automated decision orchestration.
+> **Multi-Industry Predictive Intelligence Platform**
 
----
+Nexus AI Suite is an advanced, context-aware multi-model AI engine designed to scale across diverse industries including Retail, Grocery, Logistics, Maintenance, and Insurance. It replaces generic dashboards with a high-end, asymmetrical "Neural Command Center" powered by real-time machine learning backends.
 
-## 📊 Architecture & Subsystems
+## 🌟 Core Modules
 
-The ecosystem runs on a **FastAPI backend grid** serving four modules on local loopback ports, connected to a glassmorphic **Main Hub SPA** frontend:
+1. **Customer 360 & Retention Engine (Port 8000)**
+   - *Predictive churn modeling and 360-degree customer profile generation.*
+   - Features automated "Bag of Words" name-correction and fuzzy matching for data integrity.
+   - **Tech:** FastAPI, Next.js, Fuzzy Matching, Scikit-Learn
 
-### 1. Customer Retention (Port 8000)
-*   **Database**: PostgreSQL
-*   **Engine**: XGBoost Machine Learning Classifier
-*   **Features**: Propensity scoring, customer churn predictions, SHAP feature importance overlays, paginated directories (All Leads, All Customers), and real-time training progress logs.
+2. **Logistics & Anomaly Detection (Port 8001)**
+   - *Real-time isolation forest algorithms detecting supply chain deviations.*
+   - Instantly highlights logistical anomalies in high-throughput environments.
+   - **Tech:** Isolation Forests, FastAPI
 
-### 2. Anomaly Detection (Port 8001)
-*   **Database**: SQLite (`anomaly.db`)
-*   **Engine**: Isolation Forest Classifier
-*   **Features**: Automatically scores and flags anomalies, highlights claims outliers, and identifies potentially fraudulent profiles.
+3. **Predictive Maintenance (Port 8002)**
+   - *Neural networks forecasting equipment degradation and system failures.*
+   - Monitors physical assets to prevent catastrophic downtime.
+   - **Tech:** LSTM Neural Networks, Sensor Data Simulation
 
-### 3. Predictive Intelligence (Port 8002)
-*   **Database**: SQLite (`predictive.db`)
-*   **Engine**: FB Prophet Time-Series Regression & XGBoost
-*   **Features**: 
-    * **Insurance Demand Forecasting:** Analyzes historical agent-customer interaction call logs to forecast future daily policy conversions.
-    * **Retail Demand Forecasting (Kaggle Integration):** Powered by the authentic Kaggle Superstore Sales dataset. Features hierarchical forecasting (Total Store, Category, Product) with weekly resampling. Dynamically trains 5 models (Prophet, XGBoost, SARIMA, Holt-Winters, SMA) in real-time to compare predictions over a 12-week horizon, demonstrating cross-domain AI capabilities.
+4. **Automated Decision Engine (Port 8003)**
+   - *Claims processing and risk assessment automation using gradient boosting models.*
+   - Instantly approves, rejects, or flags complex claims based on historical patterns.
+   - **Tech:** XGBoost, Natural Language Processing (NLP)
 
-### 4. Decision Engine (Port 8003)
-*   **Database**: SQLite (`decision.db`)
-*   **Engine**: Rule-Based Action Compiler
-*   **Features**: Synthesizes customer risks and metrics to generate automated contact recommendations and custom script dialogue advice for insurance agents.
+## 🚀 Architecture
 
----
+- **Frontend:** Built on Next.js 15, utilizing a custom Tailwind CSS v4 design system. The UI features a state-of-the-art "Neural Command Center" aesthetic with glassmorphism, dynamic data tickers, and cybernetic accents.
+- **Backend:** A distributed microservice architecture featuring multiple FastAPI servers processing distinct machine learning workloads independently.
 
-## 🌍 5. Cross-Domain Demand Forecasting
+## 🛠️ Getting Started
 
-Demand Forecasting is not just for predicting insurance policies—it is a universal AI capability that can be implemented across multiple industries to optimize supply chains and inventory. To demonstrate this flexibility, the ecosystem includes a dedicated **Demand Forecasting module** that operates across two distinct domains:
+### 1. Launch the Backends
+Each module runs on an independent FastAPI server. From the root directory, start the servers in separate terminal windows:
+```bash
+# Customer Retention
+cd 1_Customer_Retention && ./venv/bin/uvicorn app.api.customer360_router:app --port 8000 --reload
 
-### Domain 1: Insurance (Customer-Centric)
-*   **Use Case:** Predicting how many customers will convert/buy policies on a daily basis.
-*   **Implementation:** Analyzes historical agent call logs, marketing spend, and seasonal trends to allocate agents and resources effectively.
+# Anomaly Detection
+cd 2_Anomaly_Detection && ./venv/bin/uvicorn app.api.logistics_forecast_router:app --port 8001 --reload
 
-### Domain 2: Retail & Supply Chain (Kaggle Integration)
-*   **Use Case:** Predicting physical inventory demand (how many items will be sold).
-*   **Implementation:** Powered by the **Real Kaggle Superstore Sales dataset**. The engine dynamically filters 4 years of real transactional data into weekly buckets and races 5 different algorithms (Prophet, XGBoost, SARIMA, Holt-Winters, SMA) to predict the next 12 weeks of sales.
-*   **Hierarchical Forecasting:** Users can dynamically slice the data and train the AI models at 3 different levels of granularity:
-    1.  **Total Store:** Aggregate volume for the entire company.
-    2.  **Product Category:** High-level department demand (e.g., Furniture vs. Technology).
-    3.  **Individual Product:** Granular, item-level predictions (e.g., predicting exactly how many "Global Push Pins" will sell next week).
+# Predictive Maintenance
+cd 3_Predictive_Intelligence && ./venv/bin/uvicorn app.api.maintenance_router:app --port 8002 --reload
 
-*By utilizing a flexible API, this same forecasting architecture could easily be expanded to Healthcare (predicting patient admissions) or Energy (predicting grid load).*
+# Decision Engine
+cd 4_Decision_Making && ./venv/bin/uvicorn app.api.insurance_5model_router:app --port 8003 --reload
+```
 
----
-
-## 🚀 Getting Started
-
-### Prerequisites
-*   Python 3.10+
-*   PostgreSQL running locally (for Customer Retention)
-
-### 1. Start the Subsystem Backends
-For each of the four subsystem folders (`1_Customer_Retention`, `2_Anomaly_Detection`, `3_Predictive_Intelligence`, `4_Decision_Making`):
-1.  Navigate into the folder.
-2.  Activate the virtual environment:
-    ```bash
-    source venv/bin/activate
-    ```
-3.  Start the FastAPI server on its designated port:
-    *   **Retention**: `uvicorn app.main:app --port 8000 --reload`
-    *   **Anomaly**: `uvicorn app.main:app --port 8001 --reload`
-    *   **Predictive**: `uvicorn app.main:app --port 8002 --reload`
-    *   **Decision**: `uvicorn app.main:app --port 8003 --reload`
-
-### 2. Launch the Frontend (Next.js)
-The ecosystem now runs on a modern React/Next.js frontend.
-Navigate to the `frontend` directory:
+### 2. Launch the Neural Command Center Frontend
 ```bash
 cd frontend
 npm install
 npm run dev
 ```
-Open **[http://localhost:3000](http://localhost:3000)** in Google Chrome.
+Open [http://localhost:3000](http://localhost:3000) in your browser.
 
-*(Note: The legacy vanilla JS app is still preserved in the `Main_Hub` folder but is no longer the primary interface).*
+## 🧠 Retraining Module
+Nexus AI features an active learning loop. You can navigate to the "Model Tuning" tab in the UI to upload correction datasets (e.g., misspelled names) and dynamically retrain the Customer 360 extraction model without bringing the servers down.
 
 ---
-
-## 🧪 Testing with Kaggle Datasets
-
-The repository includes pre-downloaded, cleaned Kaggle datasets in the root directory for immediate bulk testing:
-
-*   **`kaggle_telco_churn.csv`** (7,045 records): Perfect for testing **Customer Retention [Port 8000]**.
-*   **`churn_modelling.csv`** (10,000 records): Perfect for testing **Anomaly Detection [Port 8001]**.
-*   **`bank_churn.csv`** (11,162 records): Perfect for testing **Predictive Intelligence [Port 8002]** or **Decision Engine [Port 8003]**.
-
-### Recommended Testing Loop:
-1.  Go to **Ecosystem Data Center** tab.
-2.  Choose your target subsystem, upload one of the corresponding CSV files, and click **Upload Dataset**.
-3.  Go back to the Hub landing page—the counts on the cards will update **instantly**.
-4.  Open the **Ecosystem Retrain Console**, select the target port, and click **Retrain Model**.
-5.  Open the subsystem's tab to review the updated predictions, charts, and dialogues.
+*Developed as a next-generation Enterprise AI Ecosystem.*
