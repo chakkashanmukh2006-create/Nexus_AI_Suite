@@ -37,16 +37,16 @@ Nexus AI Suite is an advanced, context-aware multi-model AI engine designed to s
 Each module runs on an independent FastAPI server. From the root directory, start the servers in separate terminal windows:
 ```bash
 # Customer Retention
-cd 1_Customer_Retention && ./venv/bin/uvicorn app.api.customer360_router:app --port 8000 --reload
+cd 1_Customer_Retention && ./venv/bin/uvicorn app.main:app --port 8000 --reload
 
 # Anomaly Detection
-cd 2_Anomaly_Detection && ./venv/bin/uvicorn app.api.logistics_forecast_router:app --port 8001 --reload
+cd 2_Anomaly_Detection && ./venv/bin/uvicorn app.main:app --port 8001 --reload
 
 # Predictive Maintenance
-cd 3_Predictive_Intelligence && ./venv/bin/uvicorn app.api.maintenance_router:app --port 8002 --reload
+cd 3_Predictive_Intelligence && ./venv/bin/uvicorn app.main:app --port 8002 --reload
 
 # Decision Engine
-cd 4_Decision_Making && ./venv/bin/uvicorn app.api.insurance_5model_router:app --port 8003 --reload
+cd 4_Decision_Making && ./venv/bin/uvicorn app.main:app --port 8003 --reload
 ```
 
 ### 2. Launch the Neural Command Center Frontend

@@ -3,7 +3,7 @@ import numpy as np
 import os
 from datetime import timedelta, date
 
-DATA_DIR = "/Users/shanmukh/.gemini/antigravity/scratch/Insure_AI_Ecosystem/datasets"
+DATA_DIR = os.path.dirname(__file__)
 
 def rebuild_grocery():
     dates = pd.date_range(start="2022-01-01", end="2025-01-01", freq="D")
@@ -134,7 +134,7 @@ def rebuild_insurance():
                     })
     
     df = pd.DataFrame(rows)
-    df.to_csv(os.path.join(DATA_DIR, "customer_360_policies.csv"), index=False)
+    df.to_csv(os.path.join(DATA_DIR, "insurance_forecast.csv"), index=False)
     print("Insurance dataset rebuilt.")
 
 if __name__ == "__main__":

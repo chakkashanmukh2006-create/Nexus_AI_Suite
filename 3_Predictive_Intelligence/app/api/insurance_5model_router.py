@@ -16,7 +16,7 @@ warnings.filterwarnings("ignore")
 router = APIRouter()
 
 def get_kaggle_dataset():
-    csv_path = os.path.join(os.path.dirname(__file__), "../../../datasets/customer_360_policies.csv")
+    csv_path = os.path.join(os.path.dirname(__file__), "../../../datasets/insurance_forecast.csv")
     df = pd.read_csv(csv_path)
     df['Date'] = pd.to_datetime(df['Date'], format="mixed", dayfirst=False)
     # Rename Conversions to Sales for consistency with the rest of the code

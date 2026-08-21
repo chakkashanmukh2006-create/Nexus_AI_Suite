@@ -8,7 +8,7 @@ services:
     container_name: nexus_customer_retention
     ports:
       - "8000:8000"
-    command: ["uvicorn", "1_Customer_Retention.app.api.customer360_router:app", "--host", "0.0.0.0", "--port", "8000"]
+    command: ["uvicorn", "1_Customer_Retention.app.main:app", "--host", "0.0.0.0", "--port", "8000"]
     volumes:
       - ./datasets:/app/datasets
       - ./1_Customer_Retention:/app/1_Customer_Retention
@@ -20,7 +20,7 @@ services:
     container_name: nexus_anomaly_detection
     ports:
       - "8001:8001"
-    command: ["uvicorn", "2_Anomaly_Detection.app.api.logistics_forecast_router:app", "--host", "0.0.0.0", "--port", "8001"]
+    command: ["uvicorn", "2_Anomaly_Detection.app.main:app", "--host", "0.0.0.0", "--port", "8001"]
     volumes:
       - ./datasets:/app/datasets
       - ./2_Anomaly_Detection:/app/2_Anomaly_Detection
@@ -32,7 +32,7 @@ services:
     container_name: nexus_predictive_maintenance
     ports:
       - "8002:8002"
-    command: ["uvicorn", "3_Predictive_Intelligence.app.api.maintenance_router:app", "--host", "0.0.0.0", "--port", "8002"]
+    command: ["uvicorn", "3_Predictive_Intelligence.app.main:app", "--host", "0.0.0.0", "--port", "8002"]
     volumes:
       - ./datasets:/app/datasets
       - ./3_Predictive_Intelligence:/app/3_Predictive_Intelligence
@@ -44,7 +44,20 @@ services:
     container_name: nexus_decision_engine
     ports:
       - "8003:8003"
-    command: ["uvicorn", "4_Decision_Making.app.api.insurance_5model_router:app", "--host", "0.0.0.0", "--port", "8003"]
+    command: ["uvicorn", "4_Decision_Making.app.main:app", "--host", "0.0.0.0", "--port", "8003"]
     volumes:
       - ./datasets:/app/datasets
       - ./4_Decision_Making:/app/4_Decision_Making
+
+  frontend:
+    build:
+      context: .
+      dockerfile: Dockerfile.frontend
+    container_name: nexus_frontend
+    ports:
+      - "3000:3000"
+    depends_on:
+      - customer_retention
+      - anomaly_detection
+      - predictive_maintenance
+      - decision_engine
